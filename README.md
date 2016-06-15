@@ -1,4 +1,4 @@
-# renewableregulator
+# Renewable Regulator
 Charge Regulator Designs for off-grid renewable energy projects. Series. Shunt. MPPT.
 
 #Overview
