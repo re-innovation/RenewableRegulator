@@ -1,0 +1,276 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 02/06/2014 17:32:17
+
+BeginCmp
+TimeStamp = /50D3631F;
+Reference = C1;
+ValeurCmp = 10uf;
+IdModule  = C2V8_large_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D36323;
+Reference = C2;
+ValeurCmp = 100u;
+IdModule  = C2V8_large_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D5D72D;
+Reference = C3;
+ValeurCmp = 100n;
+IdModule  = C1_wide_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D363C9;
+Reference = C4;
+ValeurCmp = 100n;
+IdModule  = C1_wide_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B0FC0;
+Reference = C5;
+ValeurCmp = 100n;
+IdModule  = C1_wide_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D5D70C;
+Reference = D1;
+ValeurCmp = 1N4001;
+IdModule  = D3_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D5DC34;
+Reference = D2;
+ValeurCmp = 5v1;
+IdModule  = D3_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A0D70;
+Reference = D3;
+ValeurCmp = RGB_LED;
+IdModule  = LED_RGB_Piranha;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B1029;
+Reference = D4;
+ValeurCmp = LED;
+IdModule  = led-LED3MM_matt;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B1047;
+Reference = D5;
+ValeurCmp = UF4001;
+IdModule  = D4_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B1038;
+Reference = D6;
+ValeurCmp = LED;
+IdModule  = led-LED3MM_matt;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B1056;
+Reference = D7;
+ValeurCmp = UF4001;
+IdModule  = D4_lg_pad;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A0E9B;
+Reference = IC1;
+ValeurCmp = ATTINY84-P;
+IdModule  = DIP-14__300_ELL;
+EndCmp
+
+BeginCmp
+TimeStamp = /5164624D;
+Reference = K1;
+ValeurCmp = IO_0-2;
+IdModule  = SIL-3_lg_pad_1mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /538CA6BF;
+Reference = K2;
+ValeurCmp = PWR;
+IdModule  = SIL-3_lg_pad_1mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /516547CF;
+Reference = MH1;
+ValeurCmp = CONN_1;
+IdModule  = 1pin_3mmhole;
+EndCmp
+
+BeginCmp
+TimeStamp = /516547D2;
+Reference = MH2;
+ValeurCmp = CONN_1;
+IdModule  = 1pin_3mmhole;
+EndCmp
+
+BeginCmp
+TimeStamp = /516547D4;
+Reference = MH3;
+ValeurCmp = CONN_1;
+IdModule  = 1pin_3mmhole;
+EndCmp
+
+BeginCmp
+TimeStamp = /516547D7;
+Reference = MH4;
+ValeurCmp = CONN_1;
+IdModule  = 1pin_3mmhole;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D3652B;
+Reference = P1;
+ValeurCmp = INPUT;
+IdModule  = SIL-2_screw_terminal_32A;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D46DA8;
+Reference = P2;
+ValeurCmp = ISP;
+IdModule  = ISP_3x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /51652149;
+Reference = P3;
+ValeurCmp = FTDI_OUTPUT;
+IdModule  = SIL-6_large_pads_marker;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B1065;
+Reference = P4;
+ValeurCmp = DUMP1;
+IdModule  = SIL-2_screw_terminal_32A;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B1074;
+Reference = P5;
+ValeurCmp = DUMP2;
+IdModule  = SIL-2_screw_terminal_32A;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B0FCF;
+Reference = Q1;
+ValeurCmp = MOSFET_N;
+IdModule  = TO220_VERT_BUZ11_matt;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B0FDE;
+Reference = Q2;
+ValeurCmp = MOSFET_N;
+IdModule  = TO220_VERT_BUZ11_matt;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D36543;
+Reference = R1;
+ValeurCmp = R;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D36545;
+Reference = R2;
+ValeurCmp = R;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A109E;
+Reference = R3;
+ValeurCmp = R;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A10AD;
+Reference = R4;
+ValeurCmp = R;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A10BC;
+Reference = R5;
+ValeurCmp = R;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B100B;
+Reference = R6;
+ValeurCmp = 1k;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B0FED;
+Reference = R7;
+ValeurCmp = 100k;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B101A;
+Reference = R8;
+ValeurCmp = 1k;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B0FFC;
+Reference = R9;
+ValeurCmp = 100k;
+IdModule  = R3-LARGE_PADS_0_8_hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A1701;
+Reference = RV1;
+ValeurCmp = POT;
+IdModule  = RV_10turn;
+EndCmp
+
+BeginCmp
+TimeStamp = /538A1710;
+Reference = RV2;
+ValeurCmp = POT;
+IdModule  = RV_10turn;
+EndCmp
+
+BeginCmp
+TimeStamp = /50D3634F;
+Reference = U1;
+ValeurCmp = 7805/LM2931;
+IdModule  = TO92_7805_matt;
+EndCmp
+
+BeginCmp
+TimeStamp = /538B0FB1;
+Reference = U2;
+ValeurCmp = TC427;
+IdModule  = DIP-8__300_ELL;
+EndCmp
+
+EndListe

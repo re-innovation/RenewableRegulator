@@ -1,5 +1,7 @@
-#include <EEPROMex.h>
-#include <EEPROMVar.h>
+#include <EEPROM.h>
+
+//#include <EEPROMex.h>
+//#include <EEPROMVar.h>
 
 #include <LCD5110_Graph.h>
 #include <avr/sleep.h>
