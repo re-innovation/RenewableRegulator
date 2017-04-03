@@ -1,0 +1,59 @@
+in enable_menu :
+
+      /*  myGLCD.print("VLIM", LEFT, 10);
+      myGLCD.print("VMAX", RIGHT, 10);
+      myGLCD.print("HYSTERESIS", LEFT, 40);
+      myGLCD.print("R1", LEFT, 20);
+      myGLCD.print("R2", LEFT, 30);
+      myGLCD.update();*/
+      
+      //  else if ((encoderPos >= 5) &( encoderPos < 10))
+      //  {
+      //    selection = 0;
+      //    if(intensityInPercent != 100)
+      //    {
+      //      digitalWrite(overchargeIndicatorLed, LOW);
+      //      intensityInPercent =0;
+      //    }
+      //
+      //
+      //  }
+      //  else if ((encoderPos >= 10) & (encoderPos < 15))
+      //  {
+      //    selection = 2;
+      //  }
+      //  else if ((encoderPos >= 15) & (encoderPos < 22))
+      //  {
+      //    selection = 3;
+      //  }
+      //  else
+      //  {
+      //    encoderPos = 0;
+      //    selection = 1;
+      //  }
+
+in initEEPROMValue :
+ 
+  //  EEPROM.writeFloat(0, 10.1);
+  //  EEPROM.writeFloat(5, 22.1);
+  //  EEPROM.write(10, 10);
+  //  EEPROM.write(15, 100);
+  //  EEPROM.writeFloat(20, 2.1);
+
+at the end of code : 
+
+/*void seriesRegulatorNoPWM(void)
+{ char i;
+
+for (i=0; i<11; i++)
+{
+delay(50);
+sensorValue = analogRead(analogInPin);
+getVin(sensorValue);   // Get Vin value and store it in the global declaration Vin
+controlMosfet(0);
+CheckButtonA();
+
+}
+displaySerialInformation(1);                           // Read the global declaration in order to display information on the serial monitor
+
+}*/
