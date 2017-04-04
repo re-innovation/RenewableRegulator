@@ -1,5 +1,6 @@
 #include <EEPROMex.h>
 #include <EEPROMVar.h>
+#include <Encoder.h>
 
 #include <LCD5110_Graph.h>
 #include <avr/sleep.h>
@@ -15,25 +16,29 @@ http://www.instructables.com/files/orig/FSD/13QB/IM3QGLHR/FSD13QBIM3QGLHR.ino */
 
 /*******LCD5110_Library to control the lcd http://www.rinkydinkelectronics.com/library.php?id=48 *******/
 
-static int pinA = 2;                  // Our first hardware interrupt pin is digital pin 2
-static int pinB = 3;                  // Our second hardware interrupt pin is digital pin 3
-volatile byte aFlag = 0;              // let's us know when we're expecting a rising edge on pinA to signal that the encoder has arrived at a detent
-volatile byte bFlag = 0;              // let's us know when we're expecting a rising edge on pinB to signal that the encoder has arrived at a detent (opposite direction to when aFlag is set)
-volatile byte encoderPos = 0;         // This variable stores our current value of encoder position. Change to int or uin16_t instead of byte if you want to record a larger range than 0-255
-volatile byte oldEncPos = 0;          // Stores the last encoder position value so we can compare to the current reading and see if it has changed (so we know when to print to the serial monitor)
-volatile byte reading = 0;            // Somewhere to store the direct values we read from our interrupt pins before checking to see if we have moved a whole detent
+Encoder rotEncoder(2, 3);
+
+//static int pinA = 2;                  // Our first hardware interrupt pin is digital pin 2
+//static int pinB = 3;                  // Our second hardware interrupt pin is digital pin 3
+//volatile byte aFlag = 0;              // let's us know when we're expecting a rising edge on pinA to signal that the encoder has arrived at a detent
+//volatile byte bFlag = 0;              // let's us know when we're expecting a rising edge on pinB to signal that the encoder has arrived at a detent (opposite direction to when aFlag is set)
+//volatile byte encoderPos = 0;         // This variable stores our current value of encoder position. Change to int or uin16_t instead of byte if you want to record a larger range than 0-255
+//volatile byte oldEncPos = 0;          // Stores the last encoder position value so we can compare to the current reading and see if it has changed (so we know when to print to the serial monitor)
+//volatile byte reading = 0;            // Somewhere to store the direct values we read from our interrupt pins before checking to see if we have moved a whole detent
 LCD5110 myGLCD(12,11,10,8,9);  //
 extern unsigned char SmallFont[];
 extern unsigned char TinyFont[];
 extern unsigned char MediumNumbers[];
 volatile int f_wdt=1;                 // Sleep arduino
 
+long posit = 0;
 
 // pins for the LEDs:
 
-const int analogInPin = A5;            // Analog input pin that the potentiometer is attached to / Default = A5
-const int buttonA = 2;                 // User Buttons from the rotary encoder
-const int buttonB = 3;
+const int analogInPinV = A0;            // Analog input pin that the potentiometer is attached to / Default = A5
+const int analogInPinA = A1; 
+//const int buttonA = 2;                 // User Buttons from the rotary encoder
+//const int buttonB = 3;
 const int buttonC = 4;
 
 char selection = 0;                    // Choose true for PWM, false for no PWM
@@ -77,6 +82,7 @@ bool testCase5 = LOW;
 
 /* Value read from the pot */
 int sensorValue = 0;       
+int ampvalue = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////SETUP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,15 +93,15 @@ void setup() {
   // initialize serial:
   Serial.begin(9600);
                                            
-  pinMode(pinA, INPUT_PULLUP);             // Set pinA as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
-  pinMode(pinB, INPUT_PULLUP);             // Set pinB as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
-  attachInterrupt(0,PinA,RISING);          // Set an interrupt on PinA, looking for a rising edge signal and executing the "PinA" Interrupt Service Routine (below)
-  attachInterrupt(1,PinB,RISING);          // Set an interrupt on PinB, looking for a rising edge signal and executing the "PinB" Interrupt Service Routine (below)
+  pinMode(2, INPUT_PULLUP);             // Set pinA as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
+  pinMode(3, INPUT_PULLUP);             // Set pinB as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
+  //attachInterrupt(0,2,RISING);          // Set an interrupt on PinA, looking for a rising edge signal and executing the "PinA" Interrupt Service Routine (below)
+  //attachInterrupt(1,3,RISING);          // Set an interrupt on PinB, looking for a rising edge signal and executing the "PinB" Interrupt Service Routine (below)
   pinMode(overchargeIndicatorLed, OUTPUT); // Set the LED indicator in OUTPUT mode
   pinMode(13, OUTPUT);                     // Set the pin 13 as an output
   digitalWrite(13,HIGH);                   // Set the pin 13 to HIGH (that turns on the display's blue light so we can see something)
-  pinMode(buttonA, INPUT_PULLUP);          // Initialize the user buttons
-  pinMode(buttonB, INPUT_PULLUP);
+  //pinMode(buttonA, INPUT_PULLUP);          // Initialize the user buttons
+  //pinMode(buttonB, INPUT_PULLUP);
   pinMode(buttonC, INPUT_PULLUP);
   
   initEEPROMValue();                       // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
@@ -129,7 +135,9 @@ void loop() {
   // put your main code here, to run repeatedly:
   if(f_wdt == 1)
   {
-    
+    ampvalue = analogRead(analogInPinA);
+    Serial.println("current:");
+    Serial.println(ampvalue);
     configureSelection();         // Changes the value of "selection" depending on the position of the encoder
     seriesRegulator();            // Write 0 in the parenthesis for no PWM or 1 for the PWM //default selection
     displayLCD(selection);        // Default selection
@@ -140,10 +148,10 @@ void loop() {
     
     enableMenu(testButtonC());    // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
     
-    if(oldEncPos != encoderPos)   // Updates the position of the encoder
-    {
-      oldEncPos = encoderPos;  
-    }
+    //if(oldEncPos != encoderPos)   // Updates the position of the encoder
+    //{
+    //  oldEncPos = encoderPos;  
+    //}
     f_wdt = 0;
     
     /* Re-enter sleep mode. */
@@ -162,18 +170,18 @@ void loop() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-bool CheckButtonA(void)
-{
-  
-  if(digitalRead(buttonA) == LOW)
-  {
-    //something
-  }
-  else
-  {
-    //an other thing
-  }
-}
+//bool CheckButtonA(void)
+//{
+//  
+//  if(digitalRead(buttonA) == LOW)
+//  {
+//    //something
+//  }
+//  else
+//  {
+//    //an other thing
+//  }
+//}
 
 void displaySerialInformation()                      // Read the global declaration in order to display information on the serial monitor // 0 for all value
 {                                                               
@@ -245,10 +253,10 @@ void seriesRegulator()                            // The function that does the 
   for (i=0; i<11; i++)
   {
     delay(50);
-    sensorValue = analogRead(analogInPin);
+    sensorValue = analogRead(analogInPinV);
     getVin(sensorValue);   
     controlMosfet();
-    CheckButtonA();
+    //CheckButtonA();
   } 
 }
 
@@ -421,10 +429,9 @@ void displayLCD(char selection)                   // Diplays the informations on
   myGLCD.setFont(SmallFont);
   myGLCD.print("v",35,15);
   
-  myGLCD.setFont(MediumNumbers);
-  
-  myGLCD.printNumI(getIntensityInPercent(),41,7,3,'.');
   myGLCD.setFont(SmallFont);
+
+  myGLCD.printNumI(getIntensityInPercent(),58,16,3,' ');
   myGLCD.print("%",77,15);
   
   for(i=83;i >=0 ; i--)      // Line
@@ -460,7 +467,7 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
 {
   char y;
   char x;
-  int oldEncoderPos, newEncoderPos;
+  long newPos;
 
   if(testCase5 == HIGH)
   {
@@ -479,13 +486,16 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
   {
   if(enable == LOW)
   {
-
+    posit = 0;
     do{
       
       myGLCD.setFont(SmallFont);
       myGLCD.clrScr();
       myGLCD.print("CHOOSE :", 0, 0);
-      if(( encoderPos >= 0) & (encoderPos < 5))
+      
+      newPos = rotEncoder.read() - posit;
+      
+      if((newPos >= -2) && (newPos < 2))
       {
         
         myGLCD.print("VLIM", 40, 0);
@@ -495,10 +505,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO SELECT", 0, 40);
         myGLCD.update();
         state= 0x00;
-        
-        
+        //posit = 0;        
       }
-      if(( encoderPos >= 5) & (encoderPos < 10))
+      if(((newPos >= 2) && (newPos < 6)) || ((newPos < -22) && (newPos >= -26)))
       {
         
         myGLCD.print("VMAX", 40, 0);
@@ -508,10 +517,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO SELECT", 0, 40);
         myGLCD.update();
         state= 0x01;
-        
-        
+        //posit = 0;        
       }
-      if(( encoderPos >= 10) & (encoderPos < 15))
+      if(((newPos >= 6) && (newPos < 10)) || ((newPos < -18) && (newPos >= -22)))
       {
         
         myGLCD.print("R1", 40, 0);
@@ -521,8 +529,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO SELECT", 0, 40);
         myGLCD.update();
         state= 0x02;
+        //posit = 0;
       }
-      if(( encoderPos >= 15) & (encoderPos < 20))
+      if(((newPos >= 10) && (newPos < 14)) || ((newPos < -14) && (newPos >= -18)))
       {
         
         myGLCD.print("R2", 40, 0);
@@ -532,8 +541,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO SELECT", 0, 40);
         myGLCD.update();
         state= 0x03;
+        //posit = 0;
       }
-      if(( encoderPos >= 20) & (encoderPos < 25))
+      if(((newPos >= 14) && (newPos < 18)) || ((newPos < -10) && (newPos >= -14)))
       {
         
         myGLCD.print("HYST", 40, 0);
@@ -543,11 +553,10 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO SELECT", 0, 40);
         myGLCD.update();
         state= 0x04;
-        
-        
+        //posit = 0;        
       }
       
-      if(( encoderPos >= 25) & (encoderPos < 30))
+      if(((newPos >= 18) && (newPos < 22)) || ((newPos < -6) && (newPos >= -10)))
       {
         myGLCD.print("CURVE", 40, 0);
         myGLCD.print("TIMES=", 0, 17);
@@ -556,9 +565,10 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO ACCEPT", 0, 40);
         myGLCD.update();
         state= 0x06;   
+        //posit = 0;
       }
       
-      if(( encoderPos >= 30) & (encoderPos < 35))
+      if(((newPos >= 22) && (newPos < 26)) || ((newPos < -2) && (newPos >= -6)))
       {
         myGLCD.print("SLEEP", 40, 0);
         myGLCD.print("GO TO SLEEP?", 0, 17);
@@ -567,13 +577,17 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO ACCEPT", 0, 40);
         myGLCD.update();
         state= 0x05; 
+        //posit = newPos;
+        //posit = 0;
       }
+
+      Serial.println(newPos);
       
-      if(( encoderPos >= 35) & (encoderPos < 255))
+      if(( newPos >= 26) || (newPos < -26))
       {
-        encoderPos=0;       
+        posit = rotEncoder.read();       
       }      
-      delay(1000);
+      delay(200);
     }while (HIGH==digitalRead(buttonC));
     
     do 
@@ -583,7 +597,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         case 0x00:
         {
           VinMax = EEPROM.readFloat(0);
-          encoderPos=0;
           myGLCD.clrScr();
           myGLCD.print("CHOOSE :", 0, 0);
           myGLCD.print("VLIM", 40, 0);
@@ -594,23 +607,14 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
           myGLCD.update();
           do
           {
-            oldEncoderPos = encoderPos;
+            newPos = rotEncoder.read();
+            posit = newPos + 400;
             delay(200);
-            newEncoderPos = encoderPos;
-            if(oldEncoderPos > 213 && newEncoderPos < 50 )
-            {
-              oldEncoderPos = 0;
-              newEncoderPos = 2;
-            }
-            if(oldEncoderPos < 50 && newEncoderPos >213 )
-            {
-              oldEncoderPos = 255;
-              newEncoderPos = 253;
-            }
+            newPos = rotEncoder.read() + 400;
             
-            if(oldEncoderPos > newEncoderPos)
+            if(posit > newPos)
             {
-              VinMax = VinMax -(oldEncoderPos - newEncoderPos) * 0.4;
+              VinMax = VinMax +(posit - newPos) * 0.05;
               if(VinMax <= 0)
               {
                 VinMax = 0;
@@ -621,10 +625,10 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
               myGLCD.print("PRESS TO ACCEPT",LEFT,30);
               myGLCD.update(); 
             }
-            else if (oldEncoderPos < newEncoderPos)
+            else if (posit < newPos)
             {
               
-              VinMax = VinMax+(newEncoderPos - oldEncoderPos) * 0.4;
+              VinMax = VinMax-(newPos - posit) * 0.05;
               myGLCD.clrScr();
               myGLCD.print("VLIM =", 0, 17);
               myGLCD.printNumF(VinMax,1, 40, 17);
@@ -634,9 +638,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
             else
             {
               Serial.println("");
-              Serial.println(oldEncoderPos);
-              Serial.println(newEncoderPos);
-              Serial.println(encoderPos);  //nothing
+              Serial.println(posit);
+              Serial.println(newPos);
+              //Serial.println(encoderPos);  //nothing
             }
           
         }while(HIGH==digitalRead(buttonC));
@@ -647,7 +651,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
       case 0x01:
       {
         maxControllerVoltage = EEPROM.readFloat(4);
-        encoderPos=0;
         myGLCD.clrScr();
         myGLCD.print("CHOOSE :", 0, 0);
         myGLCD.print("VMAX", 40, 0);
@@ -657,22 +660,14 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO CHANGE", 0, 40);
         myGLCD.update();
         do{
-          oldEncoderPos = encoderPos;
+          newPos = rotEncoder.read();
+          posit = newPos + 400;
           delay(200);
-          newEncoderPos = encoderPos;
-          if(oldEncoderPos > 213 && newEncoderPos < 50 )
+          newPos = rotEncoder.read() + 400;
+            
+          if(posit > newPos)
           {
-            oldEncoderPos = 0;
-            newEncoderPos = 2;
-          }
-          if(oldEncoderPos < 50 && newEncoderPos >213 )
-          {
-            oldEncoderPos = 255;
-            newEncoderPos = 253;
-          }
-          if(oldEncoderPos > newEncoderPos)
-          {
-            maxControllerVoltage = maxControllerVoltage -(oldEncoderPos - newEncoderPos) * 0.4;
+            maxControllerVoltage = maxControllerVoltage +(posit - newPos) * 0.05;
             if(maxControllerVoltage <= 0)
             {
               maxControllerVoltage = 0;
@@ -683,9 +678,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
             myGLCD.print("PRESS TO ACCEPT",LEFT,30);
             myGLCD.update();
           }
-          else if (oldEncoderPos < newEncoderPos)
+          else if (posit < newPos)
           {
-            maxControllerVoltage = maxControllerVoltage+(newEncoderPos - oldEncoderPos) * 0.4;
+            maxControllerVoltage = maxControllerVoltage-(newPos - posit) * 0.05;
             myGLCD.clrScr();
             myGLCD.print("VMAX =", 0, 17);
             myGLCD.printNumF(maxControllerVoltage,1, 40, 17);
@@ -705,7 +700,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
       case 0x02:
       {
         R1 = EEPROM.read(8);
-        encoderPos=0;
         myGLCD.clrScr();
         myGLCD.print("CHOOSE :", 0, 0);
         myGLCD.print("R1", 40, 0);
@@ -715,31 +709,23 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO CHANGE", 0, 40);
         myGLCD.update();
         do{
-          oldEncoderPos = encoderPos;
+          newPos = rotEncoder.read();
+          posit = newPos + 400;
           delay(200);
-          newEncoderPos = encoderPos;
-          if(oldEncoderPos > 213 && newEncoderPos < 50 )
+          newPos = rotEncoder.read() + 400;
+          
+          if(posit > newPos)
           {
-            oldEncoderPos = 0;
-            newEncoderPos = 2;
-          }
-          if(oldEncoderPos < 50 && newEncoderPos >213 )
-          {
-            oldEncoderPos = 255;
-            newEncoderPos = 253;
-          }
-          if(oldEncoderPos > newEncoderPos)
-          {
-            R1 = R1 -(oldEncoderPos - newEncoderPos) * 0.4;
+            R1 = R1 + (posit - newPos) * 0.25;
             myGLCD.clrScr();
             myGLCD.print("R1 =", 0, 17);
             myGLCD.printNumI(R1, 40, 17);
             myGLCD.print("PRESS TO ACCEPT",LEFT,30);
             myGLCD.update();
           }
-          else if (oldEncoderPos < newEncoderPos)
+          else if (posit < newPos)
           {
-            R1 =R1+(newEncoderPos - oldEncoderPos) * 0.4;
+            R1 = R1 - (newPos - posit) * 0.25;
             myGLCD.clrScr();
             myGLCD.print("R1 =", 0, 17);
             myGLCD.printNumI(R1, 40, 17);
@@ -759,7 +745,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
       case 0x03:
       {
         R2 = EEPROM.read(12);
-        encoderPos=0;
         myGLCD.clrScr();
         myGLCD.print("CHOOSE :", 0, 0);
         myGLCD.print("R2", 40, 0);
@@ -769,31 +754,23 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO CHANGE", 0, 40);
         myGLCD.update();
         do{
-          oldEncoderPos = encoderPos;
+          newPos = rotEncoder.read();
+          posit = newPos + 400;
           delay(200);
-          newEncoderPos = encoderPos;
-          if(oldEncoderPos > 213 && newEncoderPos < 50 )
+          newPos = rotEncoder.read() + 400;
+          
+          if(posit > newPos)
           {
-            oldEncoderPos = 0;
-            newEncoderPos = 2;
-          }
-          if(oldEncoderPos < 50 && newEncoderPos >213 )
-          {
-            oldEncoderPos = 255;
-            newEncoderPos = 253;
-          }
-          if(oldEncoderPos > newEncoderPos)
-          {
-            R2 = R2 -(oldEncoderPos - newEncoderPos) * 0.4;
+            R2 = R2 + (posit - newPos) * 0.25;
             myGLCD.clrScr();
             myGLCD.print("R2 =", 0, 17);
             myGLCD.printNumI(R2, 40, 17);
             myGLCD.print("PRESS TO ACCEPT",LEFT,30);
             myGLCD.update();
           }
-          else if (oldEncoderPos < newEncoderPos)
+          else if (posit < newPos)
           {
-            R2 = R2+(newEncoderPos - oldEncoderPos) * 0.4;
+            R2 = R2 - (newPos - posit) * 0.25;
             myGLCD.clrScr();
             myGLCD.print("R2 =", 0, 17);
             myGLCD.printNumI(R2, 40, 17);
@@ -813,7 +790,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
       case 0x04:
       {
         hysteresis=EEPROM.readFloat(16);
-        encoderPos=0;
         myGLCD.clrScr();
         myGLCD.print("CHOOSE :", 0, 0);
         myGLCD.print("HYSTERESIS", 40, 0);
@@ -823,22 +799,14 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO CHANGE", 0, 40);
         myGLCD.update();
         do{
-          oldEncoderPos = encoderPos;
+          newPos = rotEncoder.read();
+          posit = newPos + 400;
           delay(200);
-          newEncoderPos = encoderPos;
-          if(oldEncoderPos > 213 && newEncoderPos < 50 )
+          newPos = rotEncoder.read() + 400;
+          
+          if(posit > newPos)
           {
-            oldEncoderPos = 0;
-            newEncoderPos = 2;
-          }
-          if(oldEncoderPos < 50 && newEncoderPos >213 )
-          {
-            oldEncoderPos = 255;
-            newEncoderPos = 253;
-          }
-          if(oldEncoderPos > newEncoderPos)
-          {
-            hysteresis = hysteresis -(oldEncoderPos - newEncoderPos) * 0.1;
+            hysteresis = hysteresis + (posit - newPos) * 0.05;
             if(hysteresis <= 0)
             {
               hysteresis = 0;
@@ -849,9 +817,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
             myGLCD.print("PRESS TO ACCEPT",LEFT,30);
             myGLCD.update();
           }
-          else if (oldEncoderPos < newEncoderPos)
+          else if (posit < newPos)
           {
-            hysteresis = hysteresis+(newEncoderPos - oldEncoderPos) * 0.1;
+            hysteresis = hysteresis - (newPos - posit) * 0.05;
             myGLCD.clrScr();
             myGLCD.print("HYST =", 0, 17);
             myGLCD.printNumF(hysteresis,1, 45, 17);
@@ -888,7 +856,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
       case 0x06:
       {
         times=EEPROM.readInt(20);
-        encoderPos=0;
         myGLCD.clrScr();
         myGLCD.print("CHOOSE SCALE:", 0, 0);
         myGLCD.print("TIMES=", 0, 17);
@@ -897,22 +864,14 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         myGLCD.print("TO CHANGE", 0, 40);
         myGLCD.update();
         do{
-          oldEncoderPos = encoderPos;
+          newPos = rotEncoder.read();
+          posit = newPos + 400;
           delay(200);
-          newEncoderPos = encoderPos;
-          if(oldEncoderPos > 213 && newEncoderPos < 50 )
+          newPos = rotEncoder.read() + 400;
+          
+          if(posit > newPos)
           {
-            oldEncoderPos = 0;
-            newEncoderPos = 2;
-          }
-          if(oldEncoderPos < 50 && newEncoderPos >213 )
-          {
-            oldEncoderPos = 255;
-            newEncoderPos = 253;
-          }
-          if(oldEncoderPos > newEncoderPos)
-          {
-            times = times -(oldEncoderPos - newEncoderPos) * 4;
+            times = times + (posit - newPos)*0.25 ;
             if(times <= 0)
             {
               times = 0;
@@ -923,9 +882,9 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
             myGLCD.print("PRESS TO ACCEPT",LEFT,30);
             myGLCD.update();
           }
-          else if (oldEncoderPos < newEncoderPos)
+          else if (posit < newPos)
           {
-            times = times+(newEncoderPos - oldEncoderPos) * 4;
+            times = times - (newPos - posit)*0.25;
             myGLCD.clrScr();
             myGLCD.print("TIMES=", 0, 17);
             myGLCD.printNumI(times, 40, 17);
@@ -946,6 +905,7 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
       break;
     }
     delay(1000);
+    
   }while(digitalRead(buttonC) == HIGH && testFirstSleep == HIGH);
   myGLCD.clrScr();
   myGLCD.print("OK", CENTER, 10);
@@ -959,13 +919,16 @@ updateValue();
 
 bool configureSelection()                             // Changes the value of "selection" depending on the position of the encoder
 {
-  
-  if(( encoderPos >= 0) & (encoderPos < 5))
+  long newPos;
+  newPos = rotEncoder.read() - posit;
+
+  Serial.println(newPos);
+  if(( newPos >= -2) & (newPos < 2))
   {
     selection = 1;
     
   }
-  else if ((encoderPos >= 5) &( encoderPos < 10))
+  else if(((newPos >= 2) && (newPos < 6)) || ((newPos < -10) && (newPos >= -14)))
   {
     selection = 0;
     if(intensityInPercent != 100)
@@ -974,18 +937,18 @@ bool configureSelection()                             // Changes the value of "s
       intensityInPercent =0;
     }
   }
-  else if ((encoderPos >= 10) & (encoderPos < 15))
+  else if(((newPos >= 6) && (newPos < 10)) || ((newPos < -6) && (newPos >= -10)))
   {
     selection = 2;
   }
-  else if ((encoderPos >= 15) & (encoderPos < 22))
+  else if(((newPos >= 10) && (newPos < 14)) || ((newPos < -2) && (newPos >= -6)))
   {
     selection = 3;
   }
   else
   {
-    encoderPos = 0;
-    selection = 1;
+    posit = rotEncoder.read();
+    Serial.print("oui");
   }
   
 }
@@ -1116,38 +1079,38 @@ ISR(WDT_vect)
 }
 
 
-void PinA()
-{
-  cli();                                  // Stop interrupts happening before we read pin values
-  reading = PIND & 0xC;                   // Read all eight pin values then strip away all but pinA and pinB's values
-  if(reading == B00001100 && aFlag)       // Check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
-  {  
-  encoderPos --;                          // Decrement the encoder's position count
-  bFlag = 0;                              // Reset flags for the next turn
-  aFlag = 0;                              // Reset flags for the next turn
-  }
-  else if (reading == B00000100) 
-  {
-    bFlag = 1;                            // Signal that we're expecting pinB to signal the transition to detent from free rotation
-  }
-  sei();                                  // Restart interrupts
-}
-
-void PinB(){
-  cli();                                  // Sstop interrupts happening before we read pin values
-  reading = PIND & 0xC;                   // Read all eight pin values then strip away all but pinA and pinB's values
-  if (reading == B00001100 && bFlag)      // Ccheck that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
-  {                                       
-    encoderPos ++;                        // Increment the encoder's position count
-    bFlag = 0;                            // Reset flags for the next turn
-    aFlag = 0;                            // Reset flags for the next turn
-  }
-  else if (reading == B00001000) 
-  {
-    aFlag = 1;                            // Signal that we're expecting pinA to signal the transition to detent from free rotation
-  }
-  sei();                                  // Restart interrupts
-}
+//void PinA()
+//{
+//  cli();                                  // Stop interrupts happening before we read pin values
+//  reading = PIND & 0xC;                   // Read all eight pin values then strip away all but pinA and pinB's values
+//  if(reading == B00001100 && aFlag)       // Check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
+//  {  
+//  encoderPos --;                          // Decrement the encoder's position count
+//  bFlag = 0;                              // Reset flags for the next turn
+//  aFlag = 0;                              // Reset flags for the next turn
+//  }
+//  else if (reading == B00000100) 
+//  {
+//    bFlag = 1;                            // Signal that we're expecting pinB to signal the transition to detent from free rotation
+//  }
+//  sei();                                  // Restart interrupts
+//}
+//
+//void PinB(){
+//  cli();                                  // Sstop interrupts happening before we read pin values
+//  reading = PIND & 0xC;                   // Read all eight pin values then strip away all but pinA and pinB's values
+//  if (reading == B00001100 && bFlag)      // Ccheck that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
+//  {                                       
+//    encoderPos ++;                        // Increment the encoder's position count
+//    bFlag = 0;                            // Reset flags for the next turn
+//    aFlag = 0;                            // Reset flags for the next turn
+//  }
+//  else if (reading == B00001000) 
+//  {
+//    aFlag = 1;                            // Signal that we're expecting pinA to signal the transition to detent from free rotation
+//  }
+//  sei();                                  // Restart interrupts
+//}
 
 void updateValue(void)                    // Update setpointHigh and setpointLow depending on VinMax and hysteresis
 {
