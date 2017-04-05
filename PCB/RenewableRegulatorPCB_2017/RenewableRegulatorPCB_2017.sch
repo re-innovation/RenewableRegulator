@@ -52,9 +52,19 @@ L CONN_1 LOGO2
 U 1 1 516547D4
 P 6450 7050
 F 0 "LOGO2" H 6530 7050 40  0000 L CNN
-F 1 "CONN_1" H 6450 7105 30  0001 C CNN
-F 2 "CuriousElectric3:CuriousElectric_flat_12mm" H 6450 7050 60  0001 C CNN
+F 1 "LOGO" H 6450 7105 30  0001 C CNN
+F 2 "CuriousElectric3:TCEC_Words_13mm" H 6450 7050 60  0001 C CNN
 F 3 "" H 6450 7050 60  0001 C CNN
+F 4 "~" H 6450 7050 60  0000 C CNN "Notes"
+F 5 "~" H 6450 7050 60  0001 C CNN "Description"
+F 6 "~" H 6450 7050 60  0001 C CNN "Manufacturer"
+F 7 "~" H 6450 7050 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 6450 7050 60  0001 C CNN "Supplier 1"
+F 9 "~" H 6450 7050 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 6450 7050 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6450 7050 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6450 7050 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6450 7050 60  0001 C CNN "Supplier 2 Cost"
 	1    6450 7050
 	1    0    0    -1  
 $EndComp
@@ -63,9 +73,19 @@ L CONN_1 LOGO1
 U 1 1 516547D2
 P 6450 6850
 F 0 "LOGO1" H 6530 6850 40  0000 L CNN
-F 1 "CONN_1" H 6450 6905 30  0001 C CNN
+F 1 "LOGO" H 6450 6905 30  0001 C CNN
 F 2 "CuriousElectric3:CEC_Globe_10mm_FCU" H 6450 6850 60  0001 C CNN
 F 3 "" H 6450 6850 60  0001 C CNN
+F 4 "~" H 6450 6850 60  0000 C CNN "Notes"
+F 5 "~" H 6450 6850 60  0001 C CNN "Description"
+F 6 "~" H 6450 6850 60  0001 C CNN "Manufacturer"
+F 7 "~" H 6450 6850 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 6450 6850 60  0001 C CNN "Supplier 1"
+F 9 "~" H 6450 6850 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 6450 6850 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6450 6850 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6450 6850 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6450 6850 60  0001 C CNN "Supplier 2 Cost"
 	1    6450 6850
 	1    0    0    -1  
 $EndComp
@@ -74,9 +94,19 @@ L CONN_1 PCB1
 U 1 1 516547CF
 P 6450 6700
 F 0 "PCB1" H 6530 6700 40  0000 L CNN
-F 1 "CONN_1" H 6450 6755 30  0001 C CNN
-F 2 "" H 6450 6700 60  0001 C CNN
+F 1 "PCB" H 6450 6755 30  0001 C CNN
+F 2 "REInnovationFootprint:PCB_75x100mm" H 6450 6700 60  0001 C CNN
 F 3 "" H 6450 6700 60  0001 C CNN
+F 4 "~" H 6450 6700 60  0000 C CNN "Notes"
+F 5 "~" H 6450 6700 60  0001 C CNN "Description"
+F 6 "~" H 6450 6700 60  0001 C CNN "Manufacturer"
+F 7 "~" H 6450 6700 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 6450 6700 60  0001 C CNN "Supplier 1"
+F 9 "~" H 6450 6700 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 6450 6700 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6450 6700 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6450 6700 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6450 6700 60  0001 C CNN "Supplier 2 Cost"
 	1    6450 6700
 	1    0    0    -1  
 $EndComp
@@ -118,7 +148,7 @@ L C-RESCUE-RenewableRegulatorPCB_2017 C1
 U 1 1 50D5D72D
 P 950 4350
 F 0 "C1" H 1000 4450 50  0000 L CNN
-F 1 "100nf" H 750 4250 50  0000 L CNN
+F 1 "100nf" H 700 4200 50  0000 L CNN
 F 2 "matts_components:C1_wide_lg_pad" H 950 4350 60  0001 C CNN
 F 3 "" H 950 4350 60  0001 C CNN
 	1    950  4350
@@ -215,16 +245,16 @@ L FUSE F1
 U 1 1 58E2A6D5
 P 4450 2100
 F 0 "F1" H 4550 2150 50  0000 C CNN
-F 1 "1A" H 4350 2050 50  0000 C CNN
+F 1 "500mA" H 4350 2050 50  0000 C CNN
 F 2 "REInnovationFootprint:TH_MC36188_FUSE" H 4450 2100 50  0001 C CNN
 F 3 "" H 4450 2100 50  0000 C CNN
 F 4 "~" H 4450 2100 60  0000 C CNN "Notes"
 F 5 "Resettable Fuse 60V" H 4450 2100 60  0001 C CNN "Description"
-F 6 "~" H 4450 2100 60  0001 C CNN "Manufacturer"
-F 7 "~" H 4450 2100 60  0001 C CNN "Manufacturer Part No"
-F 8 "~" H 4450 2100 60  0001 C CNN "Supplier 1"
-F 9 "~" H 4450 2100 60  0001 C CNN "Supplier 1 Part No"
-F 10 "~" H 4450 2100 60  0001 C CNN "Supplier 1 Cost"
+F 6 "TE" H 4450 2100 60  0001 C CNN "Manufacturer"
+F 7 "RXEF050" H 4450 2100 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 4450 2100 60  0001 C CNN "Supplier 1"
+F 9 "517-6635" H 4450 2100 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.263" H 4450 2100 60  0001 C CNN "Supplier 1 Cost"
 F 11 "~" H 4450 2100 60  0001 C CNN "Supplier 2"
 F 12 "~" H 4450 2100 60  0001 C CNN "Supplier 2 Part No"
 F 13 "~" H 4450 2100 60  0001 C CNN "Supplier 2 Cost"
@@ -274,7 +304,7 @@ U 1 1 58E3E571
 P 8350 6350
 F 0 "DISP1" H 8750 7350 60  0000 C CNN
 F 1 "OLED_I2C" H 8750 6600 60  0000 C CNN
-F 2 "matts_components:SIL-4_large_pad" H 9750 6700 60  0001 C CNN
+F 2 "REInnovationFootprint:TH_OLED1306" H 9750 6700 60  0001 C CNN
 F 3 "" H 9750 6700 60  0000 C CNN
 F 4 "~" H 8350 6350 60  0000 C CNN "Notes"
 F 5 "~" H 8350 6350 60  0001 C CNN "Description"
@@ -296,12 +326,12 @@ P 5150 6850
 F 0 "D5" H 5150 7075 50  0000 C CNN
 F 1 "WS2811_5mm" H 5150 6600 50  0000 C CNN
 F 2 "REInnovationFootprint:TH_WS2811_LED_8mm" H 5150 6850 50  0001 C CNN
-F 3 "" H 5150 6850 50  0000 C CNN
+F 3 "https://www.coolcomponents.co.uk/en/opto/leds/digital-rgb-addressable-led-5mm-through-hole-10-pack.html" H 5150 6850 50  0001 C CNN
 F 4 "~" H 5150 6850 60  0000 C CNN "Notes"
-F 5 "~" H 5150 6850 60  0001 C CNN "Description"
+F 5 "TH WS2811 Single LED Addressable" H 5150 6850 60  0001 C CNN "Description"
 F 6 "~" H 5150 6850 60  0001 C CNN "Manufacturer"
 F 7 "~" H 5150 6850 60  0001 C CNN "Manufacturer Part No"
-F 8 "~" H 5150 6850 60  0001 C CNN "Supplier 1"
+F 8 "AliExpress" H 5150 6850 60  0001 C CNN "Supplier 1"
 F 9 "~" H 5150 6850 60  0001 C CNN "Supplier 1 Part No"
 F 10 "~" H 5150 6850 60  0001 C CNN "Supplier 1 Cost"
 F 11 "~" H 5150 6850 60  0001 C CNN "Supplier 2"
@@ -566,7 +596,17 @@ P 8600 3150
 F 0 "P3" H 8600 3500 50  0000 C CNN
 F 1 "MicroSD" V 8700 3150 50  0000 C CNN
 F 2 "matts_components:SIL-6_large_pads_marker" H 8600 3150 50  0001 C CNN
-F 3 "" H 8600 3150 50  0000 C CNN
+F 3 "http://www.gearbest.com/development-boards/pp_63013.html?currency=GBP&vip=760169&gclid=CPHFuoqAjdMCFUK7GwodO08Omw" H 8600 3150 50  0001 C CNN
+F 4 "~" H 8600 3150 60  0000 C CNN "Notes"
+F 5 "External Micro SD slot with level shifter" H 8600 3150 60  0001 C CNN "Description"
+F 6 "~" H 8600 3150 60  0001 C CNN "Manufacturer"
+F 7 "~" H 8600 3150 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 8600 3150 60  0001 C CNN "Supplier 1"
+F 9 "~" H 8600 3150 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 8600 3150 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 8600 3150 60  0001 C CNN "Supplier 2"
+F 12 "~" H 8600 3150 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 8600 3150 60  0001 C CNN "Supplier 2 Cost"
 	1    8600 3150
 	1    0    0    -1  
 $EndComp
@@ -805,7 +845,7 @@ L C-RESCUE-RenewableRegulatorPCB_2017 C2
 U 1 1 58E5B7D4
 P 2200 4400
 F 0 "C2" H 2250 4500 50  0000 L CNN
-F 1 "100nf" H 2000 4300 50  0000 L CNN
+F 1 "100nf" H 1950 4250 50  0000 L CNN
 F 2 "matts_components:C1_wide_lg_pad" H 2200 4400 60  0001 C CNN
 F 3 "" H 2200 4400 60  0001 C CNN
 	1    2200 4400
@@ -921,7 +961,7 @@ U 1 1 58E5E80A
 P 10900 5700
 F 0 "DISP2" H 10900 6150 50  0000 C CNN
 F 1 "SPI_LCD" V 11000 5700 50  0000 C CNN
-F 2 "matts_components:SIL-8_lg_pad_1mm" H 10900 5700 50  0001 C CNN
+F 2 "REInnovationFootprint:TH_LCD_SPI_128x128" H 10900 5700 50  0001 C CNN
 F 3 "https://www.elecrow.com/wiki/index.php?title=1.44%27%27_128x_128_TFT_LCD_with_SPI_Interface" H 10900 5700 50  0001 C CNN
 F 4 "~" H 10900 5700 60  0000 C CNN "Notes"
 F 5 "An SPI Colour LCD with backlight" H 10900 5700 60  0001 C CNN "Description"
@@ -980,6 +1020,16 @@ F 0 "C3" H 8925 1650 50  0000 L CNN
 F 1 "100uf" H 8925 1450 50  0000 L CNN
 F 2 "REInnovationFootprint:C_1V7_TH" H 8938 1400 50  0001 C CNN
 F 3 "" H 8900 1550 50  0000 C CNN
+F 4 "~" H 8900 1550 60  0000 C CNN "Notes"
+F 5 "100V Electrolytic" H 8900 1550 60  0001 C CNN "Description"
+F 6 "Panasonic" H 8900 1550 60  0001 C CNN "Manufacturer"
+F 7 "ECA-2AM101B" H 8900 1550 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 8900 1550 60  0001 C CNN "Supplier 1"
+F 9 "807-3431" H 8900 1550 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.141" H 8900 1550 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 8900 1550 60  0001 C CNN "Supplier 2"
+F 12 "~" H 8900 1550 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 8900 1550 60  0001 C CNN "Supplier 2 Cost"
 	1    8900 1550
 	1    0    0    -1  
 $EndComp
@@ -1016,7 +1066,7 @@ U 1 1 58E6BA28
 P 3100 6650
 F 0 "J1" H 3100 7050 50  0000 C CNN
 F 1 "JACK_TRS_6PINS" H 3050 6350 50  0000 C CNN
-F 2 "" H 3200 6500 50  0000 C CNN
+F 2 "REInnovationFootprint:TH_3_5mm_Jack" H 3200 6500 50  0001 C CNN
 F 3 "" H 3200 6500 50  0000 C CNN
 	1    3100 6650
 	0    -1   -1   0   
@@ -1035,7 +1085,7 @@ U 1 1 58E4A8DC
 P 3300 5900
 F 0 "R5" V 3380 5900 50  0000 C CNN
 F 1 "4k7" V 3300 5900 50  0000 C CNN
-F 2 "" V 3230 5900 50  0000 C CNN
+F 2 "REInnovationFootprint:TH_Resistor_1" V 3230 5900 50  0001 C CNN
 F 3 "" H 3300 5900 50  0000 C CNN
 	1    3300 5900
 	1    0    0    -1  
@@ -1198,4 +1248,64 @@ Wire Bus Line
 	6050 6200 6050 7800
 Text Notes 5050 5700 0    60   ~ 0
 Arduino Nano chosen
+$Comp
+L CONN_01X01 P9
+U 1 1 58E529B4
+P 3150 4550
+F 0 "P9" H 3150 4650 50  0000 C CNN
+F 1 "TP_Vout" V 3250 4550 50  0000 C CNN
+F 2 "matts_components:1pin_0_8mm" H 3150 4550 50  0001 C CNN
+F 3 "" H 3150 4550 50  0000 C CNN
+F 4 "~" H 3150 4550 60  0000 C CNN "Notes"
+F 5 "~" H 3150 4550 60  0001 C CNN "Description"
+F 6 "~" H 3150 4550 60  0001 C CNN "Manufacturer"
+F 7 "~" H 3150 4550 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 3150 4550 60  0001 C CNN "Supplier 1"
+F 9 "~" H 3150 4550 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 3150 4550 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 3150 4550 60  0001 C CNN "Supplier 2"
+F 12 "~" H 3150 4550 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 3150 4550 60  0001 C CNN "Supplier 2 Cost"
+	1    3150 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P8
+U 1 1 58E52AD3
+P 1750 3600
+F 0 "P8" H 1750 3700 50  0000 C CNN
+F 1 "TP_Vin" V 1850 3600 50  0000 C CNN
+F 2 "matts_components:1pin_0_8mm" H 1750 3600 50  0001 C CNN
+F 3 "" H 1750 3600 50  0000 C CNN
+	1    1750 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 4550 2950 3950
+Connection ~ 2950 3950
+Wire Wire Line
+	1550 3600 1550 3900
+Connection ~ 1550 3900
+NoConn ~ 6300 6500
+$Comp
+L CONN_1 EN1
+U 1 1 58E55463
+P 6450 6500
+F 0 "EN1" H 6530 6500 40  0000 L CNN
+F 1 "PCB" H 6450 6555 30  0001 C CNN
+F 2 "~" H 6450 6500 60  0001 C CNN
+F 3 "http://cpc.farnell.com/hammond/1590bb/box-diecast-119x94x30/dp/EN82042?ost=EN82042&selectedCategoryId=&categoryNameResp=All&searchView=table&iscrfnonsku=false" H 6450 6500 60  0001 C CNN
+F 4 "~" H 6450 6500 60  0000 C CNN "Notes"
+F 5 "Enclosure for unit" H 6450 6500 60  0001 C CNN "Description"
+F 6 "~" H 6450 6500 60  0001 C CNN "Manufacturer"
+F 7 "~" H 6450 6500 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 6450 6500 60  0001 C CNN "Supplier 1"
+F 9 "~" H 6450 6500 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 6450 6500 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6450 6500 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6450 6500 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6450 6500 60  0001 C CNN "Supplier 2 Cost"
+	1    6450 6500
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

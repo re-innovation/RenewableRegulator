@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>E:\Google Drive\Work - RE-Innovation\PRODUCTS\RenewableRegulator\RenewableRegulator\PCB\RenewableRegulatorPCB_2017\RenewableRegulatorPCB_2017.sch</source>
+    <date>05/04/2017 11:06:49</date>
+    <tool>Eeschema 4.0.4-stable</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Renewable Regulator</title>
+        <company>RE-Innovation</company>
+        <rev>1</rev>
+        <date>2017-04-04</date>
+        <source>RenewableRegulatorPCB_2017.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/FET Control/" tstamps="/58E26C6A/">
+      <title_block>
+        <title>Renewable Regulator</title>
+        <company>RE-Innovation</company>
+        <rev>1</rev>
+        <date>2017-04-04</date>
+        <source>FETControl.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/Power Supply/" tstamps="/58E26E4F/">
+      <title_block>
+        <title>Renewable Regulator</title>
+        <company>RE-Innovation</company>
+        <rev>1</rev>
+        <date>2017-04-04</date>
+        <source>powersupply.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="LOGO2">
+      <value>LOGO</value>
+      <footprint>CuriousElectric3:TCEC_Words_13mm</footprint>
+      <fields/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>516547D4</tstamp>
+    </comp>
+    <comp ref="LOGO1">
+      <value>LOGO</value>
+      <footprint>CuriousElectric3:CEC_Globe_10mm_FCU</footprint>
+      <fields/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>516547D2</tstamp>
+    </comp>
+    <comp ref="PCB1">
+      <value>PCB</value>
+      <footprint>REInnovationFootprint:PCB_75x100mm</footprint>
+      <fields/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>516547CF</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>3v3</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <fields/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="ZENER-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>50D5DC34</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100nf</value>
+      <footprint>matts_components:C1_wide_lg_pad</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="C-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>50D5D72D</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>Ra</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>50D36545</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>Rb</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>50D36543</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>INPUT</value>
+      <footprint>matts_components:SIL-2_screw_terminal_32A</footprint>
+      <libsource lib="matts_components" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>50D3652B</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>Arduino_Nano_Header</value>
+      <footprint>REInnovationFootprint:NANO_DIP_30_600</footprint>
+      <fields/>
+      <libsource lib="matts_components" part="Arduino_Nano_Header"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E28067</tstamp>
+    </comp>
+    <comp ref="F1">
+      <value>500mA</value>
+      <footprint>REInnovationFootprint:TH_MC36188_FUSE</footprint>
+      <fields>
+        <field name="Description">Resettable Fuse 60V</field>
+        <field name="Manufacturer">TE</field>
+        <field name="Manufacturer Part No">RXEF050</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">517-6635</field>
+        <field name="Supplier 1 Cost">0.263</field>
+      </fields>
+      <libsource lib="device" part="FUSE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E2A6D5</tstamp>
+    </comp>
+    <comp ref="ENC1">
+      <value>Encoder</value>
+      <footprint>REInnovationFootprint:TH_Encoder</footprint>
+      <fields/>
+      <libsource lib="matts_components" part="Encoder_1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E3D5E0</tstamp>
+    </comp>
+    <comp ref="DISP1">
+      <value>OLED_I2C</value>
+      <footprint>REInnovationFootprint:TH_OLED1306</footprint>
+      <fields/>
+      <libsource lib="matts_components" part="OLED_I2C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E3E571</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>WS2811_5mm</value>
+      <footprint>REInnovationFootprint:TH_WS2811_LED_8mm</footprint>
+      <datasheet>https://www.coolcomponents.co.uk/en/opto/leds/digital-rgb-addressable-led-5mm-through-hole-10-pack.html</datasheet>
+      <fields>
+        <field name="Description">TH WS2811 Single LED Addressable</field>
+        <field name="Supplier 1">AliExpress</field>
+      </fields>
+      <libsource lib="matts_components" part="WS2811_5mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E3F557</tstamp>
+    </comp>
+    <comp ref="P6">
+      <value>SERIAL</value>
+      <footprint>matts_components:SIL-4_Grove_SIL</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E47BCB</tstamp>
+    </comp>
+    <comp ref="P3">
+      <value>MicroSD</value>
+      <footprint>matts_components:SIL-6_large_pads_marker</footprint>
+      <datasheet>http://www.gearbest.com/development-boards/pp_63013.html?currency=GBP&amp;vip=760169&amp;gclid=CPHFuoqAjdMCFUK7GwodO08Omw</datasheet>
+      <fields>
+        <field name="Description">External Micro SD slot with level shifter</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X06"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E4B8E8</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>Vref?</value>
+      <footprint>matts_components:SIL-2_solder_connect</footprint>
+      <libsource lib="conn" part="CONN_01X02"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E4BF9F</tstamp>
+    </comp>
+    <comp ref="P5">
+      <value>OUTPUT</value>
+      <footprint>matts_components:SIL-2_screw_terminal_32A</footprint>
+      <libsource lib="matts_components" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5328E</tstamp>
+    </comp>
+    <comp ref="VR1">
+      <value>VR</value>
+      <footprint>REInnovationFootprint:TH_MC36188_FUSE</footprint>
+      <datasheet>http://docs-europe.electrocomponents.com/webdocs/13c2/0900766b813c2445.pdf</datasheet>
+      <fields>
+        <field name="Description">MO Varistor 50A. 135V, 82V</field>
+        <field name="Manufacturer">EPCOS</field>
+        <field name="Manufacturer Part No">B72214S0500K101</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">289-7121</field>
+        <field name="Supplier 1 Cost">0.114</field>
+      </fields>
+      <libsource lib="device" part="VR"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E58395</tstamp>
+    </comp>
+    <comp ref="VR2">
+      <value>VR</value>
+      <footprint>REInnovationFootprint:TH_MC36188_FUSE</footprint>
+      <datasheet>http://docs-europe.electrocomponents.com/webdocs/13c2/0900766b813c2445.pdf</datasheet>
+      <fields>
+        <field name="Description">MO Varistor 50A. 135V, 82V</field>
+        <field name="Manufacturer">EPCOS</field>
+        <field name="Manufacturer Part No">B72214S0500K101</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">289-7121</field>
+        <field name="Supplier 1 Cost">0.114</field>
+      </fields>
+      <libsource lib="device" part="VR"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E590B7</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>3v3</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="ZENER-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5B7CD</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100nf</value>
+      <footprint>matts_components:C1_wide_lg_pad</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="C-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5B7D4</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>Ra</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5B7DA</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>Rb</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5B7E0</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>1N5819</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/ds23001.pdf</datasheet>
+      <fields>
+        <field name="Description">1A Schottky Diode</field>
+        <field name="Manufacturer">Diodes Inc</field>
+        <field name="Manufacturer Part No">1N5819</field>
+        <field name="Supplier 1">AliExpress</field>
+      </fields>
+      <libsource lib="device" part="D"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5BC33</tstamp>
+    </comp>
+    <comp ref="DISP2">
+      <value>SPI_LCD</value>
+      <footprint>REInnovationFootprint:TH_LCD_SPI_128x128</footprint>
+      <datasheet>https://www.elecrow.com/wiki/index.php?title=1.44%27%27_128x_128_TFT_LCD_with_SPI_Interface</datasheet>
+      <fields>
+        <field name="Description">An SPI Colour LCD with backlight</field>
+        <field name="Manufacturer">Elecrow</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X08"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E5E80A</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>100uf</value>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
+      <fields>
+        <field name="Description">100V Electrolytic</field>
+        <field name="Manufacturer">Panasonic</field>
+        <field name="Manufacturer Part No">ECA-2AM101B</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">807-3431</field>
+        <field name="Supplier 1 Cost">0.141</field>
+      </fields>
+      <libsource lib="device" part="CP"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E65BB3</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>1N5819</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/ds23001.pdf</datasheet>
+      <fields>
+        <field name="Description">1A Schottky Diode</field>
+        <field name="Manufacturer">Diodes Inc</field>
+        <field name="Manufacturer Part No">1N5819</field>
+        <field name="Supplier 1">AliExpress</field>
+      </fields>
+      <libsource lib="device" part="D"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E67C68</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>JACK_TRS_6PINS</value>
+      <footprint>REInnovationFootprint:TH_3_5mm_Jack</footprint>
+      <libsource lib="matts_components" part="JACK_TRS_6PINS"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E6BA28</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>4k7</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E4A8DC</tstamp>
+    </comp>
+    <comp ref="P7">
+      <value>A2</value>
+      <footprint>matts_components:SIL-4_Grove_SIL</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E4B95C</tstamp>
+    </comp>
+    <comp ref="P4">
+      <value>A6_7</value>
+      <footprint>matts_components:SIL-4_Grove_SIL</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E4C087</tstamp>
+    </comp>
+    <comp ref="P9">
+      <value>TP_Vout</value>
+      <footprint>matts_components:1pin_0_8mm</footprint>
+      <fields/>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E529B4</tstamp>
+    </comp>
+    <comp ref="P8">
+      <value>TP_Vin</value>
+      <footprint>matts_components:1pin_0_8mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E52AD3</tstamp>
+    </comp>
+    <comp ref="EN1">
+      <value>PCB</value>
+      <datasheet>http://cpc.farnell.com/hammond/1590bb/box-diecast-119x94x30/dp/EN82042?ost=EN82042&amp;selectedCategoryId=&amp;categoryNameResp=All&amp;searchView=table&amp;iscrfnonsku=false</datasheet>
+      <fields>
+        <field name="Description">Enclosure for unit</field>
+      </fields>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E55463</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>100nf</value>
+      <footprint>matts_components:C1_wide_lg_pad</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="C-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>538B0FC0</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>TK32A12N1</value>
+      <footprint>matts_components:TO220_VERT_BUZ11_matt</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/mosfet-transistors/8962344/</datasheet>
+      <fields>
+        <field name="Description">N Channel MOSFET 60A 120V Rds 13m</field>
+        <field name="Manufacturer">Toshiba</field>
+        <field name="Manufacturer Part No">TK32A12N1,S4X</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">896-2344</field>
+        <field name="Supplier 1 Cost">0.41</field>
+      </fields>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="MOSFET_N"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>538B0FCF</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>100k</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>538B0FED</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>1k</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>538B100B</tstamp>
+    </comp>
+    <comp ref="D7">
+      <value>LED</value>
+      <footprint>REInnovationFootprint:TH_LED-5MM_larg_pad</footprint>
+      <fields>
+        <field name="Supplier 1 Cost">0.1</field>
+      </fields>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="LED-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>538B1029</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>UF4002</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <datasheet>http://docs-europe.electrocomponents.com/webdocs/12cf/0900766b812cffe7.pdf</datasheet>
+      <fields>
+        <field name="Description">Fast rectifier for Flyback. 100V</field>
+        <field name="Manufacturer">Vishay</field>
+        <field name="Manufacturer Part No">UF4002-E3</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">628-9732</field>
+        <field name="Supplier 1 Cost">0.12</field>
+      </fields>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="DIODE"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>538B1047</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>IR2117</value>
+      <footprint>REInnovationFootprint:DIP-8_300_ELL</footprint>
+      <datasheet>http://www.infineon.com/dgdl/ir2117.pdf?fileId=5546d462533600a4015355c84331168d</datasheet>
+      <fields>
+        <field name="Description">High Voltage High Side FET driver</field>
+        <field name="Manufacturer">Infineon</field>
+        <field name="Manufacturer Part No">IR2117PBF</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">540-9711</field>
+        <field name="Supplier 1 Cost">1.76</field>
+        <field name="Supplier 2">DigiKey</field>
+      </fields>
+      <libsource lib="matts_components" part="IR2117"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>58E36BE9</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>1N5822</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <datasheet>http://docs-europe.electrocomponents.com/webdocs/14bb/0900766b814bbef7.pdf</datasheet>
+      <fields>
+        <field name="Description">Schottky Diode &gt;1A</field>
+        <field name="Manufacturer">HY Electronic Corp</field>
+        <field name="Manufacturer Part No">1N5822</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">917-9102</field>
+        <field name="Supplier 1 Cost">0.045</field>
+      </fields>
+      <libsource lib="device" part="D"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>58E36D07</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>100nf</value>
+      <footprint>matts_components:C1_wide_lg_pad</footprint>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="C-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>58E36D48</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>5</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <fields/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>58E36FBB</tstamp>
+    </comp>
+    <comp ref="P10">
+      <value>TP_FET</value>
+      <footprint>matts_components:1pin_0_8mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
+      <tstamp>58E51C3D</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>1uf</value>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
+      <fields>
+        <field name="Description">&gt;25V Electrolytic/Ceramic</field>
+        <field name="Manufacturer">Murata</field>
+        <field name="Manufacturer Part No">RCER71H105K2M1H03A</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">841-0755</field>
+        <field name="Supplier 1 Cost">0.28</field>
+      </fields>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CP1-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>50D3631F</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>LMR16006</value>
+      <footprint>REInnovationFootprint:SM_SOT23-6</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/lmr16006.pdf</datasheet>
+      <fields>
+        <field name="Description">60V 0.6A Buck Reg</field>
+        <field name="Manufacturer">TI</field>
+        <field name="Manufacturer Part No">LMR16006YDDCT</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">900-9790</field>
+        <field name="Supplier 1 Cost">2.495</field>
+      </fields>
+      <libsource lib="matts_components" part="LMR16006"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E39056</tstamp>
+    </comp>
+    <comp ref="D9">
+      <value>1N5819</value>
+      <footprint>REInnovationFootprint:TH_Diode_1</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/ds23001.pdf</datasheet>
+      <fields>
+        <field name="Description">1A 0.850V Schottky 1A</field>
+        <field name="Manufacturer">Diodes Inc</field>
+        <field name="Manufacturer Part No">1N5819</field>
+        <field name="Supplier 1">Aliexpress</field>
+      </fields>
+      <libsource lib="device" part="D_Schottky"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E391EF</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>2.2uf</value>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
+      <datasheet>http://docs-europe.electrocomponents.com/webdocs/156e/0900766b8156ecdd.pdf</datasheet>
+      <fields>
+        <field name="Description">60V+ Ceramic Low ESR</field>
+        <field name="Manufacturer">Murata</field>
+        <field name="Manufacturer Part No">RDEC72A225K3M1H03A</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">133-5714</field>
+        <field name="Supplier 1 Cost">0.79</field>
+      </fields>
+      <libsource lib="device" part="CP"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E39234</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>100nf</value>
+      <footprint>matts_components:C1_wide_lg_pad</footprint>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E392A9</tstamp>
+    </comp>
+    <comp ref="L1">
+      <value>22uH</value>
+      <footprint>REInnovationFootprint:TH_Inductor</footprint>
+      <fields>
+        <field name="Description">&gt;1.6A Rated 2.3A</field>
+        <field name="Manufacturer">Wurth</field>
+        <field name="Manufacturer Part No">744772220</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">489-0043</field>
+        <field name="Supplier 1 Cost">0.669</field>
+      </fields>
+      <libsource lib="device" part="INDUCTOR"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E39458</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>100k</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <fields/>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E394A9</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>8.2k</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E394EA</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>MCP1702-50</value>
+      <footprint>matts_components:TO92_MCP9701_matt</footprint>
+      <datasheet>http://docs-europe.electrocomponents.com/webdocs/0a77/0900766b80a77df4.pdf</datasheet>
+      <fields>
+        <field name="Description">LDO 5V supply. 250mA</field>
+        <field name="Manufacturer">MicroChip</field>
+        <field name="Manufacturer Part No">MCP1702-5002E/TO</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">403-856</field>
+        <field name="Supplier 1 Cost">0.358</field>
+      </fields>
+      <libsource lib="matts_components" part="MCP1702-50"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E3A6F5</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>100k</value>
+      <footprint>REInnovationFootprint:TH_Resistor_1</footprint>
+      <fields/>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E3B2B4</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>10uf</value>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
+      <fields>
+        <field name="Description">Low ESR. 25V</field>
+        <field name="Manufacturer">Panasonic</field>
+        <field name="Manufacturer Part No">EEUFR1H100</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">923-2745</field>
+        <field name="Supplier 1 Cost">0.047</field>
+      </fields>
+      <libsource lib="device" part="CP"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E3B616</tstamp>
+    </comp>
+    <comp ref="P13">
+      <value>TP_10V</value>
+      <footprint>matts_components:1pin_0_8mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E51FB7</tstamp>
+    </comp>
+    <comp ref="P12">
+      <value>TP_5V</value>
+      <footprint>matts_components:1pin_0_8mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E5205A</tstamp>
+    </comp>
+    <comp ref="P11">
+      <value>TP_GND</value>
+      <footprint>matts_components:1pin_0_8mm</footprint>
+      <libsource lib="conn" part="CONN_01X01"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E520E9</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>1uf</value>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
+      <fields>
+        <field name="Description">&gt;25V Electrolytic/Ceramic</field>
+        <field name="Manufacturer">Murata</field>
+        <field name="Manufacturer Part No">RCER71H105K2M1H03A</field>
+        <field name="Supplier 1">RS</field>
+        <field name="Supplier 1 Part No">841-0755</field>
+        <field name="Supplier 1 Cost">0.28</field>
+      </fields>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CP1-RESCUE-RenewableRegulatorPCB_2017"/>
+      <sheetpath names="/Power Supply/" tstamps="/58E26E4F/"/>
+      <tstamp>58E5783F</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="matts_components" part="Arduino_Nano_Header">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Arduino_Nano_Header</field>
+      </fields>
+      <pins>
+        <pin num="1" name="D1/TX" type="passive"/>
+        <pin num="2" name="D0/RX" type="passive"/>
+        <pin num="3" name="RESET" type="passive"/>
+        <pin num="4" name="GND" type="passive"/>
+        <pin num="5" name="D2/INT0" type="passive"/>
+        <pin num="6" name="D3/INT1" type="passive"/>
+        <pin num="7" name="D4/T0" type="passive"/>
+        <pin num="8" name="D5/T1" type="passive"/>
+        <pin num="9" name="D6/AIN0" type="passive"/>
+        <pin num="10" name="D7/AIN1" type="passive"/>
+        <pin num="11" name="D8/ICP" type="passive"/>
+        <pin num="12" name="D9/0C1" type="passive"/>
+        <pin num="13" name="D10/SS" type="passive"/>
+        <pin num="14" name="D11/MOSI" type="passive"/>
+        <pin num="15" name="D12/MISO" type="passive"/>
+        <pin num="16" name="SCK/D13" type="passive"/>
+        <pin num="17" name="3V3" type="passive"/>
+        <pin num="18" name="AREF" type="passive"/>
+        <pin num="19" name="A0" type="passive"/>
+        <pin num="20" name="A1" type="passive"/>
+        <pin num="21" name="A2" type="passive"/>
+        <pin num="22" name="A3" type="passive"/>
+        <pin num="23" name="A4" type="passive"/>
+        <pin num="24" name="A5" type="passive"/>
+        <pin num="25" name="A6" type="passive"/>
+        <pin num="26" name="A7" type="passive"/>
+        <pin num="27" name="5V" type="passive"/>
+        <pin num="28" name="RESET" type="passive"/>
+        <pin num="29" name="GND" type="passive"/>
+        <pin num="30" name="VIN" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="C-RESCUE-RenewableRegulatorPCB_2017">
+      <footprints>
+        <fp>SM*</fp>
+        <fp>C?</fp>
+        <fp>C1-1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C-RESCUE-RenewableRegulatorPCB_2017</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X01">
+      <description>Connector, single row, 01x01</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X01</fp>
+        <fp>Pin_Header_Angled_1X01</fp>
+        <fp>Socket_Strip_Straight_1X01</fp>
+        <fp>Socket_Strip_Angled_1X01</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X01</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X02">
+      <description>Connector, single row, 01x02</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X02</fp>
+        <fp>Pin_Header_Angled_1X02</fp>
+        <fp>Socket_Strip_Straight_1X02</fp>
+        <fp>Socket_Strip_Angled_1X02</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X04">
+      <description>Connector, single row, 01x04</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X04</fp>
+        <fp>Pin_Header_Angled_1X04</fp>
+        <fp>Socket_Strip_Straight_1X04</fp>
+        <fp>Socket_Strip_Angled_1X04</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X04</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X06">
+      <description>Connector, single row, 01x06</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X06</fp>
+        <fp>Pin_Header_Angled_1X06</fp>
+        <fp>Socket_Strip_Straight_1X06</fp>
+        <fp>Socket_Strip_Angled_1X06</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X06</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X08">
+      <description>Connector, single row, 01x08</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X08</fp>
+        <fp>Pin_Header_Angled_1X08</fp>
+        <fp>Socket_Strip_Straight_1X08</fp>
+        <fp>Socket_Strip_Angled_1X08</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X08</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+        <pin num="7" name="P7" type="passive"/>
+        <pin num="8" name="P8" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="CONN_1">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="CONN_2">
+      <description>Symbole general de connecteur</description>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="CP">
+      <description>Polarised capacitor</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>C_Axial*</fp>
+        <fp>C_Radial*</fp>
+        <fp>TantalC*</fp>
+        <fp>C*elec</fp>
+        <fp>c_elec*</fp>
+        <fp>SMD*_Pol</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="CP1-RESCUE-RenewableRegulatorPCB_2017">
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP1-RESCUE-RenewableRegulatorPCB_2017</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="D">
+      <description>Diode</description>
+      <footprints>
+        <fp>Diode_*</fp>
+        <fp>D-Pak_TO252AA</fp>
+        <fp>*SingleDiode</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="DIODE">
+      <footprints>
+        <fp>D?</fp>
+        <fp>S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">DIODE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="D_Schottky">
+      <description>Diode schottky</description>
+      <footprints>
+        <fp>D-Pak_TO252AA</fp>
+        <fp>Diode_*</fp>
+        <fp>*SingleDiode</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>*_Diode_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Schottky</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="Encoder_1">
+      <fields>
+        <field name="Reference">ENC</field>
+        <field name="Value">Encoder_1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="A" name="A" type="passive"/>
+        <pin num="B" name="B" type="passive"/>
+        <pin num="C" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="FUSE">
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">FUSE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="INDUCTOR">
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">INDUCTOR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="IR2117">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">IR2117</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Vcc" type="input"/>
+        <pin num="2" name="IN" type="input"/>
+        <pin num="3" name="COM" type="input"/>
+        <pin num="4" name="NC" type="input"/>
+        <pin num="5" name="NC" type="input"/>
+        <pin num="6" name="Vs" type="input"/>
+        <pin num="7" name="HO" type="input"/>
+        <pin num="8" name="VB" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="JACK_TRS_6PINS">
+      <description>audio jack TRS 6 pins</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">JACK_TRS_6PINS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="S" type="passive"/>
+        <pin num="2" name="T" type="passive"/>
+        <pin num="3" name="R" type="passive"/>
+        <pin num="4" name="SN" type="passive"/>
+        <pin num="5" name="TN" type="passive"/>
+        <pin num="6" name="RN" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="LED-RESCUE-RenewableRegulatorPCB_2017">
+      <footprints>
+        <fp>LED-3MM</fp>
+        <fp>LED-5MM</fp>
+        <fp>LED-10MM</fp>
+        <fp>LED-0603</fp>
+        <fp>LED-0805</fp>
+        <fp>LED-1206</fp>
+        <fp>LEDV</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED-RESCUE-RenewableRegulatorPCB_2017</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="LMR16006">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LMR16006</field>
+      </fields>
+      <pins>
+        <pin num="1" name="CB" type="input"/>
+        <pin num="2" name="GND" type="input"/>
+        <pin num="3" name="FB" type="input"/>
+        <pin num="4" name="~SHDN" type="input"/>
+        <pin num="5" name="Vin" type="input"/>
+        <pin num="6" name="SW" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="MCP1702-50">
+      <description>Linear Regulator +5V</description>
+      <docs>regulator\lm78xx.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP1702-50</field>
+      </fields>
+      <pins>
+        <pin num="GND" name="GND" type="input"/>
+        <pin num="VI" name="VI" type="input"/>
+        <pin num="VO" name="VO" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="MOS_N">
+      <aliases>
+        <alias>MOSFET_N</alias>
+      </aliases>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MOS_N</field>
+      </fields>
+      <pins>
+        <pin num="D" name="D" type="passive"/>
+        <pin num="G" name="G" type="input"/>
+        <pin num="S" name="S" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="OLED_I2C">
+      <fields>
+        <field name="Reference">DISP</field>
+        <field name="Value">OLED_I2C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SDA" type="passive"/>
+        <pin num="2" name="SCL" type="passive"/>
+        <pin num="3" name="Vcc" type="passive"/>
+        <pin num="4" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="R-RESCUE-RenewableRegulatorPCB_2017">
+      <footprints>
+        <fp>R?</fp>
+        <fp>SM0603</fp>
+        <fp>SM0805</fp>
+        <fp>R?-*</fp>
+        <fp>SM1206</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R-RESCUE-RenewableRegulatorPCB_2017</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="VR">
+      <description>VARISTANCE</description>
+      <fields>
+        <field name="Reference">VR</field>
+        <field name="Value">VR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="matts_components" part="WS2811_5mm">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">WS2811_5mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DATA_OUT" type="output"/>
+        <pin num="2" name="GND" type="input"/>
+        <pin num="3" name="+V" type="input"/>
+        <pin num="4" name="DATA_IN" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="ZENER-RESCUE-RenewableRegulatorPCB_2017">
+      <footprints>
+        <fp>D?</fp>
+        <fp>SO*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">ZENER-RESCUE-RenewableRegulatorPCB_2017</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="conn">
+      <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
+    </library>
+    <library logical="RenewableRegulatorPCB_2017-cache">
+      <uri>E:\Google Drive\Work - RE-Innovation\PRODUCTS\RenewableRegulator\RenewableRegulator\PCB\RenewableRegulatorPCB_2017\RenewableRegulatorPCB_2017-cache.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
+    </library>
+    <library logical="matts_components">
+      <uri>E:\Google Drive\KiCAD\KiCad My Libraries\matts_components.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="GND">
+      <node ref="VR1" pin="2"/>
+      <node ref="P3" pin="6"/>
+      <node ref="P4" pin="1"/>
+      <node ref="D5" pin="2"/>
+      <node ref="D1" pin="1"/>
+      <node ref="ENC1" pin="2"/>
+      <node ref="ENC1" pin="C"/>
+      <node ref="DISP1" pin="4"/>
+      <node ref="J2" pin="29"/>
+      <node ref="P7" pin="1"/>
+      <node ref="P1" pin="2"/>
+      <node ref="J1" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="R2" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="J2" pin="4"/>
+      <node ref="C10" pin="2"/>
+      <node ref="P11" pin="1"/>
+      <node ref="C9" pin="2"/>
+      <node ref="U3" pin="GND"/>
+      <node ref="DISP2" pin="2"/>
+      <node ref="U1" pin="3"/>
+      <node ref="C7" pin="2"/>
+      <node ref="R4" pin="2"/>
+      <node ref="C6" pin="2"/>
+      <node ref="R11" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="D2" pin="1"/>
+      <node ref="U2" pin="2"/>
+      <node ref="D9" pin="2"/>
+      <node ref="VR2" pin="2"/>
+      <node ref="R7" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="P5" pin="2"/>
+      <node ref="D8" pin="1"/>
+      <node ref="P6" pin="1"/>
+    </net>
+    <net code="2" name="Voutput">
+      <node ref="U1" pin="6"/>
+      <node ref="C5" pin="2"/>
+      <node ref="Q1" pin="S"/>
+      <node ref="R8" pin="2"/>
+      <node ref="D7" pin="1"/>
+      <node ref="D8" pin="2"/>
+      <node ref="P5" pin="1"/>
+      <node ref="VR2" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R3" pin="1"/>
+      <node ref="D3" pin="2"/>
+    </net>
+    <net code="3" name="LCD_CS">
+      <node ref="J2" pin="12"/>
+      <node ref="DISP2" pin="3"/>
+    </net>
+    <net code="4" name="LCD_DC">
+      <node ref="J2" pin="10"/>
+      <node ref="DISP2" pin="5"/>
+    </net>
+    <net code="5" name="+3V3">
+      <node ref="P3" pin="1"/>
+      <node ref="J2" pin="17"/>
+      <node ref="P2" pin="2"/>
+      <node ref="DISP2" pin="1"/>
+    </net>
+    <net code="6" name="SCK">
+      <node ref="DISP2" pin="7"/>
+      <node ref="P3" pin="4"/>
+      <node ref="J2" pin="16"/>
+    </net>
+    <net code="7" name="MOSI">
+      <node ref="P3" pin="3"/>
+      <node ref="J2" pin="14"/>
+      <node ref="DISP2" pin="6"/>
+    </net>
+    <net code="8" name="MISO">
+      <node ref="P3" pin="5"/>
+      <node ref="DISP2" pin="4"/>
+      <node ref="J2" pin="15"/>
+    </net>
+    <net code="9" name="VINm">
+      <node ref="P8" pin="1"/>
+      <node ref="R2" pin="1"/>
+      <node ref="R1" pin="2"/>
+      <node ref="D1" pin="2"/>
+      <node ref="J2" pin="19"/>
+      <node ref="C1" pin="1"/>
+    </net>
+    <net code="10" name="SD_CS">
+      <node ref="J2" pin="13"/>
+      <node ref="P3" pin="2"/>
+    </net>
+    <net code="11" name="/Power Supply/+PWR">
+      <node ref="F1" pin="1"/>
+      <node ref="C6" pin="1"/>
+      <node ref="U2" pin="5"/>
+      <node ref="R9" pin="1"/>
+    </net>
+    <net code="12" name="Net-(D3-Pad1)">
+      <node ref="D3" pin="1"/>
+      <node ref="D4" pin="1"/>
+      <node ref="F1" pin="2"/>
+    </net>
+    <net code="13" name="LCD_BL">
+      <node ref="DISP2" pin="8"/>
+      <node ref="J2" pin="11"/>
+    </net>
+    <net code="14" name="A7">
+      <node ref="J2" pin="26"/>
+      <node ref="P4" pin="3"/>
+    </net>
+    <net code="15" name="A2">
+      <node ref="P7" pin="4"/>
+      <node ref="J2" pin="21"/>
+    </net>
+    <net code="16" name="A6">
+      <node ref="P4" pin="4"/>
+      <node ref="J2" pin="25"/>
+    </net>
+    <net code="17" name="+5V">
+      <node ref="P12" pin="1"/>
+      <node ref="P7" pin="2"/>
+      <node ref="C9" pin="1"/>
+      <node ref="U3" pin="VO"/>
+      <node ref="D5" pin="3"/>
+      <node ref="DISP1" pin="3"/>
+      <node ref="P6" pin="2"/>
+      <node ref="J1" pin="2"/>
+      <node ref="P4" pin="2"/>
+      <node ref="R5" pin="1"/>
+      <node ref="J2" pin="27"/>
+    </net>
+    <net code="18" name="Net-(P7-Pad3)">
+      <node ref="P7" pin="3"/>
+    </net>
+    <net code="19" name="Net-(EN1-Pad1)">
+      <node ref="EN1" pin="1"/>
+    </net>
+    <net code="20" name="VOUTm">
+      <node ref="R4" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="R3" pin="2"/>
+      <node ref="D2" pin="2"/>
+      <node ref="P9" pin="1"/>
+      <node ref="J2" pin="20"/>
+    </net>
+    <net code="21" name="TEMP">
+      <node ref="J1" pin="3"/>
+      <node ref="R5" pin="2"/>
+      <node ref="J2" pin="22"/>
+    </net>
+    <net code="22" name="Net-(J1-Pad6)">
+      <node ref="J1" pin="6"/>
+    </net>
+    <net code="23" name="Net-(J1-Pad5)">
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="24" name="Net-(J1-Pad4)">
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="25" name="/Power Supply/+10V">
+      <node ref="D6" pin="2"/>
+      <node ref="C7" pin="1"/>
+      <node ref="P13" pin="1"/>
+      <node ref="C10" pin="1"/>
+      <node ref="U3" pin="VI"/>
+      <node ref="U1" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="L1" pin="2"/>
+      <node ref="R10" pin="1"/>
+    </net>
+    <net code="26" name="Net-(J2-Pad28)">
+      <node ref="J2" pin="28"/>
+    </net>
+    <net code="27" name="Net-(D5-Pad1)">
+      <node ref="D5" pin="1"/>
+    </net>
+    <net code="28" name="SCL">
+      <node ref="DISP1" pin="2"/>
+      <node ref="J2" pin="24"/>
+    </net>
+    <net code="29" name="SDA">
+      <node ref="DISP1" pin="1"/>
+      <node ref="J2" pin="23"/>
+    </net>
+    <net code="30" name="Vinput">
+      <node ref="Q1" pin="D"/>
+      <node ref="R1" pin="1"/>
+      <node ref="P1" pin="1"/>
+      <node ref="VR1" pin="1"/>
+      <node ref="D4" pin="2"/>
+    </net>
+    <net code="31" name="Net-(LOGO2-Pad1)">
+      <node ref="LOGO2" pin="1"/>
+    </net>
+    <net code="32" name="Net-(PCB1-Pad1)">
+      <node ref="PCB1" pin="1"/>
+    </net>
+    <net code="33" name="Net-(LOGO1-Pad1)">
+      <node ref="LOGO1" pin="1"/>
+    </net>
+    <net code="34" name="Net-(J2-Pad30)">
+      <node ref="J2" pin="30"/>
+    </net>
+    <net code="35" name="Net-(J2-Pad3)">
+      <node ref="J2" pin="3"/>
+    </net>
+    <net code="36" name="FET1">
+      <node ref="J2" pin="9"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="37" name="Rx">
+      <node ref="J2" pin="2"/>
+      <node ref="P6" pin="4"/>
+    </net>
+    <net code="38" name="Tx">
+      <node ref="P6" pin="3"/>
+      <node ref="J2" pin="1"/>
+    </net>
+    <net code="39" name="Net-(J2-Pad18)">
+      <node ref="J2" pin="18"/>
+      <node ref="P2" pin="1"/>
+    </net>
+    <net code="40" name="EN_SW">
+      <node ref="J2" pin="7"/>
+      <node ref="ENC1" pin="1"/>
+    </net>
+    <net code="41" name="EN_B">
+      <node ref="J2" pin="6"/>
+      <node ref="ENC1" pin="B"/>
+    </net>
+    <net code="42" name="EN_A">
+      <node ref="ENC1" pin="A"/>
+      <node ref="J2" pin="5"/>
+    </net>
+    <net code="43" name="LED_D">
+      <node ref="D5" pin="4"/>
+      <node ref="J2" pin="8"/>
+    </net>
+    <net code="44" name="Net-(C5-Pad1)">
+      <node ref="C5" pin="1"/>
+      <node ref="D6" pin="1"/>
+      <node ref="U1" pin="8"/>
+    </net>
+    <net code="45" name="Net-(R6-Pad2)">
+      <node ref="U1" pin="7"/>
+      <node ref="R6" pin="2"/>
+    </net>
+    <net code="46" name="Net-(U1-Pad4)">
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="47" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="48" name="Net-(P10-Pad1)">
+      <node ref="Q1" pin="G"/>
+      <node ref="R6" pin="1"/>
+      <node ref="P10" pin="1"/>
+      <node ref="R8" pin="1"/>
+    </net>
+    <net code="49" name="Net-(D7-Pad2)">
+      <node ref="R7" pin="1"/>
+      <node ref="D7" pin="2"/>
+    </net>
+    <net code="50" name="Net-(R10-Pad2)">
+      <node ref="R11" pin="1"/>
+      <node ref="U2" pin="3"/>
+      <node ref="R10" pin="2"/>
+    </net>
+    <net code="51" name="Net-(C8-Pad1)">
+      <node ref="C8" pin="1"/>
+      <node ref="U2" pin="1"/>
+    </net>
+    <net code="52" name="Net-(R9-Pad2)">
+      <node ref="R9" pin="2"/>
+      <node ref="U2" pin="4"/>
+    </net>
+    <net code="53" name="Net-(C8-Pad2)">
+      <node ref="C8" pin="2"/>
+      <node ref="L1" pin="1"/>
+      <node ref="D9" pin="1"/>
+      <node ref="U2" pin="6"/>
+    </net>
+  </nets>
+</export>

@@ -81,6 +81,16 @@ F 0 "D7" H 6300 4050 50  0000 C CNN
 F 1 "LED" H 6300 3850 50  0000 C CNN
 F 2 "REInnovationFootprint:TH_LED-5MM_larg_pad" H 6300 3950 60  0001 C CNN
 F 3 "" H 6300 3950 60  0000 C CNN
+F 4 "~" H 6300 3950 60  0000 C CNN "Notes"
+F 5 "~" H 6300 3950 60  0001 C CNN "Description"
+F 6 "~" H 6300 3950 60  0001 C CNN "Manufacturer"
+F 7 "~" H 6300 3950 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 6300 3950 60  0001 C CNN "Supplier 1"
+F 9 "~" H 6300 3950 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.1" H 6300 3950 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6300 3950 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6300 3950 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6300 3950 60  0001 C CNN "Supplier 2 Cost"
 	1    6300 3950
 	-1   0    0    1   
 $EndComp
@@ -89,9 +99,19 @@ L DIODE D8
 U 1 1 538B1047
 P 6500 4450
 F 0 "D8" H 6500 4550 40  0000 C CNN
-F 1 "UF4001" H 6500 4350 40  0000 C CNN
+F 1 "UF4002" H 6500 4350 40  0000 C CNN
 F 2 "REInnovationFootprint:TH_Diode_1" H 6500 4450 60  0001 C CNN
-F 3 "" H 6500 4450 60  0000 C CNN
+F 3 "http://docs-europe.electrocomponents.com/webdocs/12cf/0900766b812cffe7.pdf" H 6500 4450 60  0001 C CNN
+F 4 "~" H 6500 4450 60  0000 C CNN "Notes"
+F 5 "Fast rectifier for Flyback. 100V" H 6500 4450 60  0001 C CNN "Description"
+F 6 "Vishay" H 6500 4450 60  0001 C CNN "Manufacturer"
+F 7 "UF4002-E3" H 6500 4450 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 6500 4450 60  0001 C CNN "Supplier 1"
+F 9 "628-9732" H 6500 4450 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.12" H 6500 4450 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6500 4450 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6500 4450 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6500 4450 60  0001 C CNN "Supplier 2 Cost"
 	1    6500 4450
 	0    -1   -1   0   
 $EndComp
@@ -147,7 +167,17 @@ P 4250 3200
 F 0 "U1" H 4250 3550 60  0000 C CNN
 F 1 "IR2117" H 4250 2800 60  0000 C CNN
 F 2 "REInnovationFootprint:DIP-8_300_ELL" H 4800 3300 60  0001 C CNN
-F 3 "" H 4800 3300 60  0000 C CNN
+F 3 "http://www.infineon.com/dgdl/ir2117.pdf?fileId=5546d462533600a4015355c84331168d" H 4800 3300 60  0001 C CNN
+F 4 "~" H 4250 3200 60  0000 C CNN "Notes"
+F 5 "High Voltage High Side FET driver" H 4250 3200 60  0001 C CNN "Description"
+F 6 "Infineon" H 4250 3200 60  0001 C CNN "Manufacturer"
+F 7 "IR2117PBF" H 4250 3200 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 4250 3200 60  0001 C CNN "Supplier 1"
+F 9 "540-9711" H 4250 3200 60  0001 C CNN "Supplier 1 Part No"
+F 10 "1.76" H 4250 3200 60  0001 C CNN "Supplier 1 Cost"
+F 11 "DigiKey" H 4250 3200 60  0001 C CNN "Supplier 2"
+F 12 "~" H 4250 3200 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 4250 3200 60  0001 C CNN "Supplier 2 Cost"
 	1    4250 3200
 	1    0    0    -1  
 $EndComp
@@ -158,7 +188,17 @@ P 4250 2500
 F 0 "D6" H 4250 2600 50  0000 C CNN
 F 1 "1N5822" H 4250 2400 50  0000 C CNN
 F 2 "REInnovationFootprint:TH_Diode_1" H 4250 2500 50  0001 C CNN
-F 3 "" H 4250 2500 50  0000 C CNN
+F 3 "http://docs-europe.electrocomponents.com/webdocs/14bb/0900766b814bbef7.pdf" H 4250 2500 50  0001 C CNN
+F 4 "~" H 4250 2500 60  0000 C CNN "Notes"
+F 5 "Schottky Diode >1A" H 4250 2500 60  0001 C CNN "Description"
+F 6 "HY Electronic Corp" H 4250 2500 60  0001 C CNN "Manufacturer"
+F 7 "1N5822" H 4250 2500 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 4250 2500 60  0001 C CNN "Supplier 1"
+F 9 "917-9102" H 4250 2500 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.045" H 4250 2500 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 4250 2500 60  0001 C CNN "Supplier 2"
+F 12 "~" H 4250 2500 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 4250 2500 60  0001 C CNN "Supplier 2 Cost"
 	1    4250 2500
 	-1   0    0    1   
 $EndComp
@@ -239,4 +279,18 @@ Wire Wire Line
 Connection ~ 3450 5550
 NoConn ~ 4800 3450
 NoConn ~ 3700 3450
+$Comp
+L CONN_01X01 P10
+U 1 1 58E51C3D
+P 6300 2750
+F 0 "P10" H 6300 2850 50  0000 C CNN
+F 1 "TP_FET" V 6400 2750 50  0000 C CNN
+F 2 "matts_components:1pin_0_8mm" H 6300 2750 50  0001 C CNN
+F 3 "" H 6300 2750 50  0000 C CNN
+	1    6300 2750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6300 2950 6300 3150
+Connection ~ 6300 3150
 $EndSCHEMATC

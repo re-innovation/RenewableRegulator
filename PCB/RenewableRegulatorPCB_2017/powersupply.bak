@@ -29,18 +29,17 @@ F 0 "C7" H 4450 5550 50  0000 L CNN
 F 1 "1uf" H 4450 5350 50  0000 L CNN
 F 2 "REInnovationFootprint:C_1V7_TH" H 4400 5450 60  0001 C CNN
 F 3 "" H 4400 5450 60  0001 C CNN
+F 4 "~" H 4400 5450 60  0000 C CNN "Notes"
+F 5 ">25V Electrolytic/Ceramic" H 4400 5450 60  0001 C CNN "Description"
+F 6 "Murata" H 4400 5450 60  0001 C CNN "Manufacturer"
+F 7 "RCER71H105K2M1H03A" H 4400 5450 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 4400 5450 60  0001 C CNN "Supplier 1"
+F 9 "841-0755" H 4400 5450 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.28" H 4400 5450 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 4400 5450 60  0001 C CNN "Supplier 2"
+F 12 "~" H 4400 5450 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 4400 5450 60  0001 C CNN "Supplier 2 Cost"
 	1    4400 5450
-	1    0    0    -1  
-$EndComp
-$Comp
-L CP1-RESCUE-RenewableRegulatorPCB_2017 C9
-U 1 1 50D36323
-P 5550 5500
-F 0 "C9" H 5600 5600 50  0000 L CNN
-F 1 "1uf" H 5600 5400 50  0000 L CNN
-F 2 "REInnovationFootprint:C_1V7_TH" H 5550 5500 60  0001 C CNN
-F 3 "" H 5550 5500 60  0001 C CNN
-	1    5550 5500
 	1    0    0    -1  
 $EndComp
 Text Notes 5200 1400 0    60   ~ 0
@@ -67,7 +66,7 @@ GND
 Text HLabel 6500 4800 2    60   Output ~ 0
 +5V
 Wire Wire Line
-	5550 5950 2600 5950
+	2600 5950 5750 5950
 Connection ~ 4900 5950
 Connection ~ 4400 5950
 Wire Wire Line
@@ -80,7 +79,7 @@ U 1 1 58E39056
 P 4250 3400
 F 0 "U2" H 4250 3750 60  0000 C CNN
 F 1 "LMR16006" H 4250 3000 60  0000 C CNN
-F 2 "matts_components:SOT23-5_matt" H 4800 3500 60  0001 C CNN
+F 2 "REInnovationFootprint:SM_SOT23-6" H 4800 3500 60  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lmr16006.pdf" H 4800 3500 60  0001 C CNN
 F 4 "~" H 4250 3400 60  0000 C CNN "Notes"
 F 5 "60V 0.6A Buck Reg" H 4250 3400 60  0001 C CNN "Description"
@@ -123,14 +122,14 @@ P 2850 3200
 F 0 "C6" H 2875 3300 50  0000 L CNN
 F 1 "2.2uf" H 2875 3100 50  0000 L CNN
 F 2 "REInnovationFootprint:C_1V7_TH" H 2888 3050 50  0001 C CNN
-F 3 "" H 2850 3200 50  0000 C CNN
+F 3 "http://docs-europe.electrocomponents.com/webdocs/156e/0900766b8156ecdd.pdf" H 2850 3200 50  0001 C CNN
 F 4 "~" H 2850 3200 60  0000 C CNN "Notes"
-F 5 "60V+ Ceramic" H 2850 3200 60  0001 C CNN "Description"
-F 6 "~" H 2850 3200 60  0001 C CNN "Manufacturer"
-F 7 "~" H 2850 3200 60  0001 C CNN "Manufacturer Part No"
-F 8 "~" H 2850 3200 60  0001 C CNN "Supplier 1"
-F 9 "~" H 2850 3200 60  0001 C CNN "Supplier 1 Part No"
-F 10 "~" H 2850 3200 60  0001 C CNN "Supplier 1 Cost"
+F 5 "60V+ Ceramic Low ESR" H 2850 3200 60  0001 C CNN "Description"
+F 6 "Murata" H 2850 3200 60  0001 C CNN "Manufacturer"
+F 7 "RDEC72A225K3M1H03A" H 2850 3200 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 2850 3200 60  0001 C CNN "Supplier 1"
+F 9 "133-5714" H 2850 3200 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.79" H 2850 3200 60  0001 C CNN "Supplier 1 Cost"
 F 11 "~" H 2850 3200 60  0001 C CNN "Supplier 2"
 F 12 "~" H 2850 3200 60  0001 C CNN "Supplier 2 Part No"
 F 13 "~" H 2850 3200 60  0001 C CNN "Supplier 2 Cost"
@@ -267,12 +266,12 @@ F 1 "MCP1702-50" H 4900 5450 60  0000 C CNN
 F 2 "matts_components:TO92_MCP9701_matt" H 4900 5250 60  0001 C CNN
 F 3 "http://docs-europe.electrocomponents.com/webdocs/0a77/0900766b80a77df4.pdf" H 4900 5250 60  0001 C CNN
 F 4 "~" H 4900 5250 60  0000 C CNN "Notes"
-F 5 "~" H 4900 5250 60  0001 C CNN "Description"
-F 6 "~" H 4900 5250 60  0001 C CNN "Manufacturer"
-F 7 "~" H 4900 5250 60  0001 C CNN "Manufacturer Part No"
-F 8 "~" H 4900 5250 60  0001 C CNN "Supplier 1"
-F 9 "~" H 4900 5250 60  0001 C CNN "Supplier 1 Part No"
-F 10 "~" H 4900 5250 60  0001 C CNN "Supplier 1 Cost"
+F 5 "LDO 5V supply. 250mA" H 4900 5250 60  0001 C CNN "Description"
+F 6 "MicroChip" H 4900 5250 60  0001 C CNN "Manufacturer"
+F 7 "MCP1702-5002E/TO" H 4900 5250 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 4900 5250 60  0001 C CNN "Supplier 1"
+F 9 "403-856" H 4900 5250 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.358" H 4900 5250 60  0001 C CNN "Supplier 1 Cost"
 F 11 "~" H 4900 5250 60  0001 C CNN "Supplier 2"
 F 12 "~" H 4900 5250 60  0001 C CNN "Supplier 2 Part No"
 F 13 "~" H 4900 5250 60  0001 C CNN "Supplier 2 Cost"
@@ -333,12 +332,12 @@ F 1 "10uf" H 6725 3450 50  0000 L CNN
 F 2 "REInnovationFootprint:C_1V7_TH" H 6738 3400 50  0001 C CNN
 F 3 "" H 6700 3550 50  0000 C CNN
 F 4 "~" H 6700 3550 60  0000 C CNN "Notes"
-F 5 "Low ESR" H 6700 3550 60  0001 C CNN "Description"
-F 6 "~" H 6700 3550 60  0001 C CNN "Manufacturer"
-F 7 "~" H 6700 3550 60  0001 C CNN "Manufacturer Part No"
-F 8 "~" H 6700 3550 60  0001 C CNN "Supplier 1"
-F 9 "~" H 6700 3550 60  0001 C CNN "Supplier 1 Part No"
-F 10 "~" H 6700 3550 60  0001 C CNN "Supplier 1 Cost"
+F 5 "Low ESR. 25V" H 6700 3550 60  0001 C CNN "Description"
+F 6 "Panasonic" H 6700 3550 60  0001 C CNN "Manufacturer"
+F 7 "EEUFR1H100" H 6700 3550 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 6700 3550 60  0001 C CNN "Supplier 1"
+F 9 "923-2745" H 6700 3550 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.047" H 6700 3550 60  0001 C CNN "Supplier 1 Cost"
 F 11 "~" H 6700 3550 60  0001 C CNN "Supplier 2"
 F 12 "~" H 6700 3550 60  0001 C CNN "Supplier 2 Part No"
 F 13 "~" H 6700 3550 60  0001 C CNN "Supplier 2 Cost"
@@ -347,4 +346,69 @@ F 13 "~" H 6700 3550 60  0001 C CNN "Supplier 2 Cost"
 $EndComp
 Wire Wire Line
 	2850 2900 2650 2900
+$Comp
+L CONN_01X01 P13
+U 1 1 58E51FB7
+P 6750 2950
+F 0 "P13" H 6750 3050 50  0000 C CNN
+F 1 "TP_10V" V 6850 2950 50  0000 C CNN
+F 2 "matts_components:1pin_0_8mm" H 6750 2950 50  0001 C CNN
+F 3 "" H 6750 2950 50  0000 C CNN
+	1    6750 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P12
+U 1 1 58E5205A
+P 6300 5050
+F 0 "P12" H 6300 5150 50  0000 C CNN
+F 1 "TP_5V" V 6400 5050 50  0000 C CNN
+F 2 "matts_components:1pin_0_8mm" H 6300 5050 50  0001 C CNN
+F 3 "" H 6300 5050 50  0000 C CNN
+	1    6300 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P11
+U 1 1 58E520E9
+P 5950 5950
+F 0 "P11" H 5950 6050 50  0000 C CNN
+F 1 "TP_GND" V 6050 5950 50  0000 C CNN
+F 2 "matts_components:1pin_0_8mm" H 5950 5950 50  0001 C CNN
+F 3 "" H 5950 5950 50  0000 C CNN
+	1    5950 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 2950 6450 2950
+Wire Wire Line
+	6450 2950 6450 3200
+Connection ~ 6450 3200
+Wire Wire Line
+	6100 5050 5950 5050
+Wire Wire Line
+	5950 5050 5950 4800
+Connection ~ 5950 4800
+Connection ~ 5550 5950
+$Comp
+L CP1-RESCUE-RenewableRegulatorPCB_2017 C9
+U 1 1 58E5783F
+P 5550 5500
+F 0 "C9" H 5600 5600 50  0000 L CNN
+F 1 "1uf" H 5600 5400 50  0000 L CNN
+F 2 "REInnovationFootprint:C_1V7_TH" H 5550 5500 60  0001 C CNN
+F 3 "" H 5550 5500 60  0001 C CNN
+F 4 "~" H 5550 5500 60  0000 C CNN "Notes"
+F 5 ">25V Electrolytic/Ceramic" H 5550 5500 60  0001 C CNN "Description"
+F 6 "Murata" H 5550 5500 60  0001 C CNN "Manufacturer"
+F 7 "RCER71H105K2M1H03A" H 5550 5500 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 5550 5500 60  0001 C CNN "Supplier 1"
+F 9 "841-0755" H 5550 5500 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.28" H 5550 5500 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 5550 5500 60  0001 C CNN "Supplier 2"
+F 12 "~" H 5550 5500 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 5550 5500 60  0001 C CNN "Supplier 2 Cost"
+	1    5550 5500
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
