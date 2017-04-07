@@ -1020,6 +1020,16 @@ F 0 "C3" H 8925 1650 50  0000 L CNN
 F 1 "100uf" H 8925 1450 50  0000 L CNN
 F 2 "REInnovationFootprint:C_1V7_TH" H 8938 1400 50  0001 C CNN
 F 3 "" H 8900 1550 50  0000 C CNN
+F 4 "~" H 8900 1550 60  0000 C CNN "Notes"
+F 5 "100V Electrolytic" H 8900 1550 60  0001 C CNN "Description"
+F 6 "Panasonic" H 8900 1550 60  0001 C CNN "Manufacturer"
+F 7 "ECA-2AM101B" H 8900 1550 60  0001 C CNN "Manufacturer Part No"
+F 8 "RS" H 8900 1550 60  0001 C CNN "Supplier 1"
+F 9 "807-3431" H 8900 1550 60  0001 C CNN "Supplier 1 Part No"
+F 10 "0.141" H 8900 1550 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 8900 1550 60  0001 C CNN "Supplier 2"
+F 12 "~" H 8900 1550 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 8900 1550 60  0001 C CNN "Supplier 2 Cost"
 	1    8900 1550
 	1    0    0    -1  
 $EndComp
@@ -1278,10 +1288,10 @@ Wire Wire Line
 Connection ~ 1550 3900
 NoConn ~ 6300 6500
 $Comp
-L CONN_1 EN?
+L CONN_1 EN1
 U 1 1 58E55463
 P 6450 6500
-F 0 "EN?" H 6530 6500 40  0000 L CNN
+F 0 "EN1" H 6530 6500 40  0000 L CNN
 F 1 "PCB" H 6450 6555 30  0001 C CNN
 F 2 "~" H 6450 6500 60  0001 C CNN
 F 3 "http://cpc.farnell.com/hammond/1590bb/box-diecast-119x94x30/dp/EN82042?ost=EN82042&selectedCategoryId=&categoryNameResp=All&searchView=table&iscrfnonsku=false" H 6450 6500 60  0001 C CNN
