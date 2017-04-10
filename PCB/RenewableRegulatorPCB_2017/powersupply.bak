@@ -2,8 +2,8 @@ EESchema Schematic File Version 2
 LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
-LIBS:matts_components
 LIBS:conn
+LIBS:RenewableRegulatorPCB_2017
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END
@@ -27,12 +27,12 @@ U 1 1 50D3631F
 P 4400 5450
 F 0 "C7" H 4450 5550 50  0000 L CNN
 F 1 "1uf" H 4450 5350 50  0000 L CNN
-F 2 "REInnovationFootprint:C_1V7_TH" H 4400 5450 60  0001 C CNN
-F 3 "" H 4400 5450 60  0001 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C7_1V7_TH" H 4400 5450 60  0001 C CNN
+F 3 "" H 4400 5450 210 0001 C CNN
 F 4 "~" H 4400 5450 60  0000 C CNN "Notes"
 F 5 ">25V Electrolytic/Ceramic" H 4400 5450 60  0001 C CNN "Description"
 F 6 "Murata" H 4400 5450 60  0001 C CNN "Manufacturer"
-F 7 "RCER71H105K2M1H03A" H 4400 5450 60  0001 C CNN "Manufacturer Part No"
+F 7 "RCER71H105K2M1H03A" H 4400 5450 200 0001 C CNN "Manufacturer Part No"
 F 8 "RS" H 4400 5450 60  0001 C CNN "Supplier 1"
 F 9 "841-0755" H 4400 5450 60  0001 C CNN "Supplier 1 Part No"
 F 10 "0.28" H 4400 5450 60  0001 C CNN "Supplier 1 Cost"
@@ -121,12 +121,12 @@ U 1 1 58E39234
 P 2850 3200
 F 0 "C6" H 2875 3300 50  0000 L CNN
 F 1 "2.2uf" H 2875 3100 50  0000 L CNN
-F 2 "REInnovationFootprint:C_1V7_TH" H 2888 3050 50  0001 C CNN
-F 3 "http://docs-europe.electrocomponents.com/webdocs/156e/0900766b8156ecdd.pdf" H 2850 3200 50  0001 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C6_1V7_TH" H 2888 3050 50  0001 C CNN
+F 3 "http://docs-europe.electrocomponents.com/webdocs/156e/0900766b8156ecdd.pdf" H 2850 3200 210 0001 C CNN
 F 4 "~" H 2850 3200 60  0000 C CNN "Notes"
 F 5 "60V+ Ceramic Low ESR" H 2850 3200 60  0001 C CNN "Description"
 F 6 "Murata" H 2850 3200 60  0001 C CNN "Manufacturer"
-F 7 "RDEC72A225K3M1H03A" H 2850 3200 60  0001 C CNN "Manufacturer Part No"
+F 7 "RDEC72A225K3M1H03A" H 2850 3200 200 0001 C CNN "Manufacturer Part No"
 F 8 "RS" H 2850 3200 60  0001 C CNN "Supplier 1"
 F 9 "133-5714" H 2850 3200 60  0001 C CNN "Supplier 1 Part No"
 F 10 "0.79" H 2850 3200 60  0001 C CNN "Supplier 1 Cost"
@@ -329,12 +329,12 @@ U 1 1 58E3B616
 P 6700 3550
 F 0 "C10" H 6725 3650 50  0000 L CNN
 F 1 "10uf" H 6725 3450 50  0000 L CNN
-F 2 "REInnovationFootprint:C_1V7_TH" H 6738 3400 50  0001 C CNN
-F 3 "" H 6700 3550 50  0000 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C10_1V7_TH" H 6738 3400 50  0001 C CNN
+F 3 "" H 6700 3550 200 0000 C CNN
 F 4 "~" H 6700 3550 60  0000 C CNN "Notes"
 F 5 "Low ESR. 25V" H 6700 3550 60  0001 C CNN "Description"
 F 6 "Panasonic" H 6700 3550 60  0001 C CNN "Manufacturer"
-F 7 "EEUFR1H100" H 6700 3550 60  0001 C CNN "Manufacturer Part No"
+F 7 "EEUFR1H100" H 6700 3550 200 0001 C CNN "Manufacturer Part No"
 F 8 "RS" H 6700 3550 60  0001 C CNN "Supplier 1"
 F 9 "923-2745" H 6700 3550 60  0001 C CNN "Supplier 1 Part No"
 F 10 "0.047" H 6700 3550 60  0001 C CNN "Supplier 1 Cost"
@@ -396,12 +396,12 @@ U 1 1 58E5783F
 P 5550 5500
 F 0 "C9" H 5600 5600 50  0000 L CNN
 F 1 "1uf" H 5600 5400 50  0000 L CNN
-F 2 "REInnovationFootprint:C_1V7_TH" H 5550 5500 60  0001 C CNN
-F 3 "" H 5550 5500 60  0001 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C9_1V7_TH" H 5550 5500 60  0001 C CNN
+F 3 "" H 5550 5500 210 0001 C CNN
 F 4 "~" H 5550 5500 60  0000 C CNN "Notes"
 F 5 ">25V Electrolytic/Ceramic" H 5550 5500 60  0001 C CNN "Description"
 F 6 "Murata" H 5550 5500 60  0001 C CNN "Manufacturer"
-F 7 "RCER71H105K2M1H03A" H 5550 5500 60  0001 C CNN "Manufacturer Part No"
+F 7 "RCER71H105K2M1H03A" H 5550 5500 200 0001 C CNN "Manufacturer Part No"
 F 8 "RS" H 5550 5500 60  0001 C CNN "Supplier 1"
 F 9 "841-0755" H 5550 5500 60  0001 C CNN "Supplier 1 Part No"
 F 10 "0.28" H 5550 5500 60  0001 C CNN "Supplier 1 Cost"

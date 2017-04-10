@@ -3,6 +3,7 @@ LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
 LIBS:conn
+LIBS:RenewableRegulatorPCB_2017
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END

@@ -2,8 +2,8 @@ EESchema Schematic File Version 2
 LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
-LIBS:matts_components
 LIBS:conn
+LIBS:RenewableRegulatorPCB_2017
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END
@@ -182,7 +182,7 @@ U 1 1 50D3652B
 P 1400 1600
 F 0 "P1" V 1350 1600 40  0000 C CNN
 F 1 "INPUT" V 1450 1600 40  0000 C CNN
-F 2 "matts_components:SIL-2_screw_terminal_32A" H 1400 1600 60  0001 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Connecteurs_IO_SIL-2_screw_terminal_32A" H 1400 1600 60  0001 C CNN
 F 3 "" H 1400 1600 60  0001 C CNN
 	1    1400 1600
 	-1   0    0    -1  
@@ -707,7 +707,7 @@ U 1 1 58E5328E
 P 10250 1750
 F 0 "P5" V 10200 1750 40  0000 C CNN
 F 1 "OUTPUT" V 10300 1750 40  0000 C CNN
-F 2 "matts_components:SIL-2_screw_terminal_32A" H 10250 1750 60  0001 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Connecteurs_IO_SIL-2_screw_terminal_32A" H 10250 1750 60  0001 C CNN
 F 3 "" H 10250 1750 60  0001 C CNN
 	1    10250 1750
 	1    0    0    -1  
@@ -1018,12 +1018,12 @@ U 1 1 58E65BB3
 P 8900 1550
 F 0 "C3" H 8925 1650 50  0000 L CNN
 F 1 "100uf" H 8925 1450 50  0000 L CNN
-F 2 "REInnovationFootprint:C_1V7_TH" H 8938 1400 50  0001 C CNN
-F 3 "" H 8900 1550 50  0000 C CNN
+F 2 "RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C_1V7_TH" H 8938 1400 400 0001 C CNN
+F 3 "" H 8900 1550 400 0001 C CNN
 F 4 "~" H 8900 1550 60  0000 C CNN "Notes"
 F 5 "100V Electrolytic" H 8900 1550 60  0001 C CNN "Description"
 F 6 "Panasonic" H 8900 1550 60  0001 C CNN "Manufacturer"
-F 7 "ECA-2AM101B" H 8900 1550 60  0001 C CNN "Manufacturer Part No"
+F 7 "ECA-2AM101B" H 8900 1550 394 0001 C CNN "Manufacturer Part No"
 F 8 "RS" H 8900 1550 60  0001 C CNN "Supplier 1"
 F 9 "807-3431" H 8900 1550 60  0001 C CNN "Supplier 1 Part No"
 F 10 "0.141" H 8900 1550 60  0001 C CNN "Supplier 1 Cost"
@@ -1293,7 +1293,7 @@ U 1 1 58E55463
 P 6450 6500
 F 0 "EN1" H 6530 6500 40  0000 L CNN
 F 1 "PCB" H 6450 6555 30  0001 C CNN
-F 2 "~" H 6450 6500 60  0001 C CNN
+F 2 "" H 6450 6500 60  0001 C CNN
 F 3 "http://cpc.farnell.com/hammond/1590bb/box-diecast-119x94x30/dp/EN82042?ost=EN82042&selectedCategoryId=&categoryNameResp=All&searchView=table&iscrfnonsku=false" H 6450 6500 60  0001 C CNN
 F 4 "~" H 6450 6500 60  0000 C CNN "Notes"
 F 5 "Enclosure for unit" H 6450 6500 60  0001 C CNN "Description"
