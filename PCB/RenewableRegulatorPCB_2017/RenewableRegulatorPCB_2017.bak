@@ -2,6 +2,7 @@ EESchema Schematic File Version 2
 LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
+LIBS:matts_components
 LIBS:conn
 LIBS:RenewableRegulatorPCB_2017
 LIBS:RenewableRegulatorPCB_2017-cache
@@ -1306,6 +1307,28 @@ F 11 "~" H 6450 6500 60  0001 C CNN "Supplier 2"
 F 12 "~" H 6450 6500 60  0001 C CNN "Supplier 2 Part No"
 F 13 "~" H 6450 6500 60  0001 C CNN "Supplier 2 Cost"
 	1    6450 6500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 6300 6350
+$Comp
+L CONN_1 MH1
+U 1 1 58EBB61E
+P 6450 6350
+F 0 "MH1" H 6530 6350 40  0000 L CNN
+F 1 "Mounting holes" H 6450 6405 30  0001 C CNN
+F 2 "" H 6450 6350 60  0001 C CNN
+F 3 "" H 6450 6350 60  0001 C CNN
+F 4 "~" H 6450 6350 60  0000 C CNN "Notes"
+F 5 "4 x M3 mounting holes" H 6450 6350 60  0001 C CNN "Description"
+F 6 "~" H 6450 6350 60  0001 C CNN "Manufacturer"
+F 7 "~" H 6450 6350 60  0001 C CNN "Manufacturer Part No"
+F 8 "~" H 6450 6350 60  0001 C CNN "Supplier 1"
+F 9 "~" H 6450 6350 60  0001 C CNN "Supplier 1 Part No"
+F 10 "~" H 6450 6350 60  0001 C CNN "Supplier 1 Cost"
+F 11 "~" H 6450 6350 60  0001 C CNN "Supplier 2"
+F 12 "~" H 6450 6350 60  0001 C CNN "Supplier 2 Part No"
+F 13 "~" H 6450 6350 60  0001 C CNN "Supplier 2 Cost"
+	1    6450 6350
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

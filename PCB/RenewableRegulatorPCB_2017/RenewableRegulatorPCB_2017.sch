@@ -2,7 +2,6 @@ EESchema Schematic File Version 2
 LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
-LIBS:matts_components
 LIBS:conn
 LIBS:RenewableRegulatorPCB_2017
 LIBS:RenewableRegulatorPCB_2017-cache
@@ -178,7 +177,7 @@ F 3 "" H 1200 3500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_2 P1
+L CONN_2-RESCUE-RenewableRegulatorPCB_2017 P1
 U 1 1 50D3652B
 P 1400 1600
 F 0 "P1" V 1350 1600 40  0000 C CNN
@@ -703,7 +702,7 @@ Designed for max 30A current\nMust have 30A fuse in Battery Line
 Text Notes 2750 2250 0    60   ~ 0
 Reverse Polarity Protection\nWill blow control fuse if reversed.
 $Comp
-L CONN_2 P5
+L CONN_2-RESCUE-RenewableRegulatorPCB_2017 P5
 U 1 1 58E5328E
 P 10250 1750
 F 0 "P5" V 10200 1750 40  0000 C CNN
