@@ -10,45 +10,47 @@
 #include <avr/wdt.h>
 #include <avr/pgmspace.h>
 
-/*******Interrupt-based Rotary Encoder Sketch*******
-by Simon Merrett, based on insight from Oleg Mazurov, Nick Gammon, rt, Steve Spence
-http://www.instructables.com/files/orig/FSD/13QB/IM3QGLHR/FSD13QBIM3QGLHR.ino */
+/*#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif*/
+
+/* Encoder Library, for measuring quadrature encoded signals
+ * http://www.pjrc.com/teensy/td_libs_Encoder.html
+ * Copyright (c) 2011,2013 PJRC.COM, LLC - Paul Stoffregen <paul@pjrc.com>
+ *
+ * Version 1.2 - fix -2 bug in C-only code
+ * Version 1.1 - expand to support boards with up to 60 interrupts
+ * Version 1.0 - initial release
+ */
 
 /*******Watchdog timer by http://donalmorrissey.blogspot.co.uk/2010/04/sleeping-arduino-part-5-wake-up-via.html *********/
 
 /*******LCD5110_Library to control the lcd http://www.rinkydinkelectronics.com/library.php?id=48 *******/
 
-Encoder rotEncoder(2, 3);
-U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE|U8G_I2C_OPT_DEV_0);
+/*******U8glib.h C++ Interface Universal 8bit Graphics Library Copyright (c) 2011, olikraus@gmail.com***/
 
-//static int pinA = 2;                  // Our first hardware interrupt pin is digital pin 2
-//static int pinB = 3;                  // Our second hardware interrupt pin is digital pin 3
-//volatile byte aFlag = 0;              // let's us know when we're expecting a rising edge on pinA to signal that the encoder has arrived at a detent
-//volatile byte bFlag = 0;              // let's us know when we're expecting a rising edge on pinB to signal that the encoder has arrived at a detent (opposite direction to when aFlag is set)
-//volatile byte encoderPos = 0;         // This variable stores our current value of encoder position. Change to int or uin16_t instead of byte if you want to record a larger range than 0-255
-//volatile byte oldEncPos = 0;          // Stores the last encoder position value so we can compare to the current reading and see if it has changed (so we know when to print to the serial monitor)
-volatile byte reading = 0;            // Somewhere to store the direct values we read from our interrupt pins before checking to see if we have moved a whole detent
-LCD5110 myGLCD(12,11,10,8,9);  //
-extern unsigned char SmallFont[];
-extern unsigned char TinyFont[];
-extern unsigned char MediumNumbers[];
-volatile int f_wdt=1;                 // Sleep arduino
+/*******DECLARATIONS*******/
+/*#define LED_PIN            7
 
-long posit = 0;
+Adafruit_NeoPixel LED_RGB = Adafruit_NeoPixel(1, LED_PIN, NEO_GRB + NEO_KHZ800);*/
 
-// pins for the LEDs:
+Encoder rotEncoder(2, 3);                                         // Rotary encoder object declaration
 
-const int analogInPinV = A0;            // Analog input pin that the potentiometer is attached to / Default = A5
-const int analogInPinA = A1; 
-//const int buttonA = 2;                 // User Buttons from the rotary encoder
-//const int buttonB = 3;
-const int buttonC = 4;
+U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE|U8G_I2C_OPT_DEV_0);    // OLED display declaration
 
-char selection = 0;                    // Choose true for PWM, false for no PWM
-const int  overchargeIndicatorLed = 5; // LedOutput  Default = 2
+LCD5110 myGLCD(12,11,10,8,9);                                     // LCD display declaration
 
+volatile int f_wdt=1;                                             // Sleep arduino
 
-/* Global Declaration */
+long posit = 0;                                                   // This value will be the previous value of the position of the rotary encoder
+
+const int analogInPinV = A0;                 // Analog input pin that the potentiometer (Voltmeter) is attached to / Default = A0
+const int analogInPinA = A1;                 // Analog input pin that the potentiometer (Ammeter) is attached to / Default = A1
+const int buttonC = 4;                       // Digital input pin that the button of the rotary encoder is attached to / Default = 4
+
+char selection = 0;                          // Choose true for PWM, false for no PWM
+const int  overchargeIndicatorLed = 5;       // LedOutput  Default = 2
 
 float VinMax;                                // Maximum Input Voltage Default = 4
 unsigned int R1;                             // Bottom resistance Kohm Default = 10
@@ -57,9 +59,8 @@ float maxControllerVoltage ;                 // the arduino Uno boardcard cant e
 float hysteresis ;                           // Value of the hysteresis
 float setpointHigh = (VinMax + hysteresis);  // Set setpointHigh Caution the battery may go beyond the overcharge
 float setpointLow = (VinMax - hysteresis) ;  // Set setpointLow
-unsigned int times;
+unsigned int times;                          // Defines the time between two points when drawing the curve
 unsigned char cpt =0;
-bool stateLCD =0;
 
 int limitOverchargeInAnalog;                 // Limit of the overcharge in analog value
 int limitSetpointHighInAnalog;               // Limit of the setpointhigh in analog value
@@ -72,59 +73,51 @@ float Vin;                                   // Actual Value of the voltage Inpu
 unsigned char intensity;                     // Used to set the intensity of the led with PWM control
 char pourcentageIntensity;
 int intensityInPercent;
-bool oldValue = 0;
+unsigned char curveCpt = 0;
+float curveTab[120] ;
 byte xCurve = 0;
-int arrayVin[83];
 
 const char serialDisplayVoltage[] PROGMEM  = {"Actual Voltage : "};
-int k;
-char myChar;
 char state = 0;
 bool testFirstSleep = HIGH;
 bool testCase5 = LOW;
 
-/* Value read from the pot */
+/* Value read from the potentiometers */
 int sensorValue = 0;       
-int ampvalue = 0;
+//int ampvalue = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////SETUP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() {
+  char i = 0;
   // put your setup code here, to run once:
   // initialize serial:
   Serial.begin(9600);
                                            
-  pinMode(2, INPUT_PULLUP);             // Set pinA as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
-  pinMode(3, INPUT_PULLUP);             // Set pinB as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
-  //attachInterrupt(0,2,RISING);          // Set an interrupt on PinA, looking for a rising edge signal and executing the "PinA" Interrupt Service Routine (below)
-  //attachInterrupt(1,3,RISING);          // Set an interrupt on PinB, looking for a rising edge signal and executing the "PinB" Interrupt Service Routine (below)
-  pinMode(overchargeIndicatorLed, OUTPUT); // Set the LED indicator in OUTPUT mode
-  pinMode(13, OUTPUT);                     // Set the pin 13 as an output
-  digitalWrite(13,HIGH);                   // Set the pin 13 to HIGH (that turns on the display's blue light so we can see something)
-  //pinMode(buttonA, INPUT_PULLUP);          // Initialize the user buttons
-  //pinMode(buttonB, INPUT_PULLUP);
-  pinMode(buttonC, INPUT_PULLUP);
+  pinMode(2, INPUT_PULLUP);                 // Set pinA as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
+  pinMode(3, INPUT_PULLUP);                 // Set pinB as an input, pulled HIGH to the logic voltage (5V or 3.3V for most cases)
+  //attachInterrupt(0,2,RISING);            // Set an interrupt on PinA, looking for a rising edge signal and executing the "PinA" Interrupt Service Routine (below)
+  //attachInterrupt(1,3,RISING);            // Set an interrupt on PinB, looking for a rising edge signal and executing the "PinB" Interrupt Service Routine (below)
+  pinMode(overchargeIndicatorLed, OUTPUT);  // Set the LED indicator in OUTPUT mode
+  pinMode(13, OUTPUT);                      // Set the pin 13 as an output
+  digitalWrite(13,HIGH);                    // Set the pin 13 to HIGH (that turns on the display's blue light so we can see something)
+  pinMode(buttonC, INPUT_PULLUP);           // Initialize the encoder button
   
-  initEEPROMValue();                       // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
-  initLCD(500);                            // Setup the WDT
+  initEEPROMValue();                        // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
+  initOLED(500);                             // Setup the WDT
   
-  MCUSR &= ~(1<<WDRF);                     // Clear the reset flag
-  
-  /* In order to change WDE or the prescaler, we need to
-  * set WDCE (This will allow updates for 4 clock cycles).
-  */
-  WDTCSR |= (1<<WDCE) | (1<<WDE);
-  
-  /* set new watchdog timeout prescaler value */
-  WDTCSR = 1<<WDP0 | 1<<WDP1; /* 0.125 seconds */
-  
-  /* Enable the WD interrupt (note no reset). */
-  WDTCSR |= _BV(WDIE);
-  
-  //Serial.println("Initialisation complete.");
-  delay(100); //Allow for serial print to complete.
+  MCUSR &= ~(1<<WDRF);                      // Clear the reset flag  
+  WDTCSR |= (1<<WDCE) | (1<<WDE);           // In order to change WDE or the prescaler, we need to set WDCE (This will allow updates for 4 clock cycles).
+  WDTCSR = 1<<WDP0 | 1<<WDP1;               // Set new watchdog timeout prescaler value (0.125 seconds)
+  WDTCSR |= _BV(WDIE);                      // Enable the WD interrupt (note no reset)
+  for (i = 0; i<120; i++)
+    {
+      curveTab[i]= 0;
+    }
+
+  delay(100);                               //Allow for serial print to complete.
 }
 
 
@@ -141,24 +134,18 @@ void loop() {
 //    ampvalue = analogRead(analogInPinA);
 //    Serial.println("current:");
 //    Serial.println(ampvalue);
-    configureSelection();         // Changes the value of "selection" depending on the position of the encoder
-    seriesRegulator();            // Write 0 in the parenthesis for no PWM or 1 for the PWM //default selection
-    displayLCD(selection);        // Default selection
-    displaySerialInformation();   // Read the global declaration in order to display information on the serial monitor
-    callCurveDisplay();           // Draw the curve and the battery limit
+    configureSelection();           // Changes the value of "selection" depending on the position of the encoder
+    seriesRegulator();              // Write 0 in the parenthesis for no PWM or 1 for the PWM //default selection
+    displayOLED(selection);         // Default selection
+    displaySerialInformation();     // Read the global declaration in order to display information on the serial monitor
+
+    Serial.println("curveCpt");
+    Serial.println(curveCpt);
     
-    Serial.println(xCurve);
-    
-    enableMenu(testButtonC());    // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
-    
-    //if(oldEncPos != encoderPos)   // Updates the position of the encoder
-    //{
-    //  oldEncPos = encoderPos;  
-    //}
+    enableMenu(testButtonC());      // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
     f_wdt = 0;
-    
-    /* Re-enter sleep mode. */
-    enterSleepArduino();
+
+    enterSleepArduino();            // Re-enter sleep mode
   }
   else
   {
@@ -172,22 +159,10 @@ void loop() {
 ///////FUNCTION/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-//bool CheckButtonA(void)
-//{
-//  
-//  if(digitalRead(buttonA) == LOW)
-//  {
-//    //something
-//  }
-//  else
-//  {
-//    //an other thing
-//  }
-//}
-
-void displaySerialInformation()                      // Read the global declaration in order to display information on the serial monitor // 0 for all value
-{                                                               
+void displaySerialInformation()                                                              // Read the global declaration in order to display information on the serial monitor // 0 for all value
+{        
+  int k;  
+  char myChar;                                                     
   int len = strlen_P(serialDisplayVoltage);
   for (k = 0; k < len; k++)
   {
@@ -375,7 +350,7 @@ char getIntensityInPercent()                                    // Turn sensorVa
 }
 
 
-void initLCD( int tempo )                         // Initialize the LCD
+void initOLED( int tempo )                         // Initialize the OLED
 {  
   u8g.begin();
   if ( u8g.getMode() == U8G_MODE_R3G3B2 ) {
@@ -402,11 +377,10 @@ do{
   
 }
 
-void displayLCD(char selection)                   // Diplays the informations on the LCD
+void displayOLED(char selection)                   // Diplays the informations on the OLED
 { 
   char percent;
-  char i;
-  float mappedVinMax;
+
   float mappedval;
   
   u8g.firstPage();
@@ -468,15 +442,18 @@ void displayLCD(char selection)                   // Diplays the informations on
   
   u8g.drawHLine(5, 60, 120);
   u8g.drawLine(5, 60, 5, 35);
-  mappedVinMax=map(VinMax,0,maxControllerVoltage, 0, 25);
-  u8g.drawHLine(5, 60 - mappedVinMax, 120);
-  u8g.setColorIndex(0);
-  for (i = 5 ; i < 124; i = i +2)
-  {
-    u8g.drawPixel(i , 60 - mappedVinMax );
-  }
-  u8g.setColorIndex(255);
+  
+  drawBatteryLimit();
+  curveDisplay(); 
   }while(u8g.nextPage());
+  if (curveCpt < 120)
+  {
+    curveCpt++;
+  }
+  else
+  {
+    curveCpt = 0;
+  }
   delay(500);
 }
 
@@ -1127,28 +1104,15 @@ bool configureSelection()                             // Changes the value of "s
   
 }
 
-/***************************************************
-*  Name:        enterSleep
-*
-*  Returns:     Nothing.
-*
-*  Parameters:  None.
-*
-*  Description: Enters the arduino into sleep mode.
-*
-***************************************************/
-void enterSleepArduino(void)
+void enterSleepArduino(void)           //Enters the arduino into sleep mode
 {
-  set_sleep_mode(SLEEP_MODE_IDLE);   /* EDIT: could also use SLEEP_MODE_PWR_DOWN for lowest power consumption. */
+  set_sleep_mode(SLEEP_MODE_IDLE);  
   sleep_enable();
   
-  /* Now enter sleep mode. */
   sleep_mode();
-  
-  /* The program will continue from here after the WDT timeout*/
-  sleep_disable(); /* First thing to do is disable sleep. */
-  
-  /* Re-enable the peripherals. */
+
+  sleep_disable(); 
+
   power_all_enable();
 }
 
@@ -1188,22 +1152,22 @@ void controlSeriePWM(void)
 
 void drawCurve(byte numberArray)
 { 
-  float mappedValueVin;
-  byte testNumberArray;
-  
-  mappedValueVin=map(Vin,0,maxControllerVoltage, 0, 35);
-  u8g.drawPixel(60 - mappedValueVin, numberArray);  
+  u8g.setColorIndex(1);
+  u8g.drawPixel(5 + numberArray, 60 - curveTab[numberArray]);  
+  u8g.setColorIndex(255);  
 }
 
 void drawBatteryLimit(void)
 { 
-  
-  //char positionX;
- // bool test =0;
+  char i;
   float mappedVinMax;
-  mappedVinMax=map(VinMax,0,maxControllerVoltage, 0, 22);
-  u8g.setColorIndex(128);
-  u8g.drawHLine(5, 60 - mappedVinMax , 120);
+  mappedVinMax=map(VinMax,0,maxControllerVoltage, 0, 25);
+  u8g.drawHLine(5, 60 - mappedVinMax, 120);
+  u8g.setColorIndex(0);
+  for (i = 5 ; i < 124; i = i +2)
+  {
+    u8g.drawPixel(i , 60 - mappedVinMax );
+  }
   u8g.setColorIndex(255);
 }
 
@@ -1214,63 +1178,17 @@ void PWMwriteShunt(int intensity, int outputPin) //Generate the PWM square wave 
   analogWrite(outputPin, mappedIntensity);
 }
 
-
-/***************************************************
-*  Name:        ISR(WDT_vect)
-*
-*  Returns:     Nothing.
-*
-*  Parameters:  None.
-*
-*  Description: Watchdog Interrupt Service. This
-*               is executed when watchdog timed out.
-*
-***************************************************/
-ISR(WDT_vect)
+ISR(WDT_vect)                             //Watchdog Interrupt Service. This is executed when watchdog timed out
 {
   if(f_wdt == 0)
   {
-    f_wdt=1; // default 1
+    f_wdt=1; 
   }
   else
   {
              //Serial.println("WDT Overrun!!!");
   }
 }
-
-
-//void PinA()
-//{
-//  cli();                                  // Stop interrupts happening before we read pin values
-//  reading = PIND & 0xC;                   // Read all eight pin values then strip away all but pinA and pinB's values
-//  if(reading == B00001100 && aFlag)       // Check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
-//  {  
-//  encoderPos --;                          // Decrement the encoder's position count
-//  bFlag = 0;                              // Reset flags for the next turn
-//  aFlag = 0;                              // Reset flags for the next turn
-//  }
-//  else if (reading == B00000100) 
-//  {
-//    bFlag = 1;                            // Signal that we're expecting pinB to signal the transition to detent from free rotation
-//  }
-//  sei();                                  // Restart interrupts
-//}
-//
-//void PinB(){
-//  cli();                                  // Sstop interrupts happening before we read pin values
-//  reading = PIND & 0xC;                   // Read all eight pin values then strip away all but pinA and pinB's values
-//  if (reading == B00001100 && bFlag)      // Ccheck that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
-//  {                                       
-//    encoderPos ++;                        // Increment the encoder's position count
-//    bFlag = 0;                            // Reset flags for the next turn
-//    aFlag = 0;                            // Reset flags for the next turn
-//  }
-//  else if (reading == B00001000) 
-//  {
-//    aFlag = 1;                            // Signal that we're expecting pinA to signal the transition to detent from free rotation
-//  }
-//  sei();                                  // Restart interrupts
-//}
 
 void updateValue(void)                    // Update setpointHigh and setpointLow depending on VinMax and hysteresis
 {
@@ -1290,25 +1208,33 @@ void initEEPROMValue (void)               // initialization of VinMax, maxContro
 
 void curveDisplay(void)                   // Draw the curve
 {
-  
-  
-}
-
-bool callCurveDisplay()                   // Calls curveDisplay and drawBatteryLimit
-{
-  int pix = 5;
-  
+  char i;
+  float mappedValueVin;
   if (cpt >= times)
   {
-    //curveDisplay();
-    drawCurve(pix);
-    pix++;
-    cpt=0;
+    cpt = 0;
+    mappedValueVin=map(Vin,0,maxControllerVoltage, 0, 25);
+    curveTab[curveCpt] = mappedValueVin;
   }
   else
   {
-    cpt++;
+    cpt++;  
+  }
+  if (curveCpt < 120)
+  {
+    for (i = 0; i<curveCpt; i++)
+    {
+      drawCurve(i);
+    }   
+  }
+  else
+  {
+    for (i = 0; i<120; i++)
+    {
+      curveTab[i]= 0;
+    }
   }
   
 }
+
 
