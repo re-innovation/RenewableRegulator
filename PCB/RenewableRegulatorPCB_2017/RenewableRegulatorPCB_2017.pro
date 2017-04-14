@@ -1,4 +1,4 @@
-update=11/04/2017 10:24:32
+update=14/04/2017 14:16:44
 last_client=kicad
 [pcbnew]
 version=1
@@ -61,3 +61,4 @@ LibName3=device
 LibName4=matts_components
 LibName5=C:/Program Files/KiCad/share/kicad/library/conn
 LibName6=RenewableRegulatorPCB_2017
+LibName7=E:/Google Drive/KiCAD/kicad_reinnovation/KiCad My Libraries/matts_components

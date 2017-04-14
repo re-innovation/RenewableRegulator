@@ -4,6 +4,7 @@ LIBS:power
 LIBS:device
 LIBS:conn
 LIBS:RenewableRegulatorPCB_2017
+LIBS:matts_components
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END
@@ -203,7 +204,7 @@ L Arduino_Nano_Header J2
 U 1 1 58E28067
 P 5450 4450
 F 0 "J2" H 5450 5250 60  0000 C CNN
-F 1 "Arduino_Nano_Header" H 5450 3650 60  0000 C CNN
+F 1 "Arduino_Nano" H 5450 3650 60  0000 C CNN
 F 2 "REInnovationFootprint:NANO_DIP_30_600" H 5450 4450 60  0001 C CNN
 F 3 "" H 5450 4450 60  0000 C CNN
 F 4 "~" H 5450 4450 60  0000 C CNN "Notes"
@@ -319,27 +320,6 @@ F 13 "~" H 8350 6350 60  0001 C CNN "Supplier 2 Cost"
 	1    8350 6350
 	1    0    0    -1  
 $EndComp
-$Comp
-L WS2811_5mm D5
-U 1 1 58E3F557
-P 5150 6850
-F 0 "D5" H 5150 7075 50  0000 C CNN
-F 1 "WS2811_5mm" H 5150 6600 50  0000 C CNN
-F 2 "REInnovationFootprint:TH_WS2811_LED_8mm" H 5150 6850 50  0001 C CNN
-F 3 "https://www.coolcomponents.co.uk/en/opto/leds/digital-rgb-addressable-led-5mm-through-hole-10-pack.html" H 5150 6850 50  0001 C CNN
-F 4 "~" H 5150 6850 60  0000 C CNN "Notes"
-F 5 "TH WS2811 Single LED Addressable" H 5150 6850 60  0001 C CNN "Description"
-F 6 "~" H 5150 6850 60  0001 C CNN "Manufacturer"
-F 7 "~" H 5150 6850 60  0001 C CNN "Manufacturer Part No"
-F 8 "AliExpress" H 5150 6850 60  0001 C CNN "Supplier 1"
-F 9 "~" H 5150 6850 60  0001 C CNN "Supplier 1 Part No"
-F 10 "~" H 5150 6850 60  0001 C CNN "Supplier 1 Cost"
-F 11 "~" H 5150 6850 60  0001 C CNN "Supplier 2"
-F 12 "~" H 5150 6850 60  0001 C CNN "Supplier 2 Part No"
-F 13 "~" H 5150 6850 60  0001 C CNN "Supplier 2 Cost"
-	1    5150 6850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5500 2100 6300 2100
 Wire Wire Line
@@ -350,14 +330,10 @@ Text GLabel 5750 2300 2    60   Output ~ 0
 +5V
 Wire Wire Line
 	5500 2300 5750 2300
-Text GLabel 5650 6750 2    60   Input ~ 0
+Text GLabel 5600 6950 2    60   Input ~ 0
 +5V
 Wire Wire Line
-	5450 6750 5650 6750
-Wire Wire Line
-	5450 6950 5600 6950
-Wire Wire Line
-	5600 6950 5600 7050
+	5700 6500 5700 6600
 Text GLabel 7450 5850 0    60   Input ~ 0
 +5V
 Text GLabel 5900 4050 2    60   Input ~ 0
@@ -512,12 +488,12 @@ $EndComp
 $Comp
 L GND #PWR05
 U 1 1 58E495BD
-P 5600 7050
-F 0 "#PWR05" H 5600 6800 50  0001 C CNN
-F 1 "GND" H 5600 6900 50  0000 C CNN
-F 2 "" H 5600 7050 50  0000 C CNN
-F 3 "" H 5600 7050 50  0000 C CNN
-	1    5600 7050
+P 5700 6600
+F 0 "#PWR05" H 5700 6350 50  0001 C CNN
+F 1 "GND" H 5700 6450 50  0000 C CNN
+F 2 "" H 5700 6600 50  0000 C CNN
+F 3 "" H 5700 6600 50  0000 C CNN
+	1    5700 6600
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1065,7 +1041,7 @@ L JACK_TRS_6PINS J1
 U 1 1 58E6BA28
 P 3100 6650
 F 0 "J1" H 3100 7050 50  0000 C CNN
-F 1 "JACK_TRS_6PINS" H 3050 6350 50  0000 C CNN
+F 1 "TEMP" H 3050 6350 50  0000 C CNN
 F 2 "REInnovationFootprint:TH_3_5mm_Jack" H 3200 6500 50  0001 C CNN
 F 3 "" H 3200 6500 50  0000 C CNN
 	1    3100 6650
@@ -1330,4 +1306,23 @@ F 13 "~" H 6450 6350 60  0001 C CNN "Supplier 2 Cost"
 	1    6450 6350
 	1    0    0    -1  
 $EndComp
+$Comp
+L WS2811_EpiStar_8mm D5
+U 1 1 58F0DF7B
+P 5150 6850
+F 0 "D5" H 5150 7075 50  0000 C CNN
+F 1 "WS2811_EpiStar_8mm" H 5150 6600 50  0000 C CNN
+F 2 "REInnovationFootprint:TH_WS2811_LED_8mm" H 5150 6850 50  0001 C CNN
+F 3 "" H 5150 6850 50  0000 C CNN
+	1    5150 6850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 6950 5600 6950
+Wire Wire Line
+	5450 6750 5550 6750
+Wire Wire Line
+	5550 6750 5550 6500
+Wire Wire Line
+	5550 6500 5700 6500
 $EndSCHEMATC

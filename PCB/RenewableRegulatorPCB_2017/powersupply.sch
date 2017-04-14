@@ -4,6 +4,7 @@ LIBS:power
 LIBS:device
 LIBS:conn
 LIBS:RenewableRegulatorPCB_2017
+LIBS:matts_components
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END
