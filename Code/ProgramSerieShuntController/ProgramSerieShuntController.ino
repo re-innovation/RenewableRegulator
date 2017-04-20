@@ -43,16 +43,20 @@ LCD5110 myGLCD(12,11,10,8,9);                                     // LCD display
 
 volatile int f_wdt=1;                                             // Sleep arduino
 
-long posit = 0;                                                   // This value will be the previous value of the position of the rotary encoder
+//long posit = 0;                                                   // This value will be the previous value of the position of the rotary encoder
+//long newPos;
 
 const int analogInPinV = A0;                 // Analog input pin that the potentiometer (Voltmeter) is attached to / Default = A0
 const int analogInPinA = A1;                 // Analog input pin that the potentiometer (Ammeter) is attached to / Default = A1
 const int buttonC = 4;                       // Digital input pin that the button of the rotary encoder is attached to / Default = 4
 
-char selection = 0;                          // Choose true for PWM, false for no PWM
 const int  overchargeIndicatorLed = 5;       // LedOutput  Default = 2
 
-float VinMax;                                // Maximum Input Voltage Default = 4
+const char serialDisplayVoltage[] PROGMEM  = {"Actual Voltage : "};
+bool testFirstSleep = HIGH;
+bool testCase5 = LOW;
+
+/*float VinMax;                                // Maximum Input Voltage Default = 4
 unsigned int R1;                             // Bottom resistance Kohm Default = 10
 unsigned int R2 ;                            // top resistance Kohm     Default = 100
 float maxControllerVoltage ;                 // the arduino Uno boardcard cant excess 5 volt   default = 5v
@@ -60,30 +64,19 @@ float hysteresis ;                           // Value of the hysteresis
 float setpointHigh = (VinMax + hysteresis);  // Set setpointHigh Caution the battery may go beyond the overcharge
 float setpointLow = (VinMax - hysteresis) ;  // Set setpointLow
 unsigned int times;                          // Defines the time between two points when drawing the curve
-unsigned char cpt =0;
+char selection = 0;                          // Choose true for PWM, false for no PWM*/
 
-int limitOverchargeInAnalog;                 // Limit of the overcharge in analog value
-int limitSetpointHighInAnalog;               // Limit of the setpointhigh in analog value
-int limitSetpointLowInAnalog;                // Limit of the setpointlow in analog value
-float limitOverchargeInVolt;                 // Limit of the overcharge in voltage
-float limitSetpointHighInVolt;               // Limit of the setpointhigh in voltage
-float limitSetpointLowInVolt;                // Limit of the setpointLow in voltage
-bool verification;                           // False = Overcharged / True = not overcharged
-float Vin;                                   // Actual Value of the voltage Input
-unsigned char intensity;                     // Used to set the intensity of the led with PWM control
-char pourcentageIntensity;
-int intensityInPercent;
-unsigned char curveCpt = 0;
-float curveTab[120] ;
-byte xCurve = 0;
-
-const char serialDisplayVoltage[] PROGMEM  = {"Actual Voltage : "};
-char state = 0;
-bool testFirstSleep = HIGH;
-bool testCase5 = LOW;
-
+//float valuesArray[8]; // 0: Vinmax; 1: R1; 2: R2; 3: maxControllerVoltage; 4: hysteresis; 5: setPointHigh; 6: setPointLow; 7: times
+//int limitOverchargeInAnalog;                 // Limit of the overcharge in analog value
+//float limitOverchargeInVolt;                 // Limit of the overcharge in voltage
+//float limitSetpointHighInVolt;               // Limit of the setpointhigh in voltage
+//float limitSetpointLowInVolt;                // Limit of the setpointLow in voltage
+//bool verification;                           // False = Overcharged / True = not overcharged
+//float Vin;                                   // Actual Value of the voltage Input
+//int intensityInPercent;
+//char state = 0;
 /* Value read from the potentiometers */
-int sensorValue = 0;       
+//int sensorValue = 0;       
 //int ampvalue = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,7 +84,7 @@ int sensorValue = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() {
-  char i = 0;
+   
   // put your setup code here, to run once:
   // initialize serial:
   Serial.begin(9600);
@@ -105,17 +98,14 @@ void setup() {
   digitalWrite(13,HIGH);                    // Set the pin 13 to HIGH (that turns on the display's blue light so we can see something)
   pinMode(buttonC, INPUT_PULLUP);           // Initialize the encoder button
   
-  initEEPROMValue();                        // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
-  initOLED(500);                             // Setup the WDT
+  //initEEPROMValue(VinMax, maxControllerVoltage, R1, R2, hysteresis, times);                        // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
+  initOLED();                               // Setup the WDT
   
   MCUSR &= ~(1<<WDRF);                      // Clear the reset flag  
   WDTCSR |= (1<<WDCE) | (1<<WDE);           // In order to change WDE or the prescaler, we need to set WDCE (This will allow updates for 4 clock cycles).
   WDTCSR = 1<<WDP0 | 1<<WDP1;               // Set new watchdog timeout prescaler value (0.125 seconds)
   WDTCSR |= _BV(WDIE);                      // Enable the WD interrupt (note no reset)
-  for (i = 0; i<120; i++)
-    {
-      curveTab[i]= 0;
-    }
+  
 
   delay(100);                               //Allow for serial print to complete.
 }
@@ -129,20 +119,49 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  char i = 0; 
+  static float setpointHigh;                          // Set setpointHigh Caution the battery may go beyond the overcharge
+  static float setpointLow;                           // Set setpointLow
+  static float VinMax;                                // Maximum Input Voltage Default = 4
+  static unsigned int R1;                             // Bottom resistance Kohm Default = 10
+  static unsigned int R2 ;                            // top resistance Kohm     Default = 100 
+  static float maxControllerVoltage ;                 // the arduino Uno boardcard cant excess 5 volt   default = 5v
+  static float hysteresis ;                           // Value of the hysteresis
+  static unsigned int times;    
+  static char first_time = 1;
+  static char selection = 0;
+  static float Vin;
+  static int sensorValue = 0; 
+  static long posit = 0;
+  static long newPos = 0;
+  static int limitSetpointHighInAnalog;               // Limit of the setpointhigh in analog value
+  static int limitSetpointLowInAnalog;                // Limit of the setpointlow in analog value
+  static unsigned char cpt =0;
+  static unsigned char curveCpt = 0;
+  static float curveTab[120] ;
+  
+  if (first_time == 1)
+  {
+    initEEPROMValue(VinMax, maxControllerVoltage, R1, R2, hysteresis, times);                        // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
+    updateValue(setpointHigh, setpointLow, VinMax, hysteresis);
+    for (i = 0; i<120; i++)
+    {
+      curveTab[i]= 0;
+    }
+    first_time = 0;  
+  }
+  
   if(f_wdt == 1)
   {
 //    ampvalue = analogRead(analogInPinA);
 //    Serial.println("current:");
 //    Serial.println(ampvalue);
-    configureSelection();           // Changes the value of "selection" depending on the position of the encoder
-    seriesRegulator();              // Write 0 in the parenthesis for no PWM or 1 for the PWM //default selection
-    displayOLED(selection);         // Default selection
-    displaySerialInformation();     // Read the global declaration in order to display information on the serial monitor
-
-    Serial.println("curveCpt");
-    Serial.println(curveCpt);
+    selection = configureSelection(sensorValue, setpointHigh, setpointLow, maxControllerVoltage, newPos, posit, limitSetpointHighInAnalog, limitSetpointLowInAnalog);           // Changes the value of "selection" depending on the position of the encoder
+    seriesRegulator(sensorValue, maxControllerVoltage, selection, setpointHigh, setpointLow, Vin, limitSetpointHighInAnalog, limitSetpointLowInAnalog);              // Write 0 in the parenthesis for no PWM or 1 for the PWM //default selection
+    displayOLED(selection, sensorValue, setpointHigh, setpointLow, Vin, VinMax, maxControllerVoltage, times, limitSetpointHighInAnalog, limitSetpointLowInAnalog, cpt, curveTab, curveCpt);         // Default selection
+    displaySerialInformation(Vin);     // Read the global declaration in order to display information on the serial monitor
     
-    enableMenu(testButtonC());      // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
+    enableMenu(testButtonC(), VinMax, maxControllerVoltage, R1, R2, hysteresis, times, setpointHigh, setpointLow, newPos, posit);      // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
     f_wdt = 0;
 
     enterSleepArduino();            // Re-enter sleep mode
@@ -159,7 +178,7 @@ void loop() {
 ///////FUNCTION/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void displaySerialInformation()                                                              // Read the global declaration in order to display information on the serial monitor // 0 for all value
+void displaySerialInformation(float Vin)                                                              // Read the global declaration in order to display information on the serial monitor // 0 for all value
 {        
   int k;  
   char myChar;                                                     
@@ -172,14 +191,17 @@ void displaySerialInformation()                                                 
   Serial.println(Vin);
 }
 
-float getVin(int sensorValue)                                                                // Get Vin value and store it in the global declaration Vin
+float getVin(int sensorValue, float maxControllerVoltage)                                                                // Get Vin value and store it in the global declaration Vin
 {
+  float Vin;
   Vin = ((sensorValue) * maxControllerVoltage / 1024);                                      
   return (Vin);
 }
 
-bool verificationOvercharge(int sensorValue, int VinMax)                                     // Check for overcharge
+bool verificationOvercharge(int sensorValue, int VinMax, float maxControllerVoltage)                                     // Check for overcharge
 {
+  int limitOverchargeInAnalog;
+  float limitOverchargeInVolt;
   limitOverchargeInVolt = VinMax;                                                            // * (((R1 + R2)*1000) / (R1*1000)); // PotentialDiviser R1 = bottom // R2 = top // VinMax= Maximum Input Voltage
   limitOverchargeInAnalog = 1024 * ( limitOverchargeInVolt / maxControllerVoltage) ; 
   
@@ -194,8 +216,9 @@ bool verificationOvercharge(int sensorValue, int VinMax)                        
   
 }
 
-bool verificationSetpointHigh(int sensorValue, float setpointHigh)                           // Check if sensorValue is higher than setpointHigh
+bool verificationSetpointHigh(int sensorValue, float setpointHigh, float maxControllerVoltage, int & limitSetpointHighInAnalog)                           // Check if sensorValue is higher than setpointHigh
 {
+  float limitSetpointHighInVolt;
   limitSetpointHighInVolt = setpointHigh ;
   limitSetpointHighInAnalog = 1024 * ( limitSetpointHighInVolt / maxControllerVoltage) ;
   
@@ -209,9 +232,9 @@ bool verificationSetpointHigh(int sensorValue, float setpointHigh)              
   }
 }
 
-bool verificationSetpointLow(int sensorValue, float setpointLow)                             // Check if sensorValue is lower than setpointLow
+bool verificationSetpointLow(int sensorValue, float setpointLow, float maxControllerVoltage, int & limitSetpointLowInAnalog)                             // Check if sensorValue is lower than setpointLow
 {
-  
+  float limitSetpointLowInVolt;
   limitSetpointLowInVolt = setpointLow; 
   limitSetpointLowInAnalog = 1024 * ( limitSetpointLowInVolt / maxControllerVoltage) ;
   
@@ -225,88 +248,88 @@ bool verificationSetpointLow(int sensorValue, float setpointLow)                
   }
 }
 
-void seriesRegulator()                            // The function that does the regulation
+void seriesRegulator(int & sensorValue, float maxControllerVoltage, char selection, float setpointHigh, float setpointLow, float & Vin, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)                            // The function that does the regulation
 {
   char i;
   for (i=0; i<11; i++)
   {
     delay(50);
     sensorValue = analogRead(analogInPinV);
-    getVin(sensorValue);   
-    controlMosfet();
+    Vin = getVin(sensorValue, maxControllerVoltage);   
+    controlMosfet(selection, maxControllerVoltage, sensorValue, setpointHigh, setpointLow, limitSetpointHighInAnalog, limitSetpointLowInAnalog);
     //CheckButtonA();
   } 
 }
 
-void PWMwrite(int intensity, int outputPin)       // Generate the PWM square wave with the right duty cycle
+void PWMwrite(int intensity, int outputPin, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)       // Generate the PWM square wave with the right duty cycle
 {  
   int mappedIntensity;
   mappedIntensity = map(intensity,limitSetpointLowInAnalog,limitSetpointHighInAnalog, 0, 255);
   analogWrite(outputPin, mappedIntensity);
 }
 
-void controlShuntPWM(void)                        
+void controlShuntPWM(float maxControllerVoltage, int sensorValue, float setpointHigh, float setpointLow, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)                        
 {
-  if(verificationSetpointHigh(sensorValue,setpointHigh)==1)     //Voltage higher than setpointHigh
+  if(verificationSetpointHigh(sensorValue,setpointHigh,maxControllerVoltage, limitSetpointHighInAnalog)==1)     //Voltage higher than setpointHigh
   {
-    digitalWrite(overchargeIndicatorLed, HIGH);                 // Turn on the led // Overcharged
+    digitalWrite(overchargeIndicatorLed, HIGH);                                      // Turn on the led // Overcharged
   }
-  else if (verificationSetpointLow(sensorValue,setpointLow)==1) //Voltage lower than setpointLow
+  else if (verificationSetpointLow(sensorValue,setpointLow,maxControllerVoltage, limitSetpointLowInAnalog)==1) //Voltage lower than setpointLow
   {
-    digitalWrite(overchargeIndicatorLed, LOW);                  // Turn off the led // Not overcharged
+    digitalWrite(overchargeIndicatorLed, LOW);                                       // Turn off the led // Not overcharged
   }
   else
   {
-    PWMwrite(sensorValue, overchargeIndicatorLed);              // Hysteresis
+    PWMwrite(sensorValue, overchargeIndicatorLed, limitSetpointHighInAnalog, limitSetpointLowInAnalog);                                   // Hysteresis
   }
 }
 
-void controlShuntNoPWM(void)
+void controlShuntNoPWM(float maxControllerVoltage, int sensorValue, float setpointHigh, float setpointLow, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)
 {
-  if(verificationSetpointHigh(sensorValue,setpointHigh)==1)     //Voltage higher than setpointHigh
+  if(verificationSetpointHigh(sensorValue,setpointHigh,maxControllerVoltage, limitSetpointHighInAnalog)==1)     //Voltage higher than setpointHigh
   {
-    digitalWrite(overchargeIndicatorLed, HIGH);                 // Turn on the led // Overcharged
+    digitalWrite(overchargeIndicatorLed, HIGH);                                      // Turn on the led // Overcharged
   }
-  else if (verificationSetpointLow(sensorValue,setpointLow)==1) //Voltage lower than setpointLow
+  else if (verificationSetpointLow(sensorValue,setpointLow,maxControllerVoltage, limitSetpointLowInAnalog)==1) //Voltage lower than setpointLow
   {
-    digitalWrite(overchargeIndicatorLed, LOW);                  // Turn off the led // Not overcharged
+    digitalWrite(overchargeIndicatorLed, LOW);                                       // Turn off the led // Not overcharged
   }
   else
   {
-                                                                // Hysteresis
+                                                                                     // Hysteresis
   }
 }
 
-void controlMosfet()                                            // Selection of the control mode
+void controlMosfet(char selection, float maxControllerVoltage, int sensorValue, float setpointHigh, float setpointLow, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)                                            // Selection of the control mode
 {
   if (selection == 0)
   {
-    controlSerieNoPWM(); 
+    controlSerieNoPWM(maxControllerVoltage, sensorValue, setpointHigh, setpointLow, limitSetpointHighInAnalog, limitSetpointLowInAnalog); 
   }
   else if (selection == 1)
   {
-    controlSeriePWM(); 
+    controlSeriePWM(maxControllerVoltage, sensorValue, setpointHigh, setpointLow, limitSetpointHighInAnalog, limitSetpointLowInAnalog); 
   }
   else if (selection == 2)
   {
-    controlShuntNoPWM(); 
+    controlShuntNoPWM(maxControllerVoltage, sensorValue, setpointHigh, setpointLow, limitSetpointHighInAnalog, limitSetpointLowInAnalog); 
   }
   else if (selection == 3)
   {
-    controlShuntPWM(); 
+    controlShuntPWM(maxControllerVoltage, sensorValue, setpointHigh, setpointLow, limitSetpointHighInAnalog, limitSetpointLowInAnalog); 
   }
 }
 
-char getIntensityInPercent()                                    // Turn sensorValue into a percentage depending on the value of "selection"
-{
-  
+char getIntensityInPercent(char selection, int sensorValue, float setpointHigh, float setpointLow, float maxControllerVoltage, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)                                    // Turn sensorValue into a percentage depending on the value of "selection"
+{  
+  int intensityInPercent;
   if (selection == 2)
   {
-    if (verificationSetpointHigh(sensorValue,setpointHigh) == 1)
+    if (verificationSetpointHigh(sensorValue,setpointHigh,maxControllerVoltage, limitSetpointHighInAnalog) == 1)
     {
       intensityInPercent = 100; 
     }
-    else if (verificationSetpointLow(sensorValue,setpointLow) == 1)
+    else if (verificationSetpointLow(sensorValue,setpointLow,maxControllerVoltage, limitSetpointLowInAnalog) == 1)
     {
       intensityInPercent = 0;
     }
@@ -325,11 +348,11 @@ char getIntensityInPercent()                                    // Turn sensorVa
   }
   else if (selection == 0)
   {
-    if (verificationSetpointHigh(sensorValue,setpointHigh)==1)
+    if (verificationSetpointHigh(sensorValue,setpointHigh,maxControllerVoltage, limitSetpointHighInAnalog)==1)
     {
       intensityInPercent = 0;
     }
-    else if (verificationSetpointLow(sensorValue,setpointLow)==1)
+    else if (verificationSetpointLow(sensorValue,setpointLow,maxControllerVoltage, limitSetpointLowInAnalog)==1)
     {
       intensityInPercent = 100;
     }
@@ -350,7 +373,7 @@ char getIntensityInPercent()                                    // Turn sensorVa
 }
 
 
-void initOLED( int tempo )                         // Initialize the OLED
+void initOLED()                         // Initialize the OLED
 {  
   u8g.begin();
   if ( u8g.getMode() == U8G_MODE_R3G3B2 ) {
@@ -373,14 +396,13 @@ do{
   u8g.drawStr(20 , 50,"(C)2016 by");
   u8g.drawStr(8 , 64,"Matthew Little");
 } while(u8g.nextPage());
-  delay(tempo);
+  delay(500);
   
 }
 
-void displayOLED(char selection)                   // Diplays the informations on the OLED
+void displayOLED(char selection, int sensorValue, float setpointHigh, float setpointLow, float Vin, float VinMax, float maxControllerVoltage, unsigned int times, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog, unsigned char & cpt, float curveTab[], unsigned char & curveCpt)                   // Diplays the informations on the OLED
 { 
   char percent;
-
   float mappedval;
   
   u8g.firstPage();
@@ -421,7 +443,7 @@ void displayOLED(char selection)                   // Diplays the informations o
   u8g.setPrintPos(35, 30);
   u8g.print('v');
 
-  percent = getIntensityInPercent();
+  percent = getIntensityInPercent(selection, sensorValue, setpointHigh, setpointLow, maxControllerVoltage, limitSetpointHighInAnalog, limitSetpointLowInAnalog);
   if ((float)percent == 100)
   {
     u8g.setPrintPos(92, 30);
@@ -443,8 +465,8 @@ void displayOLED(char selection)                   // Diplays the informations o
   u8g.drawHLine(5, 60, 120);
   u8g.drawLine(5, 60, 5, 35);
   
-  drawBatteryLimit();
-  curveDisplay(); 
+  drawBatteryLimit(VinMax, maxControllerVoltage);
+  curveDisplay(Vin, maxControllerVoltage, times, cpt, curveTab, curveCpt); 
   }while(u8g.nextPage());
   if (curveCpt < 120)
   {
@@ -472,12 +494,12 @@ bool testButtonC()           // Return LOW if the encoder is pressed and HIGH if
   }
 }
 
-void enableMenu(bool enable) // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
+void enableMenu(bool enable, float & VinMax, float & maxControllerVoltage, unsigned int & R1, unsigned int & R2, float & hysteresis, unsigned int & times, float setpointHigh, float setpointLow, long & newPos, long & posit) // Displays the menu if you press the rotary encoder // You can change Vlim, Vmax, R1, R2, hysteresis, times and decide if you the arduino to sleep depending on the position of the encoder
 {
   char y;
   char x;
-  long newPos;
   char choix = 0;
+  char state = 0;
 
   if(testCase5 == HIGH)
   {
@@ -653,8 +675,6 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
         //posit = newPos;
         //posit = 0;
       }
-
-      Serial.println(newPos);
       
       if(( newPos >= 26) || (newPos < -26))
       {
@@ -1064,37 +1084,43 @@ void enableMenu(bool enable) // Displays the menu if you press the rotary encode
   choix = 0;
   delay(1500);
 }
-updateValue();
+updateValue(setpointHigh, setpointLow, VinMax, hysteresis);
 }
 }
 
-bool configureSelection()                             // Changes the value of "selection" depending on the position of the encoder
+char configureSelection(int sensorValue, float setpointHigh, float setpointLow, float maxControllerVoltage, long & newPos, long & posit, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)                             // Changes the value of "selection" depending on the position of the encoder
 {
-  long newPos;
+  char selection;
+  int intensityInPercent;
+  
   newPos = rotEncoder.read() - posit;
 
   Serial.println(newPos);
   if(( newPos >= -2) & (newPos < 2))
   {
     selection = 1;
-    
+    return(selection);
   }
   else if(((newPos >= 2) && (newPos < 6)) || ((newPos < -10) && (newPos >= -14)))
   {
     selection = 0;
+    intensityInPercent = getIntensityInPercent(selection,sensorValue,setpointHigh,setpointLow, maxControllerVoltage, limitSetpointHighInAnalog, limitSetpointLowInAnalog);
     if(intensityInPercent != 100)
     {
       digitalWrite(overchargeIndicatorLed, LOW);
       intensityInPercent =0;
     }
+    return(selection);
   }
   else if(((newPos >= 6) && (newPos < 10)) || ((newPos < -6) && (newPos >= -10)))
   {
     selection = 2;
+    return(selection);
   }
   else if(((newPos >= 10) && (newPos < 14)) || ((newPos < -2) && (newPos >= -6)))
   {
     selection = 3;
+    return(selection);
   }
   else
   {
@@ -1117,13 +1143,13 @@ void enterSleepArduino(void)           //Enters the arduino into sleep mode
 }
 
 
-void controlSerieNoPWM(void)
+void controlSerieNoPWM(float maxControllerVoltage, int sensorValue, float setpointHigh, float setpointLow, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)
 {
-  if(verificationSetpointHigh(sensorValue,setpointHigh)==1)     //Voltage higher than setpointHigh
+  if(verificationSetpointHigh(sensorValue,setpointHigh,maxControllerVoltage, limitSetpointHighInAnalog)==1)     //Voltage higher than setpointHigh
   {
     digitalWrite(overchargeIndicatorLed, LOW);                  // Turn on the led // Overcharged
   }
-  else if (verificationSetpointLow(sensorValue,setpointLow)==1) // Voltage lower than setpointLow
+  else if (verificationSetpointLow(sensorValue,setpointLow,maxControllerVoltage, limitSetpointLowInAnalog)==1) // Voltage lower than setpointLow
   {
     digitalWrite(overchargeIndicatorLed, HIGH);                 // Turn off the led // Not overcharged
   }
@@ -1133,45 +1159,23 @@ void controlSerieNoPWM(void)
   }
 }
 
-void controlSeriePWM(void)
+void controlSeriePWM(float maxControllerVoltage, int sensorValue, float setpointHigh, float setpointLow, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog)
 {
-  if(verificationSetpointHigh(sensorValue,setpointHigh)==1)     //Voltage higher than setpointHigh
+  if(verificationSetpointHigh(sensorValue,setpointHigh,maxControllerVoltage, limitSetpointHighInAnalog)==1)     //Voltage higher than setpointHigh
   {
     digitalWrite(overchargeIndicatorLed, LOW);                  // TURN on the led // Overcharged
   }
-  else if (verificationSetpointLow(sensorValue,setpointLow)==1) //Voltage lower than setpointHigh
+  else if (verificationSetpointLow(sensorValue,setpointLow,maxControllerVoltage, limitSetpointLowInAnalog)==1) //Voltage lower than setpointHigh
   {
     digitalWrite(overchargeIndicatorLed, HIGH);                 // Light off the led // Not overcharged
   }
   else
   {
-    PWMwriteShunt(sensorValue, overchargeIndicatorLed);         // Hysteresis
+    PWMwriteShunt(sensorValue, overchargeIndicatorLed, limitSetpointHighInAnalog, limitSetpointLowInAnalog);         // Hysteresis
   }
 }
 
-
-void drawCurve(byte numberArray)
-{ 
-  u8g.setColorIndex(1);
-  u8g.drawPixel(5 + numberArray, 60 - curveTab[numberArray]);  
-  u8g.setColorIndex(255);  
-}
-
-void drawBatteryLimit(void)
-{ 
-  char i;
-  float mappedVinMax;
-  mappedVinMax=map(VinMax,0,maxControllerVoltage, 0, 25);
-  u8g.drawHLine(5, 60 - mappedVinMax, 120);
-  u8g.setColorIndex(0);
-  for (i = 5 ; i < 124; i = i +2)
-  {
-    u8g.drawPixel(i , 60 - mappedVinMax );
-  }
-  u8g.setColorIndex(255);
-}
-
-void PWMwriteShunt(int intensity, int outputPin) //Generate the PWM square wave with the right duty cycle
+void PWMwriteShunt(int intensity, int outputPin, int limitSetpointHighInAnalog, int limitSetpointLowInAnalog) //Generate the PWM square wave with the right duty cycle
 { 
   int mappedIntensity;
   mappedIntensity = map(intensity,limitSetpointHighInAnalog,limitSetpointLowInAnalog, 0, 255);
@@ -1190,13 +1194,13 @@ ISR(WDT_vect)                             //Watchdog Interrupt Service. This is 
   }
 }
 
-void updateValue(void)                    // Update setpointHigh and setpointLow depending on VinMax and hysteresis
+void updateValue(float & setpointHigh, float & setpointLow, float VinMax, float hysteresis)                    // Update setpointHigh and setpointLow depending on VinMax and hysteresis
 {
   setpointHigh = (VinMax + hysteresis);
   setpointLow = (VinMax - hysteresis) ;
 }
 
-void initEEPROMValue (void)               // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
+void initEEPROMValue (float & VinMax, float & maxControllerVoltage, unsigned int & R1, unsigned int & R2, float & hysteresis, unsigned int & times)               // initialization of VinMax, maxControllerVoltage, R1, R2, hysteresis and times with the last values stored in the EEPROM
 {
   VinMax = EEPROM.readFloat(0);
   maxControllerVoltage = EEPROM.readFloat(4);
@@ -1206,7 +1210,21 @@ void initEEPROMValue (void)               // initialization of VinMax, maxContro
   times = EEPROM.readInt(20);
 }
 
-void curveDisplay(void)                   // Draw the curve
+void drawBatteryLimit(float VinMax, float maxControllerVoltage)
+{ 
+  char i;
+  float mappedVinMax;
+  mappedVinMax=map(VinMax,0,maxControllerVoltage, 0, 25);
+  u8g.drawHLine(5, 60 - mappedVinMax, 120);
+  u8g.setColorIndex(0);
+  for (i = 5 ; i < 124; i = i +2)
+  {
+    u8g.drawPixel(i , 60 - mappedVinMax );
+  }
+  u8g.setColorIndex(255);
+}
+
+void curveDisplay(float Vin, float maxControllerVoltage, unsigned int times, unsigned char & cpt, float curveTab[], unsigned char curveCpt)                   // Draw the curve
 {
   char i;
   float mappedValueVin;
@@ -1224,7 +1242,9 @@ void curveDisplay(void)                   // Draw the curve
   {
     for (i = 0; i<curveCpt; i++)
     {
-      drawCurve(i);
+      u8g.setColorIndex(1);
+      u8g.drawPixel(5 + i, 60 - curveTab[i]);  
+      u8g.setColorIndex(255); 
     }   
   }
   else
