@@ -1,4 +1,4 @@
-update=14/04/2017 14:16:44
+update=20/04/2017 16:32:33
 last_client=kicad
 [pcbnew]
 version=1
@@ -41,16 +41,6 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=Pcbnew
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
 [eeschema]
 version=1
 LibDir=../../../../../../KiCAD/KiCad My Libraries
@@ -62,3 +52,13 @@ LibName4=matts_components
 LibName5=C:/Program Files/KiCad/share/kicad/library/conn
 LibName6=RenewableRegulatorPCB_2017
 LibName7=E:/Google Drive/KiCAD/kicad_reinnovation/KiCad My Libraries/matts_components
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
