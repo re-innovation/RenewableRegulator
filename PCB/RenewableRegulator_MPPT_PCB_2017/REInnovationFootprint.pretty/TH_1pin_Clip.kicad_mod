@@ -1,0 +1,12 @@
+(module TH_1pin_Clip (layer F.Cu) (tedit 58107AE6)
+  (descr "module 1 pin (ou trou mecanique de percage)")
+  (tags DEV)
+  (fp_text reference P5 (at 0 -3.048) (layer F.SilkS) hide
+    (effects (font (size 1.016 1.016) (thickness 0.254)))
+  )
+  (fp_text value SENA (at 0 2.794) (layer F.SilkS) hide
+    (effects (font (size 1.016 1.016) (thickness 0.254)))
+  )
+  (pad 1 thru_hole circle (at 0 0) (size 9 9) (drill 3) (layers *.Cu *.Mask F.SilkS)
+    (clearance 0.59944))
+)

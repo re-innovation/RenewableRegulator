@@ -1,0 +1,12 @@
+(module Batt_conn_20mm_Rapid183785 (layer F.Cu) (tedit 581366DF)
+  (fp_text reference BT1 (at 0.254 -11.938) (layer F.SilkS) hide
+    (effects (font (thickness 0.3048)))
+  )
+  (fp_text value Battery (at 0 -8.636) (layer F.SilkS) hide
+    (effects (font (thickness 0.3048)))
+  )
+  (pad 2 thru_hole oval (at -9.906 0) (size 2.54 5.08) (drill oval 0.7 2) (layers *.Cu *.Mask))
+  (pad 2 thru_hole oval (at 9.906 0) (size 2.54 5.08) (drill oval 0.7 2) (layers *.Cu *.Mask))
+  (pad 1 smd circle (at 0 0) (size 16.15948 16.15948) (layers B.Cu B.Paste B.Mask)
+    (clearance 0.254))
+)

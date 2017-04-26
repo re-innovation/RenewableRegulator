@@ -1,0 +1,12 @@
+(module CONN_3mm_Terminal (layer F.Cu) (tedit 56D43CFA)
+  (descr "module 1 pin (ou trou mecanique de percage)")
+  (tags DEV)
+  (fp_text reference +5V1 (at 0 -3.048) (layer F.SilkS) hide
+    (effects (font (size 1.016 1.016) (thickness 0.254)))
+  )
+  (fp_text value CONN_1 (at 0 2.794) (layer F.SilkS) hide
+    (effects (font (size 1.016 1.016) (thickness 0.254)))
+  )
+  (pad 1 thru_hole circle (at 0 0) (size 6 6) (drill 2.99974) (layers *.Cu *.Mask F.SilkS)
+    (clearance 0.2))
+)
