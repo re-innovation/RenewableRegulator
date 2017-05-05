@@ -1,8 +1,8 @@
 EESchema Schematic File Version 2
 LIBS:power
 LIBS:device
-LIBS:matts_components
 LIBS:conn
+LIBS:matts_components
 LIBS:RenewableRegulator_MPPT_PCB_2017-cache
 EELAYER 25 0
 EELAYER END
@@ -30,7 +30,7 @@ U 1 1 5901A182
 P 3950 3100
 F 0 "Q2" H 3960 3270 60  0000 R CNN
 F 1 "TK32A12N1" H 3960 2950 60  0001 R CNN
-F 2 "matts_components:TO220_VERT_BUZ11_matt" H 3950 3100 60  0001 C CNN
+F 2 "REInnovationFootprint:TO220_VERT_BUZ11_matt" H 3950 3100 60  0001 C CNN
 F 3 "http://uk.rs-online.com/web/p/mosfet-transistors/8962344/" H 3950 3100 60  0001 C CNN
 F 4 "~" H 3950 3100 60  0000 C CNN "Notes"
 F 5 "N Channel MOSFET 60A 120V Rds 13m" H 3950 3100 60  0001 C CNN "Description"
@@ -51,7 +51,7 @@ U 1 1 5901A997
 P 5400 3000
 F 0 "L2" V 5350 3000 50  0000 C CNN
 F 1 "100µH" V 5500 3000 50  0000 C CNN
-F 2 "" H 5400 3000 50  0000 C CNN
+F 2 "REInnovationFootprint:TH_Inductor" H 5400 3000 50  0001 C CNN
 F 3 "http://uk.rs-online.com/web/p/leaded-inductors/1048448/" H 5400 3000 50  0001 C CNN
 	1    5400 3000
 	0    -1   -1   0   
@@ -66,7 +66,7 @@ U 1 1 5901B651
 P 4800 3750
 F 0 "D10" H 4800 3850 40  0000 C CNN
 F 1 "DIODE" H 4800 3650 40  0000 C CNN
-F 2 "" H 4800 3750 60  0000 C CNN
+F 2 "REInnovationFootprint:TH_Diode_1" H 4800 3750 60  0001 C CNN
 F 3 "http://uk.rs-online.com/web/p/rectifier-schottky-diodes/8064061/" H 4800 3750 60  0001 C CNN
 	1    4800 3750
 	0    -1   -1   0   
@@ -77,7 +77,7 @@ U 1 1 5903128C
 P 1050 3600
 F 0 "C12" H 1100 3700 50  0000 L CNN
 F 1 "100nf" H 1100 3500 50  0000 L CNN
-F 2 "matts_components:C1_wide_lg_pad" H 1050 3600 60  0001 C CNN
+F 2 "REInnovationFootprint:cond_1" H 1050 3600 60  0001 C CNN
 F 3 "" H 1050 3600 60  0000 C CNN
 	1    1050 3600
 	1    0    0    -1  
@@ -145,7 +145,7 @@ U 1 1 590312D8
 P 3250 3150
 F 0 "C13" H 3300 3250 50  0000 L CNN
 F 1 "100nf" H 3300 3050 50  0000 L CNN
-F 2 "matts_components:C1_wide_lg_pad" H 3250 3150 60  0001 C CNN
+F 2 "REInnovationFootprint:cond_1" H 3250 3150 60  0001 C CNN
 F 3 "" H 3250 3150 60  0000 C CNN
 	1    3250 3150
 	0    -1   -1   0   

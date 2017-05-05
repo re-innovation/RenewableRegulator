@@ -1,14 +1,14 @@
 EESchema Schematic File Version 2
 LIBS:power
 LIBS:device
-LIBS:matts_components
 LIBS:conn
+LIBS:matts_components
 LIBS:RenewableRegulator_MPPT_PCB_2017-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 2 5
 Title "Renewable Regulator"
 Date "2017-04-04"
 Rev "1"
@@ -141,7 +141,7 @@ U 1 1 58E392A9
 P 5050 2800
 F 0 "C8" H 5075 2900 50  0000 L CNN
 F 1 "100nf" H 5075 2700 50  0000 L CNN
-F 2 "matts_components:C1_wide_lg_pad" H 5088 2650 50  0001 C CNN
+F 2 "REInnovationFootprint:cond_1" H 5088 2650 50  0001 C CNN
 F 3 "" H 5050 2800 50  0000 C CNN
 	1    5050 2800
 	1    0    0    -1  
@@ -262,7 +262,7 @@ U 1 1 58E3A6F5
 P 4900 5250
 F 0 "U3" H 5050 5054 60  0000 C CNN
 F 1 "MCP1702-50" H 4900 5450 60  0000 C CNN
-F 2 "matts_components:TO92_MCP9701_matt" H 4900 5250 60  0001 C CNN
+F 2 "REInnovationFootprint:TH_TO92-EBC_large_pad_u3" H 4900 5250 60  0001 C CNN
 F 3 "http://docs-europe.electrocomponents.com/webdocs/0a77/0900766b80a77df4.pdf" H 4900 5250 60  0001 C CNN
 F 4 "~" H 4900 5250 60  0000 C CNN "Notes"
 F 5 "LDO 5V supply. 250mA" H 4900 5250 60  0001 C CNN "Description"
@@ -351,7 +351,7 @@ U 1 1 58E51FB7
 P 6750 2950
 F 0 "P13" H 6750 3050 50  0000 C CNN
 F 1 "TP_10V" V 6850 2950 50  0000 C CNN
-F 2 "matts_components:1pin_0_8mm" H 6750 2950 50  0001 C CNN
+F 2 "REInnovationFootprint:tp" H 6750 2950 50  0001 C CNN
 F 3 "" H 6750 2950 50  0000 C CNN
 	1    6750 2950
 	1    0    0    -1  
@@ -362,7 +362,7 @@ U 1 1 58E5205A
 P 6300 5050
 F 0 "P12" H 6300 5150 50  0000 C CNN
 F 1 "TP_5V" V 6400 5050 50  0000 C CNN
-F 2 "matts_components:1pin_0_8mm" H 6300 5050 50  0001 C CNN
+F 2 "REInnovationFootprint:tp" H 6300 5050 50  0001 C CNN
 F 3 "" H 6300 5050 50  0000 C CNN
 	1    6300 5050
 	1    0    0    -1  
@@ -373,7 +373,7 @@ U 1 1 58E520E9
 P 5950 5950
 F 0 "P11" H 5950 6050 50  0000 C CNN
 F 1 "TP_GND" V 6050 5950 50  0000 C CNN
-F 2 "matts_components:1pin_0_8mm" H 5950 5950 50  0001 C CNN
+F 2 "REInnovationFootprint:tp" H 5950 5950 50  0001 C CNN
 F 3 "" H 5950 5950 50  0000 C CNN
 	1    5950 5950
 	1    0    0    -1  

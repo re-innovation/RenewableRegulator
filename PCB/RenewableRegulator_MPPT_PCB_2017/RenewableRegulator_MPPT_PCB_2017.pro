@@ -1,4 +1,4 @@
-update=26/04/2017 11:08:47
+update=02/05/2017 14:12:05
 last_client=kicad
 [pcbnew]
 version=1
@@ -53,12 +53,11 @@ SpiceUseNetNumbers=0
 LabSize=60
 [eeschema]
 version=1
-LibDir=../../../../GitHub/kicad_reinnovation/KiCad My Libraries
+LibDir=../../../../../Desktop/Lib Kicad reinnovation/kicad_reinnovation-master/KiCad My Libraries
 [eeschema/libraries]
 LibName1=RenewableRegulatorPCB_2017-rescue
 LibName2=power
 LibName3=device
-LibName4=matts_components
-LibName5=C:/Program Files/KiCad/share/kicad/library/conn
-LibName6=RenewableRegulatorPCB_2017
-LibName7=E:/Google Drive/KiCAD/kicad_reinnovation/KiCad My Libraries/matts_components
+LibName4=C:/Program Files/KiCad/share/kicad/library/conn
+LibName5=RenewableRegulatorPCB_2017
+LibName6=C:/Users/yoan/Desktop/Lib Kicad reinnovation/kicad_reinnovation-master/KiCad My Libraries/matts_components
