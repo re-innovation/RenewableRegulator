@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>E:/Google Drive/Work - RE-Innovation/PRODUCTS/RenewableRegulator/RenewableRegulator/PCB/RenewableRegulatorPCB_2017/RenewableRegulatorPCB_2017.sch</source>
-    <date>20/04/2017 16:33:41</date>
+    <source>E:\Google Drive\Work - RE-Innovation\PRODUCTS\RenewableRegulator\RenewableRegulator\PCB\RenewableRegulatorPCB_2017\RenewableRegulatorPCB_2017.sch</source>
+    <date>05/04/2017 11:06:49</date>
     <tool>Eeschema 4.0.4-stable</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -49,7 +49,7 @@
       <value>LOGO</value>
       <footprint>CuriousElectric3:TCEC_Words_13mm</footprint>
       <fields/>
-      <libsource lib="RenewableRegulatorPCB_2017" part="CONN_1"/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>516547D4</tstamp>
     </comp>
@@ -57,7 +57,7 @@
       <value>LOGO</value>
       <footprint>CuriousElectric3:CEC_Globe_10mm_FCU</footprint>
       <fields/>
-      <libsource lib="RenewableRegulatorPCB_2017" part="CONN_1"/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>516547D2</tstamp>
     </comp>
@@ -65,7 +65,7 @@
       <value>PCB</value>
       <footprint>REInnovationFootprint:PCB_75x100mm</footprint>
       <fields/>
-      <libsource lib="RenewableRegulatorPCB_2017" part="CONN_1"/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>516547CF</tstamp>
     </comp>
@@ -100,13 +100,13 @@
     </comp>
     <comp ref="P1">
       <value>INPUT</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Connecteurs_IO_SIL-2_screw_terminal_32A</footprint>
-      <libsource lib="RenewableRegulatorPCB_2017-rescue" part="CONN_2-RESCUE-RenewableRegulatorPCB_2017"/>
+      <footprint>matts_components:SIL-2_screw_terminal_32A</footprint>
+      <libsource lib="matts_components" part="CONN_2"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>50D3652B</tstamp>
     </comp>
     <comp ref="J2">
-      <value>Arduino_Nano</value>
+      <value>Arduino_Nano_Header</value>
       <footprint>REInnovationFootprint:NANO_DIP_30_600</footprint>
       <fields/>
       <libsource lib="matts_components" part="Arduino_Nano_Header"/>
@@ -144,6 +144,18 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamp>58E3E571</tstamp>
     </comp>
+    <comp ref="D5">
+      <value>WS2811_5mm</value>
+      <footprint>REInnovationFootprint:TH_WS2811_LED_8mm</footprint>
+      <datasheet>https://www.coolcomponents.co.uk/en/opto/leds/digital-rgb-addressable-led-5mm-through-hole-10-pack.html</datasheet>
+      <fields>
+        <field name="Description">TH WS2811 Single LED Addressable</field>
+        <field name="Supplier 1">AliExpress</field>
+      </fields>
+      <libsource lib="matts_components" part="WS2811_5mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58E3F557</tstamp>
+    </comp>
     <comp ref="P6">
       <value>SERIAL</value>
       <footprint>matts_components:SIL-4_Grove_SIL</footprint>
@@ -171,8 +183,8 @@
     </comp>
     <comp ref="P5">
       <value>OUTPUT</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Connecteurs_IO_SIL-2_screw_terminal_32A</footprint>
-      <libsource lib="RenewableRegulatorPCB_2017-rescue" part="CONN_2-RESCUE-RenewableRegulatorPCB_2017"/>
+      <footprint>matts_components:SIL-2_screw_terminal_32A</footprint>
+      <libsource lib="matts_components" part="CONN_2"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>58E5328E</tstamp>
     </comp>
@@ -264,7 +276,7 @@
     </comp>
     <comp ref="C3">
       <value>100uf</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C_1V7_TH</footprint>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
       <fields>
         <field name="Description">100V Electrolytic</field>
         <field name="Manufacturer">Panasonic</field>
@@ -292,9 +304,9 @@
       <tstamp>58E67C68</tstamp>
     </comp>
     <comp ref="J1">
-      <value>TEMP</value>
+      <value>JACK_TRS_6PINS</value>
       <footprint>REInnovationFootprint:TH_3_5mm_Jack</footprint>
-      <libsource lib="conn" part="JACK_TRS_6PINS"/>
+      <libsource lib="matts_components" part="JACK_TRS_6PINS"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>58E6BA28</tstamp>
     </comp>
@@ -340,25 +352,9 @@
       <fields>
         <field name="Description">Enclosure for unit</field>
       </fields>
-      <libsource lib="RenewableRegulatorPCB_2017" part="CONN_1"/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="CONN_1"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>58E55463</tstamp>
-    </comp>
-    <comp ref="MH1">
-      <value>Mounting holes</value>
-      <fields>
-        <field name="Description">4 x M3 mounting holes</field>
-      </fields>
-      <libsource lib="RenewableRegulatorPCB_2017" part="CONN_1"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamp>58EBB61E</tstamp>
-    </comp>
-    <comp ref="D5">
-      <value>WS2811_EpiStar_8mm</value>
-      <footprint>REInnovationFootprint:TH_WS2811_LED_8mm</footprint>
-      <libsource lib="matts_components" part="WS2811_EpiStar_8mm"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamp>58F0DF7B</tstamp>
     </comp>
     <comp ref="C4">
       <value>100nf</value>
@@ -379,7 +375,7 @@
         <field name="Supplier 1 Part No">896-2344</field>
         <field name="Supplier 1 Cost">0.41</field>
       </fields>
-      <libsource lib="RenewableRegulatorPCB_2017" part="MOSFET_N"/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="MOSFET_N"/>
       <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
       <tstamp>538B0FCF</tstamp>
     </comp>
@@ -419,7 +415,7 @@
         <field name="Supplier 1 Part No">628-9732</field>
         <field name="Supplier 1 Cost">0.12</field>
       </fields>
-      <libsource lib="RenewableRegulatorPCB_2017" part="DIODE"/>
+      <libsource lib="RenewableRegulatorPCB_2017-cache" part="DIODE"/>
       <sheetpath names="/FET Control/" tstamps="/58E26C6A/"/>
       <tstamp>538B1047</tstamp>
     </comp>
@@ -480,7 +476,7 @@
     </comp>
     <comp ref="C7">
       <value>1uf</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C7_1V7_TH</footprint>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
       <fields>
         <field name="Description">&gt;25V Electrolytic/Ceramic</field>
         <field name="Manufacturer">Murata</field>
@@ -525,7 +521,7 @@
     </comp>
     <comp ref="C6">
       <value>2.2uf</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C6_1V7_TH</footprint>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
       <datasheet>http://docs-europe.electrocomponents.com/webdocs/156e/0900766b8156ecdd.pdf</datasheet>
       <fields>
         <field name="Description">60V+ Ceramic Low ESR</field>
@@ -602,7 +598,7 @@
     </comp>
     <comp ref="C10">
       <value>10uf</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C10_1V7_TH</footprint>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
       <fields>
         <field name="Description">Low ESR. 25V</field>
         <field name="Manufacturer">Panasonic</field>
@@ -638,7 +634,7 @@
     </comp>
     <comp ref="C9">
       <value>1uf</value>
-      <footprint>RenewableRegulatorPCB_2017_Library_Yoan:Capacitor_C9_1V7_TH</footprint>
+      <footprint>REInnovationFootprint:C_1V7_TH</footprint>
       <fields>
         <field name="Description">&gt;25V Electrolytic/Ceramic</field>
         <field name="Manufacturer">Murata</field>
@@ -820,7 +816,7 @@
         <pin num="8" name="P8" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="RenewableRegulatorPCB_2017" part="CONN_1">
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="CONN_1">
       <fields>
         <field name="Reference">P</field>
         <field name="Value">CONN_1</field>
@@ -829,10 +825,11 @@
         <pin num="1" name="1" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="RenewableRegulatorPCB_2017-rescue" part="CONN_2-RESCUE-RenewableRegulatorPCB_2017">
+    <libpart lib="matts_components" part="CONN_2">
+      <description>Symbole general de connecteur</description>
       <fields>
         <field name="Reference">P</field>
-        <field name="Value">CONN_2-RESCUE-RenewableRegulatorPCB_2017</field>
+        <field name="Value">CONN_2</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -891,7 +888,7 @@
         <pin num="2" name="A" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="RenewableRegulatorPCB_2017" part="DIODE">
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="DIODE">
       <footprints>
         <fp>D?</fp>
         <fp>S*</fp>
@@ -901,8 +898,8 @@
         <field name="Value">DIODE</field>
       </fields>
       <pins>
-        <pin num="1" name="K" type="passive"/>
-        <pin num="2" name="A" type="passive"/>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="device" part="D_Schottky">
@@ -976,7 +973,7 @@
         <pin num="8" name="VB" type="input"/>
       </pins>
     </libpart>
-    <libpart lib="conn" part="JACK_TRS_6PINS">
+    <libpart lib="matts_components" part="JACK_TRS_6PINS">
       <description>audio jack TRS 6 pins</description>
       <fields>
         <field name="Reference">J</field>
@@ -1037,7 +1034,7 @@
         <pin num="VO" name="VO" type="power_out"/>
       </pins>
     </libpart>
-    <libpart lib="RenewableRegulatorPCB_2017" part="MOS_N">
+    <libpart lib="RenewableRegulatorPCB_2017-cache" part="MOS_N">
       <aliases>
         <alias>MOSFET_N</alias>
       </aliases>
@@ -1106,15 +1103,15 @@
         <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="matts_components" part="WS2811_EpiStar_8mm">
+    <libpart lib="matts_components" part="WS2811_5mm">
       <fields>
         <field name="Reference">D</field>
-        <field name="Value">WS2811_EpiStar_8mm</field>
+        <field name="Value">WS2811_5mm</field>
       </fields>
       <pins>
         <pin num="1" name="DATA_OUT" type="output"/>
-        <pin num="2" name="+Vin" type="input"/>
-        <pin num="3" name="GND" type="input"/>
+        <pin num="2" name="GND" type="input"/>
+        <pin num="3" name="+V" type="input"/>
         <pin num="4" name="DATA_IN" type="input"/>
       </pins>
     </libpart>
@@ -1135,112 +1132,111 @@
     </libpart>
   </libparts>
   <libraries>
-    <library logical="matts_components">
-      <uri>E:\Google Drive\KiCAD\kicad_reinnovation\KiCad My Libraries\matts_components.lib</uri>
+    <library logical="conn">
+      <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
     </library>
     <library logical="RenewableRegulatorPCB_2017-cache">
       <uri>E:\Google Drive\Work - RE-Innovation\PRODUCTS\RenewableRegulator\RenewableRegulator\PCB\RenewableRegulatorPCB_2017\RenewableRegulatorPCB_2017-cache.lib</uri>
     </library>
-    <library logical="conn">
-      <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
-    </library>
-    <library logical="RenewableRegulatorPCB_2017-rescue">
-      <uri>E:\Google Drive\Work - RE-Innovation\PRODUCTS\RenewableRegulator\RenewableRegulator\PCB\RenewableRegulatorPCB_2017\RenewableRegulatorPCB_2017-rescue.lib</uri>
-    </library>
     <library logical="device">
       <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
     </library>
-    <library logical="RenewableRegulatorPCB_2017">
-      <uri>E:\Google Drive\Work - RE-Innovation\PRODUCTS\RenewableRegulator\RenewableRegulator\PCB\RenewableRegulatorPCB_2017\RenewableRegulatorPCB_2017.lib</uri>
+    <library logical="matts_components">
+      <uri>E:\Google Drive\KiCAD\KiCad My Libraries\matts_components.lib</uri>
     </library>
   </libraries>
   <nets>
-    <net code="1" name="VOUTm">
-      <node ref="C2" pin="1"/>
-      <node ref="D2" pin="2"/>
-      <node ref="P9" pin="1"/>
-      <node ref="J2" pin="20"/>
-      <node ref="R4" pin="1"/>
-      <node ref="R3" pin="2"/>
-    </net>
-    <net code="2" name="GND">
-      <node ref="P6" pin="1"/>
-      <node ref="DISP1" pin="4"/>
-      <node ref="D5" pin="3"/>
-      <node ref="P7" pin="1"/>
-      <node ref="U1" pin="3"/>
+    <net code="1" name="GND">
+      <node ref="VR1" pin="2"/>
       <node ref="P3" pin="6"/>
-      <node ref="C9" pin="2"/>
-      <node ref="J1" pin="1"/>
-      <node ref="C10" pin="2"/>
-      <node ref="P11" pin="1"/>
-      <node ref="C3" pin="2"/>
-      <node ref="J2" pin="4"/>
       <node ref="P4" pin="1"/>
-      <node ref="R7" pin="2"/>
-      <node ref="VR2" pin="2"/>
+      <node ref="D5" pin="2"/>
+      <node ref="D1" pin="1"/>
       <node ref="ENC1" pin="2"/>
       <node ref="ENC1" pin="C"/>
-      <node ref="P1" pin="2"/>
-      <node ref="R2" pin="2"/>
-      <node ref="DISP2" pin="2"/>
+      <node ref="DISP1" pin="4"/>
       <node ref="J2" pin="29"/>
-      <node ref="U3" pin="GND"/>
+      <node ref="P7" pin="1"/>
+      <node ref="P1" pin="2"/>
+      <node ref="J1" pin="1"/>
       <node ref="C1" pin="2"/>
-      <node ref="D1" pin="1"/>
-      <node ref="C6" pin="2"/>
-      <node ref="R11" pin="2"/>
+      <node ref="R2" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="J2" pin="4"/>
+      <node ref="C10" pin="2"/>
+      <node ref="P11" pin="1"/>
+      <node ref="C9" pin="2"/>
+      <node ref="U3" pin="GND"/>
+      <node ref="DISP2" pin="2"/>
+      <node ref="U1" pin="3"/>
       <node ref="C7" pin="2"/>
       <node ref="R4" pin="2"/>
+      <node ref="C6" pin="2"/>
+      <node ref="R11" pin="2"/>
       <node ref="C2" pin="2"/>
-      <node ref="C4" pin="2"/>
       <node ref="D2" pin="1"/>
       <node ref="U2" pin="2"/>
       <node ref="D9" pin="2"/>
-      <node ref="VR1" pin="2"/>
-      <node ref="D8" pin="2"/>
+      <node ref="VR2" pin="2"/>
+      <node ref="R7" pin="2"/>
+      <node ref="C4" pin="2"/>
       <node ref="P5" pin="2"/>
+      <node ref="D8" pin="1"/>
+      <node ref="P6" pin="1"/>
     </net>
-    <net code="3" name="LCD_DC">
-      <node ref="DISP2" pin="5"/>
+    <net code="2" name="Voutput">
+      <node ref="U1" pin="6"/>
+      <node ref="C5" pin="2"/>
+      <node ref="Q1" pin="S"/>
+      <node ref="R8" pin="2"/>
+      <node ref="D7" pin="1"/>
+      <node ref="D8" pin="2"/>
+      <node ref="P5" pin="1"/>
+      <node ref="VR2" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R3" pin="1"/>
+      <node ref="D3" pin="2"/>
+    </net>
+    <net code="3" name="LCD_CS">
+      <node ref="J2" pin="12"/>
+      <node ref="DISP2" pin="3"/>
+    </net>
+    <net code="4" name="LCD_DC">
       <node ref="J2" pin="10"/>
+      <node ref="DISP2" pin="5"/>
     </net>
-    <net code="4" name="+3V3">
+    <net code="5" name="+3V3">
       <node ref="P3" pin="1"/>
       <node ref="J2" pin="17"/>
       <node ref="P2" pin="2"/>
       <node ref="DISP2" pin="1"/>
     </net>
-    <net code="5" name="LCD_BL">
-      <node ref="J2" pin="11"/>
-      <node ref="DISP2" pin="8"/>
-    </net>
-    <net code="6" name="LCD_CS">
-      <node ref="J2" pin="12"/>
-      <node ref="DISP2" pin="3"/>
-    </net>
-    <net code="7" name="SCK">
+    <net code="6" name="SCK">
+      <node ref="DISP2" pin="7"/>
       <node ref="P3" pin="4"/>
       <node ref="J2" pin="16"/>
-      <node ref="DISP2" pin="7"/>
     </net>
-    <net code="8" name="MOSI">
-      <node ref="DISP2" pin="6"/>
+    <net code="7" name="MOSI">
       <node ref="P3" pin="3"/>
       <node ref="J2" pin="14"/>
+      <node ref="DISP2" pin="6"/>
     </net>
-    <net code="9" name="MISO">
+    <net code="8" name="MISO">
       <node ref="P3" pin="5"/>
       <node ref="DISP2" pin="4"/>
       <node ref="J2" pin="15"/>
     </net>
-    <net code="10" name="VINm">
-      <node ref="D1" pin="2"/>
-      <node ref="C1" pin="1"/>
+    <net code="9" name="VINm">
       <node ref="P8" pin="1"/>
-      <node ref="R1" pin="2"/>
       <node ref="R2" pin="1"/>
+      <node ref="R1" pin="2"/>
+      <node ref="D1" pin="2"/>
       <node ref="J2" pin="19"/>
+      <node ref="C1" pin="1"/>
+    </net>
+    <net code="10" name="SD_CS">
+      <node ref="J2" pin="13"/>
+      <node ref="P3" pin="2"/>
     </net>
     <net code="11" name="/Power Supply/+PWR">
       <node ref="F1" pin="1"/>
@@ -1250,195 +1246,187 @@
     </net>
     <net code="12" name="Net-(D3-Pad1)">
       <node ref="D3" pin="1"/>
-      <node ref="F1" pin="2"/>
       <node ref="D4" pin="1"/>
+      <node ref="F1" pin="2"/>
     </net>
-    <net code="13" name="A6">
-      <node ref="P4" pin="4"/>
-      <node ref="J2" pin="25"/>
+    <net code="13" name="LCD_BL">
+      <node ref="DISP2" pin="8"/>
+      <node ref="J2" pin="11"/>
     </net>
-    <net code="14" name="A2">
-      <node ref="P7" pin="4"/>
-      <node ref="J2" pin="21"/>
-    </net>
-    <net code="15" name="A7">
+    <net code="14" name="A7">
       <node ref="J2" pin="26"/>
       <node ref="P4" pin="3"/>
     </net>
-    <net code="16" name="+5V">
-      <node ref="C9" pin="1"/>
+    <net code="15" name="A2">
+      <node ref="P7" pin="4"/>
+      <node ref="J2" pin="21"/>
+    </net>
+    <net code="16" name="A6">
+      <node ref="P4" pin="4"/>
+      <node ref="J2" pin="25"/>
+    </net>
+    <net code="17" name="+5V">
       <node ref="P12" pin="1"/>
-      <node ref="J1" pin="2"/>
-      <node ref="R5" pin="1"/>
-      <node ref="P6" pin="2"/>
-      <node ref="P4" pin="2"/>
-      <node ref="D5" pin="2"/>
       <node ref="P7" pin="2"/>
-      <node ref="DISP1" pin="3"/>
-      <node ref="J2" pin="27"/>
+      <node ref="C9" pin="1"/>
       <node ref="U3" pin="VO"/>
+      <node ref="D5" pin="3"/>
+      <node ref="DISP1" pin="3"/>
+      <node ref="P6" pin="2"/>
+      <node ref="J1" pin="2"/>
+      <node ref="P4" pin="2"/>
+      <node ref="R5" pin="1"/>
+      <node ref="J2" pin="27"/>
     </net>
-    <net code="17" name="LED_D">
-      <node ref="D5" pin="4"/>
-      <node ref="J2" pin="8"/>
-    </net>
-    <net code="18" name="Net-(D5-Pad1)">
-      <node ref="D5" pin="1"/>
-    </net>
-    <net code="19" name="Net-(MH1-Pad1)">
-      <node ref="MH1" pin="1"/>
-    </net>
-    <net code="20" name="Net-(EN1-Pad1)">
-      <node ref="EN1" pin="1"/>
-    </net>
-    <net code="21" name="Net-(J1-Pad6)">
-      <node ref="J1" pin="6"/>
-    </net>
-    <net code="22" name="Net-(J1-Pad5)">
-      <node ref="J1" pin="5"/>
-    </net>
-    <net code="23" name="Net-(J1-Pad4)">
-      <node ref="J1" pin="4"/>
-    </net>
-    <net code="24" name="Voutput">
-      <node ref="D8" pin="1"/>
-      <node ref="D7" pin="1"/>
-      <node ref="R8" pin="2"/>
-      <node ref="Q1" pin="S"/>
-      <node ref="C5" pin="2"/>
-      <node ref="U1" pin="6"/>
-      <node ref="C3" pin="1"/>
-      <node ref="VR2" pin="1"/>
-      <node ref="P5" pin="1"/>
-      <node ref="R3" pin="1"/>
-      <node ref="D3" pin="2"/>
-    </net>
-    <net code="25" name="Net-(P7-Pad3)">
+    <net code="18" name="Net-(P7-Pad3)">
       <node ref="P7" pin="3"/>
     </net>
-    <net code="26" name="TEMP">
+    <net code="19" name="Net-(EN1-Pad1)">
+      <node ref="EN1" pin="1"/>
+    </net>
+    <net code="20" name="VOUTm">
+      <node ref="R4" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="R3" pin="2"/>
+      <node ref="D2" pin="2"/>
+      <node ref="P9" pin="1"/>
+      <node ref="J2" pin="20"/>
+    </net>
+    <net code="21" name="TEMP">
       <node ref="J1" pin="3"/>
       <node ref="R5" pin="2"/>
       <node ref="J2" pin="22"/>
     </net>
-    <net code="27" name="/Power Supply/+10V">
-      <node ref="C4" pin="1"/>
-      <node ref="U1" pin="1"/>
+    <net code="22" name="Net-(J1-Pad6)">
+      <node ref="J1" pin="6"/>
+    </net>
+    <net code="23" name="Net-(J1-Pad5)">
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="24" name="Net-(J1-Pad4)">
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="25" name="/Power Supply/+10V">
       <node ref="D6" pin="2"/>
-      <node ref="U3" pin="VI"/>
-      <node ref="L1" pin="2"/>
-      <node ref="R10" pin="1"/>
       <node ref="C7" pin="1"/>
       <node ref="P13" pin="1"/>
       <node ref="C10" pin="1"/>
+      <node ref="U3" pin="VI"/>
+      <node ref="U1" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="L1" pin="2"/>
+      <node ref="R10" pin="1"/>
     </net>
-    <net code="28" name="Net-(J2-Pad28)">
+    <net code="26" name="Net-(J2-Pad28)">
       <node ref="J2" pin="28"/>
     </net>
-    <net code="29" name="SCL">
-      <node ref="J2" pin="24"/>
+    <net code="27" name="Net-(D5-Pad1)">
+      <node ref="D5" pin="1"/>
+    </net>
+    <net code="28" name="SCL">
       <node ref="DISP1" pin="2"/>
+      <node ref="J2" pin="24"/>
     </net>
-    <net code="30" name="EN_B">
-      <node ref="ENC1" pin="B"/>
-      <node ref="J2" pin="6"/>
+    <net code="29" name="SDA">
+      <node ref="DISP1" pin="1"/>
+      <node ref="J2" pin="23"/>
     </net>
-    <net code="31" name="EN_SW">
-      <node ref="ENC1" pin="1"/>
-      <node ref="J2" pin="7"/>
-    </net>
-    <net code="32" name="Vinput">
-      <node ref="VR1" pin="1"/>
-      <node ref="P1" pin="1"/>
-      <node ref="D4" pin="2"/>
-      <node ref="R1" pin="1"/>
+    <net code="30" name="Vinput">
       <node ref="Q1" pin="D"/>
+      <node ref="R1" pin="1"/>
+      <node ref="P1" pin="1"/>
+      <node ref="VR1" pin="1"/>
+      <node ref="D4" pin="2"/>
     </net>
-    <net code="33" name="Net-(LOGO2-Pad1)">
+    <net code="31" name="Net-(LOGO2-Pad1)">
       <node ref="LOGO2" pin="1"/>
     </net>
-    <net code="34" name="Net-(PCB1-Pad1)">
+    <net code="32" name="Net-(PCB1-Pad1)">
       <node ref="PCB1" pin="1"/>
     </net>
-    <net code="35" name="Net-(LOGO1-Pad1)">
+    <net code="33" name="Net-(LOGO1-Pad1)">
       <node ref="LOGO1" pin="1"/>
     </net>
-    <net code="36" name="Net-(J2-Pad30)">
+    <net code="34" name="Net-(J2-Pad30)">
       <node ref="J2" pin="30"/>
     </net>
-    <net code="37" name="Net-(J2-Pad3)">
+    <net code="35" name="Net-(J2-Pad3)">
       <node ref="J2" pin="3"/>
     </net>
-    <net code="38" name="FET1">
-      <node ref="U1" pin="2"/>
+    <net code="36" name="FET1">
       <node ref="J2" pin="9"/>
+      <node ref="U1" pin="2"/>
     </net>
-    <net code="39" name="Tx">
-      <node ref="J2" pin="1"/>
-      <node ref="P6" pin="3"/>
-    </net>
-    <net code="40" name="Rx">
+    <net code="37" name="Rx">
       <node ref="J2" pin="2"/>
       <node ref="P6" pin="4"/>
     </net>
-    <net code="41" name="SD_CS">
-      <node ref="J2" pin="13"/>
-      <node ref="P3" pin="2"/>
+    <net code="38" name="Tx">
+      <node ref="P6" pin="3"/>
+      <node ref="J2" pin="1"/>
     </net>
-    <net code="42" name="Net-(J2-Pad18)">
+    <net code="39" name="Net-(J2-Pad18)">
       <node ref="J2" pin="18"/>
       <node ref="P2" pin="1"/>
     </net>
-    <net code="43" name="SDA">
-      <node ref="J2" pin="23"/>
-      <node ref="DISP1" pin="1"/>
+    <net code="40" name="EN_SW">
+      <node ref="J2" pin="7"/>
+      <node ref="ENC1" pin="1"/>
     </net>
-    <net code="44" name="EN_A">
-      <node ref="J2" pin="5"/>
+    <net code="41" name="EN_B">
+      <node ref="J2" pin="6"/>
+      <node ref="ENC1" pin="B"/>
+    </net>
+    <net code="42" name="EN_A">
       <node ref="ENC1" pin="A"/>
+      <node ref="J2" pin="5"/>
     </net>
-    <net code="45" name="Net-(C5-Pad1)">
+    <net code="43" name="LED_D">
+      <node ref="D5" pin="4"/>
+      <node ref="J2" pin="8"/>
+    </net>
+    <net code="44" name="Net-(C5-Pad1)">
       <node ref="C5" pin="1"/>
-      <node ref="U1" pin="8"/>
       <node ref="D6" pin="1"/>
+      <node ref="U1" pin="8"/>
     </net>
-    <net code="46" name="Net-(R6-Pad2)">
+    <net code="45" name="Net-(R6-Pad2)">
       <node ref="U1" pin="7"/>
       <node ref="R6" pin="2"/>
     </net>
-    <net code="47" name="Net-(U1-Pad4)">
+    <net code="46" name="Net-(U1-Pad4)">
       <node ref="U1" pin="4"/>
     </net>
-    <net code="48" name="Net-(U1-Pad5)">
+    <net code="47" name="Net-(U1-Pad5)">
       <node ref="U1" pin="5"/>
     </net>
-    <net code="49" name="Net-(P10-Pad1)">
-      <node ref="R6" pin="1"/>
+    <net code="48" name="Net-(P10-Pad1)">
       <node ref="Q1" pin="G"/>
-      <node ref="R8" pin="1"/>
+      <node ref="R6" pin="1"/>
       <node ref="P10" pin="1"/>
+      <node ref="R8" pin="1"/>
     </net>
-    <net code="50" name="Net-(D7-Pad2)">
-      <node ref="D7" pin="2"/>
+    <net code="49" name="Net-(D7-Pad2)">
       <node ref="R7" pin="1"/>
+      <node ref="D7" pin="2"/>
     </net>
-    <net code="51" name="Net-(R10-Pad2)">
+    <net code="50" name="Net-(R10-Pad2)">
+      <node ref="R11" pin="1"/>
       <node ref="U2" pin="3"/>
       <node ref="R10" pin="2"/>
-      <node ref="R11" pin="1"/>
     </net>
-    <net code="52" name="Net-(C8-Pad1)">
+    <net code="51" name="Net-(C8-Pad1)">
       <node ref="C8" pin="1"/>
       <node ref="U2" pin="1"/>
     </net>
-    <net code="53" name="Net-(R9-Pad2)">
-      <node ref="U2" pin="4"/>
+    <net code="52" name="Net-(R9-Pad2)">
       <node ref="R9" pin="2"/>
+      <node ref="U2" pin="4"/>
     </net>
-    <net code="54" name="Net-(C8-Pad2)">
-      <node ref="D9" pin="1"/>
-      <node ref="L1" pin="1"/>
+    <net code="53" name="Net-(C8-Pad2)">
       <node ref="C8" pin="2"/>
+      <node ref="L1" pin="1"/>
+      <node ref="D9" pin="1"/>
       <node ref="U2" pin="6"/>
     </net>
   </nets>
