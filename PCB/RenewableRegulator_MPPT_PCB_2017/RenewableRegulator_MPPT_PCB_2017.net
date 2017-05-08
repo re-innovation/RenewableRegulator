@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source C:/Users/yoan/Documents/Re-innovation/RenewableRegulator/PCB/RenewableRegulator_MPPT_PCB_2017/RenewableRegulator_MPPT_PCB_2017.sch)
-    (date "05/05/2017 17:24:04")
+    (date "08/05/2017 14:11:50")
     (tool "Eeschema 4.0.6")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -132,7 +132,7 @@
       (tstamp 58E47BCB))
     (comp (ref P3)
       (value MicroSD)
-      (footprint matts_components:SIL-6_large_pads_marker)
+      (footprint REInnovationFootprint:SIL-6_large_pads_marker)
       (datasheet http://www.gearbest.com/development-boards/pp_63013.html?currency=GBP&vip=760169&gclid=CPHFuoqAjdMCFUK7GwodO08Omw)
       (fields
         (field (name Description) "External Micro SD slot with level shifter"))
@@ -917,12 +917,12 @@
   (libraries
     (library (logical conn)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
-    (library (logical matts_components)
-      (uri "C:\\Users\\yoan\\Desktop\\Lib Kicad reinnovation\\kicad_reinnovation-master\\KiCad My Libraries\\matts_components.lib"))
+    (library (logical device)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical RenewableRegulator_MPPT_PCB_2017-cache)
       (uri C:\Users\yoan\Documents\Re-innovation\RenewableRegulator\PCB\RenewableRegulator_MPPT_PCB_2017\RenewableRegulator_MPPT_PCB_2017-cache.lib))
-    (library (logical device)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib")))
+    (library (logical matts_components)
+      (uri "C:\\Users\\yoan\\Desktop\\Lib Kicad reinnovation\\kicad_reinnovation-master\\KiCad My Libraries\\matts_components.lib")))
   (nets
     (net (code 1) (name Vinput)
       (node (ref Q2) (pin D))
