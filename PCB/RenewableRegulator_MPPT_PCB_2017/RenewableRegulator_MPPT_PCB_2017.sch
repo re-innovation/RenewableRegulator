@@ -366,7 +366,7 @@ U 1 1 58E4B8E8
 P 8600 3150
 F 0 "P3" H 8600 3500 50  0000 C CNN
 F 1 "MicroSD" V 8700 3150 50  0000 C CNN
-F 2 "matts_components:SIL-6_large_pads_marker" H 8600 3150 50  0001 C CNN
+F 2 "REInnovationFootprint:SIL-6_large_pads_marker" H 8600 3150 50  0001 C CNN
 F 3 "http://www.gearbest.com/development-boards/pp_63013.html?currency=GBP&vip=760169&gclid=CPHFuoqAjdMCFUK7GwodO08Omw" H 8600 3150 50  0001 C CNN
 F 4 "~" H 8600 3150 60  0000 C CNN "Notes"
 F 5 "External Micro SD slot with level shifter" H 8600 3150 60  0001 C CNN "Description"
