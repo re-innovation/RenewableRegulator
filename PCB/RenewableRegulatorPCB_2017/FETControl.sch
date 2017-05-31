@@ -2,9 +2,9 @@ EESchema Schematic File Version 2
 LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
+LIBS:matts_components
 LIBS:conn
 LIBS:RenewableRegulatorPCB_2017
-LIBS:matts_components
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END

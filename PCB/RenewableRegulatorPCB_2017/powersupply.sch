@@ -2,9 +2,9 @@ EESchema Schematic File Version 2
 LIBS:RenewableRegulatorPCB_2017-rescue
 LIBS:power
 LIBS:device
+LIBS:matts_components
 LIBS:conn
 LIBS:RenewableRegulatorPCB_2017
-LIBS:matts_components
 LIBS:RenewableRegulatorPCB_2017-cache
 EELAYER 25 0
 EELAYER END
@@ -288,7 +288,7 @@ Wire Wire Line
 Wire Wire Line
 	4400 5250 4400 5200
 Connection ~ 4400 5200
-Text Notes 6300 2600 0    60   ~ 0
+Text Notes 6750 1750 0    60   ~ 0
 VOUT = 0.765 V (1+(R1/R2))\n10/0.765 -1 = R1/R2\n12.07 = R1/R2
 $Comp
 L R R9
